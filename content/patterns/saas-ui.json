@@ -17,18 +17,20 @@
           "変更は自動的に保存されました。",
           "変更を保存しますか?"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "Are you sure you want to ~? は「本当に~しますか?」。discard は「破棄する」なので、保存する意味ではない。"
       },
       {
         "type": "cloze",
-        "sentence_en": "Are you sure you ____ to remove this member?",
+        "sentence_en": "Are you sure you want to ____ this member?",
         "choices_en": [
-          "wanted",
-          "want",
-          "wanting",
-          "wants"
+          "reveal",
+          "remove",
+          "rejoin",
+          "remind"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "「remove this member」で「メンバーを削除」。remind(思い出させる)・rejoin(再加入)・reveal(明かす)は確認ダイアログの内容に合わない。"
       },
       {
         "type": "choice",
@@ -38,7 +40,8 @@
           "すべてのデバイスを削除しますか?",
           "本当にすべてのデバイスからサインアウトしますか?"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "「sign out of all devices」で「すべてのデバイスからサインアウト」。「サインインした」「デバイスを削除」とは書かれていない。"
       }
     ],
     "level": 1
@@ -61,18 +64,20 @@
           "ユーザーは ec2:StartInstances を実行中である",
           "ec2:StartInstances は存在しない"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "is not authorized to perform ~ は「~を実行する権限がない」。実行中という意味ではない。"
       },
       {
         "type": "cloze",
         "sentence_en": "You are not ____ to perform this action.",
         "choices_en": [
-          "authorizing",
           "authorized",
-          "author",
-          "authority"
+          "authored",
+          "authentic",
+          "authenticated"
         ],
-        "answer": 1
+        "answer": 0,
+        "explanation_ja": "「not authorized to perform」で「実行する権限がない」。authenticated は「本人確認済み」で別の概念(認証と認可)、authentic は「本物の」、authored は「執筆した」。"
       },
       {
         "type": "choice",
@@ -82,7 +87,8 @@
           "ユーザー名",
           "リージョン名"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "s3:GetObject は「サービス:アクション」の形で、実行しようとした操作を表す。ユーザー名は arn の部分、リージョンは別の項目。"
       }
     ],
     "level": 2
@@ -105,7 +111,8 @@
           "セッションの有効期限が切れたため、変更の保存に失敗した",
           "セッションが延長されたため、変更を保存した"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "because 以降が原因。有効期限切れ(expired)が理由で、変更の保存に失敗した。"
       },
       {
         "type": "cloze",
@@ -116,7 +123,8 @@
           "because",
           "so that"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "「because it is still attached」で理由を表す。unless・although・so that では原因を述べる文にならない。"
       },
       {
         "type": "choice",
@@ -126,7 +134,8 @@
           "deploy",
           "because 以降(quota was exceeded)"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "原因を述べるのは because 以降(quota was exceeded)。Failed to deploy は「何に失敗したか」にすぎない。"
       }
     ],
     "level": 1
@@ -149,7 +158,8 @@
           "この名前のリポジトリは作成中である",
           "この名前のリポジトリはすでに存在する"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "already exists は「すでに存在する」。「作成中」や「見つからない」とは逆。"
       },
       {
         "type": "cloze",
@@ -160,7 +170,8 @@
           "at",
           "by"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "「already in use」で「すでに使用中」。on・at・by ではこの決まった言い回しにならない。"
       },
       {
         "type": "choice",
@@ -170,7 +181,8 @@
           "ブラウザを閉じる",
           "別の名前を試す"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "名前の重複が原因なので、別の名前を試すのが対処。同じ名前で再試行しても結果は変わらない。"
       }
     ],
     "level": 1
@@ -193,18 +205,20 @@
           "APIは現在メンテナンス中である。",
           "APIのレート制限を超えた。後でもう一度試してください。"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "rate limit exceeded は「レート制限を超えた」。メンテナンス中や無効なAPIキーとは別のエラー。"
       },
       {
         "type": "cloze",
         "sentence_en": "You have exceeded the ____ limit for this endpoint.",
         "choices_en": [
+          "price",
+          "range",
           "rate",
-          "rates",
-          "rated",
-          "rating"
+          "rank"
         ],
-        "answer": 0
+        "answer": 2,
+        "explanation_ja": "「rate limit」は「リクエスト頻度の上限」。price・rank・range limit は API エラーの用語として使わない。"
       },
       {
         "type": "choice",
@@ -214,7 +228,8 @@
           "サーバー内部でエラーが起きた",
           "短時間にリクエストを送りすぎた"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "429 Too Many Requests は短時間にリクエストを送りすぎたときに返る。存在しない場合は404、サーバー内部のエラーは5xx。"
       }
     ],
     "level": 2
@@ -237,7 +252,8 @@
           "この操作は管理者のみ実行できる",
           "この操作は一時的で、削除したデータは復元できる"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "permanent は「恒久的」で、cannot be recovered は復元できない。一時的・復元可能とは逆。"
       },
       {
         "type": "cloze",
@@ -248,7 +264,8 @@
           "succeed",
           "fail"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation_ja": "キーを revoke(失効)すると、そのキーを使うリクエストは fail(失敗)する。queue・succeed は失効の結果として合わない。"
       },
       {
         "type": "choice",
@@ -258,7 +275,8 @@
           "キーを共有する",
           "キーを閲覧する"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "Roll key は「キーをローテーション(再発行)する」。共有や閲覧の操作ではない。"
       }
     ],
     "level": 2
@@ -281,7 +299,8 @@
           "課金アラートについて詳しく見る",
           "課金アラートを作成する"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Learn more about ~ は「~について詳しく見る」。削除や作成の操作ではなく、ヘルプへのリンク。"
       },
       {
         "type": "cloze",
@@ -292,7 +311,8 @@
           "Tell",
           "Teach"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "「Learn more about ~」は決まった言い回し。Teach・Show・Tell は教える側の動詞で、ヘルプリンクの文言にならない。"
       },
       {
         "type": "choice",
@@ -302,7 +322,8 @@
           "ログアウトするため",
           "設定を削除するため"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "Learn more は関連ドキュメントを開くリンク。設定の削除やログアウトの操作ではない。"
       }
     ],
     "level": 1
@@ -325,18 +346,20 @@
           "メールアドレスの形式が正しくない",
           "メールアドレスが確認された"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Invalid email address は形式が正しくないという意味。登録済み(already registered)や確認済み(verified)とは違う。"
       },
       {
         "type": "cloze",
         "sentence_en": "Invalid API Key ____: sk_test_****abcd",
         "choices_en": [
-          "provider",
-          "provide",
-          "providing",
-          "provided"
+          "revealed",
+          "provided",
+          "deleted",
+          "rotated"
         ],
-        "answer": 3
+        "answer": 1,
+        "explanation_ja": "Stripe の定型は「Invalid API Key provided」で「指定された無効なキー」。revealed・rotated・deleted は定型文として使われない。"
       },
       {
         "type": "choice",
@@ -346,7 +369,8 @@
           "そのような顧客は存在しない: 'cus_123'",
           "顧客 'cus_123' の支払いが完了した"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "No such customer は「そのような顧客は存在しない」。削除や支払い完了を表す文ではない。"
       }
     ],
     "level": 2
@@ -369,7 +393,8 @@
           "変更が保存された",
           "変更はない"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "You have unsaved changes は「未保存の変更がある」。「保存された」「変更はない」は逆。"
       },
       {
         "type": "cloze",
@@ -380,7 +405,8 @@
           "lost",
           "merged"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "ページを離れると変更は lost(失われる)。shared・found・merged では警告の内容にならない。"
       },
       {
         "type": "choice",
@@ -390,7 +416,8 @@
           "編集を続ける",
           "ページを離れる"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Keep editing は「編集を続ける」。変更を失うのは Discard changes や Leave page のほう。"
       }
     ],
     "level": 1
@@ -413,18 +440,20 @@
           "利用規約は表示されない",
           "利用規約に同意すると続行できなくなる"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "accept the terms to continue は「続行するには同意が必要」。同意すると続行できなくなる、ではない。"
       },
       {
         "type": "cloze",
         "sentence_en": "You must enter a valid ____ code to continue.",
         "choices_en": [
-          "verify",
-          "verification",
-          "verified to",
-          "verifying"
+          "vacation",
+          "variation",
+          "violation",
+          "verification"
         ],
-        "answer": 1
+        "answer": 3,
+        "explanation_ja": "「verification code」は「確認コード」。violation(違反)・variation(変化)・vacation(休暇)は、入力するコードの種類にならない。"
       },
       {
         "type": "choice",
@@ -434,7 +463,8 @@
           "任意項目",
           "読み取り専用項目"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "Required field は「必須項目」。任意項目は optional、読み取り専用は read-only。"
       }
     ],
     "level": 1
@@ -457,7 +487,8 @@
           "変更の反映に最大24時間かかる場合がある",
           "変更は24時間後に必ず削除される"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "may take up to 24 hours to propagate は「反映に最大24時間かかる場合がある」。自動で元に戻る、ではない。"
       },
       {
         "type": "cloze",
@@ -468,7 +499,8 @@
           "effort",
           "efficient"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "take effect は「効力を持つ」。affect は動詞(影響する)、effort は労力、efficient は形容詞で、この形にならない。"
       },
       {
         "type": "choice",
@@ -478,7 +510,8 @@
           "変更が全体に反映されるまで少し時間差がある",
           "変更が即座にすべての場所で反映される"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "eventually consistent は「時間差はあるが最終的に全体が一致する」性質。即時にすべて反映される、ではない。"
       }
     ],
     "level": 2
@@ -501,18 +534,20 @@
           "'invoice' の結果がすべて削除された",
           "'invoice' の検索が完了した"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "No results found for ~ は「~に一致する結果なし」。削除や検索完了を表すわけではない。"
       },
       {
         "type": "cloze",
         "sentence_en": "We couldn't find any issues ____ your filters.",
         "choices_en": [
-          "matches",
-          "match",
+          "ignoring",
+          "changing",
           "matching",
-          "matched with"
+          "blocking"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "「issues matching your filters」で「フィルターに一致するIssue」。blocking・changing・ignoring では意味が通らない。"
       },
       {
         "type": "choice",
@@ -522,7 +557,8 @@
           "必ずリポジトリが削除されている",
           "フィルターや権限の都合で見えていない場合がある"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "No results は「存在しない」とは限らない。フィルター条件や権限のために見えていないこともある。"
       }
     ],
     "level": 2
@@ -545,18 +581,20 @@
           "問題が発生しました。もう一度お試しください。",
           "アカウントが削除されました。"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Something went wrong. Please try again. は「問題が発生しました。もう一度お試しください」。成功やアカウント削除の通知ではない。"
       },
       {
         "type": "cloze",
         "sentence_en": "If the problem ____, contact support with the request ID.",
         "choices_en": [
-          "persisted",
-          "persisting",
+          "vanishes",
+          "expires",
           "persists",
-          "persist"
+          "deletes"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "「If the problem persists」で「問題が解消しない場合」。vanishes(消える)なら、サポートに連絡する必要がない。"
       },
       {
         "type": "choice",
@@ -566,7 +604,8 @@
           "問題を解消するにはサポートを閉じてください",
           "サポートに連絡すると問題が発生します"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "If the problem persists, contact support は「解消しない場合はサポートに連絡」。サポートに連絡すると問題が起きる、という意味ではない。"
       }
     ],
     "level": 1
@@ -589,7 +628,8 @@
           "この項目は編集できない",
           "この項目は任意である"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "This field is required は「この項目は必須」。任意は optional、編集不可は read-only で表す。"
       },
       {
         "type": "cloze",
@@ -600,7 +640,8 @@
           "could",
           "must"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation_ja": "must be at least 8 characters は「8文字以上でなければならない」。may・might・could は義務を表さない。"
       },
       {
         "type": "choice",
@@ -610,7 +651,8 @@
           "名前は空白を含められる",
           "名前は空にできない"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "can't be blank は「空にできない」。空白を含められる、という意味ではない。"
       }
     ],
     "level": 1
@@ -633,7 +675,8 @@
           "ロールが削除されたため、ポリシーも削除された",
           "ロールにアタッチされていないため、ポリシーは削除できない"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "attached to a role は「ロールにアタッチされている」。その状態では削除できず、外してから削除する。"
       },
       {
         "type": "cloze",
@@ -644,7 +687,8 @@
           "deliver",
           "delete"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation_ja": "依存関係を外した後に「削除」する流れなので delete。depend・define・deliver は手順に合わない。"
       },
       {
         "type": "choice",
@@ -654,7 +698,8 @@
           "そのリソースは複製された",
           "そのリソースは存在しない"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "dependencies は「依存するもの」。依存が残っているため削除できない。「存在しない」「複製された」ではない。"
       }
     ],
     "level": 2
@@ -677,18 +722,20 @@
           "トークンが発行された",
           "トークンが共有された"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "token has expired は「トークンの有効期限が切れた」。発行や共有ではない。"
       },
       {
         "type": "cloze",
         "sentence_en": "Your session has ____. Please sign in again.",
         "choices_en": [
-          "expiring",
-          "expires",
-          "expire",
-          "expired"
+          "improved",
+          "opened",
+          "expired",
+          "started"
         ],
-        "answer": 3
+        "answer": 2,
+        "explanation_ja": "「session has expired」で「セッションが期限切れ」。started・opened・improved ではサインインし直す理由にならない。"
       },
       {
         "type": "choice",
@@ -698,7 +745,8 @@
           "他のすべてのセッションからサインアウトする",
           "すべてのセッションを共有する"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Sign out of all other sessions は「他のすべてのセッションからサインアウト」。共有や延長ではない。"
       }
     ],
     "level": 1
@@ -721,18 +769,20 @@
           "カードが登録された",
           "カードが承認されなかった"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "declined は「(カード会社が)承認しなかった」。登録や有効期限の延長ではない。"
       },
       {
         "type": "cloze",
         "sentence_en": "Please use a ____ payment method.",
         "choices_en": [
-          "differently",
-          "different",
-          "differ",
-          "difference"
+          "faulty",
+          "hidden",
+          "declined",
+          "different"
         ],
-        "answer": 1
+        "answer": 3,
+        "explanation_ja": "カードが拒否されたので「別の(different)」支払い方法を使う。declined や faulty では、同じ問題が再発する。"
       },
       {
         "type": "choice",
@@ -742,7 +792,8 @@
           "資金が過剰である",
           "残高(利用枠)が不足している"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "insufficient_funds は「残高(利用枠)が不足している」。資金過剰や盗難届ではない。"
       }
     ],
     "level": 2
@@ -765,7 +816,8 @@
           "トライアルが終わるまで請求されない",
           "トライアル中に毎日請求される"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "won't be charged until ~ は「~まで請求されない」。毎日請求や、請求後にトライアル開始、という意味ではない。"
       },
       {
         "type": "cloze",
@@ -776,7 +828,8 @@
           "revise",
           "reform"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "subscription は自動で renew(更新)される。remove・revise・reform では課金日の説明にならない。"
       },
       {
         "type": "choice",
@@ -786,7 +839,8 @@
           "割増請求",
           "全額返金"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "prorated は「日割り(期間按分)」。割増請求や全額返金ではない。"
       }
     ],
     "level": 2
@@ -809,7 +863,8 @@
           "リンクをクリップボードにコピー",
           "リンクを新しいタブで開く"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Copy link to clipboard は「リンクをクリップボードにコピー」。削除や新しいタブで開く操作ではない。"
       },
       {
         "type": "cloze",
@@ -820,7 +875,8 @@
           "copy",
           "clone"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "クリップボードに入れる操作は copy。paste は貼り付け、clone はリポジトリの複製、fork は分岐で、別の操作。"
       },
       {
         "type": "choice",
@@ -830,7 +886,8 @@
           "このトークンは二度と表示されない",
           "このトークンは何度でも表示できる"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "You won't be able to see ~ again は「二度と表示できない」。何度でも表示できる、ではない。"
       }
     ],
     "level": 1
@@ -853,18 +910,20 @@
           "新しいトークンは後で何度でも表示できる",
           "新しいトークンを今すぐコピーすること。再表示はできない"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "You won't be able to see it again は「再表示できない」。後で何度でも見られる、ではない。"
       },
       {
         "type": "cloze",
         "sentence_en": "Store this secret somewhere ____.",
         "choices_en": [
+          "public",
+          "shared",
           "safe",
-          "save",
-          "safely",
-          "safety"
+          "visible"
         ],
-        "answer": 0
+        "answer": 2,
+        "explanation_ja": "シークレットは第三者に見られない safe(安全)な場所に保管する。public・visible・shared は漏えいの危険がある。"
       },
       {
         "type": "choice",
@@ -874,7 +933,8 @@
           "トークンを再生成する",
           "トークンを共有する"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Regenerate token は「トークンを再生成する」。共有や閲覧の操作ではない。"
       }
     ],
     "level": 2
@@ -897,7 +957,8 @@
           "二度と表示しない",
           "あとで通知する"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "Remind me later は「あとで通知する」。今すぐ削除や二度と表示しない、ではない。"
       },
       {
         "type": "cloze",
@@ -908,7 +969,8 @@
           "latest",
           "latter"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "change this later は「あとで変更できる」。latter は「後者」、lately は「最近」、latest は「最新」で意味が違う。"
       },
       {
         "type": "choice",
@@ -918,7 +980,8 @@
           "この画面を共有する",
           "もう一度表示する"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "Don't show this again は「今後は表示しない」。もう一度表示する、ではない。"
       }
     ],
     "level": 1
@@ -941,18 +1004,20 @@
           "このページを表示する権限がない",
           "このページは作成中である"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "don't have permission は「権限がない」。ページの削除予定や作成中、という意味ではない。"
       },
       {
         "type": "cloze",
         "sentence_en": "Contact your ____ to request access.",
         "choices_en": [
           "administrator",
-          "administrate",
-          "administrative",
-          "administration"
+          "auditor",
+          "accountant",
+          "advisor"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "権限を付与できるのは administrator(管理者)。accountant(会計士)・advisor(助言者)・auditor(監査人)はアクセス依頼の窓口にならない。"
       },
       {
         "type": "choice",
@@ -962,7 +1027,8 @@
           "Read-only user",
           "Owner"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "Owner は組織全体の設定を変更できる。Guest や Read-only user は権限が限定されている。"
       }
     ],
     "level": 2
@@ -985,7 +1051,8 @@
           "確認リンクをあなたのメールに送信した",
           "確認リンクを削除した"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "We've sent ~ は「~を送信した」。削除した、受信した、という意味ではない。"
       },
       {
         "type": "cloze",
@@ -996,7 +1063,8 @@
           "Resend",
           "Resume"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "メールが届かないときは Resend(再送)。Retry・Restore・Resume では「再送」の意味にならない。"
       },
       {
         "type": "choice",
@@ -1006,7 +1074,8 @@
           "迷惑メールフォルダを確認してください",
           "迷惑メールを送信してください"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Check your spam folder は「迷惑メールフォルダを確認」。迷惑メールを送る、という意味ではない。"
       }
     ],
     "level": 1
@@ -1029,7 +1098,8 @@
           "クォータが無制限になった",
           "クォータを使い切っていない"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "reached your quota limit は「クォータの上限に達した」。使い切っていない、無制限になった、ではない。"
       },
       {
         "type": "cloze",
@@ -1040,7 +1110,8 @@
           "request",
           "reject"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "上限を引き上げるには request a quota increase。require・revoke・reject では引き上げ依頼にならない。"
       },
       {
         "type": "choice",
@@ -1050,9 +1121,151 @@
           "ブラウザのキャッシュだけを削除する",
           "同じ操作を何度も繰り返す"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "クォータエラーは不要リソースの削除か、上限の引き上げ申請で解消する。同じ操作の繰り返しやキャッシュ削除では解決しない。"
       }
     ],
     "level": 2
+  },
+  {
+    "id": "saas-invalid-state",
+    "category": "saas-ui",
+    "source": "AWS Console",
+    "pattern": "The X is not in a state from which it can be Y",
+    "meaning_ja": "Xは、Yできる状態にない",
+    "example_en": "IncorrectInstanceState: The instance 'i-0abc' is not in a state from which it can be stopped.",
+    "example_ja": "IncorrectInstanceState: インスタンス 'i-0abc' は停止できる状態にない。",
+    "note_ja": "リソースの状態(pending, running, stopped など)によって、実行できる操作が決まっている。エラー文に出る it can be の後ろの動詞が、やろうとした操作。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "The instance is not in a state from which it can be started.",
+        "choices_ja": [
+          "インスタンスはすでに開始された",
+          "インスタンスは開始できる状態にない",
+          "インスタンスは削除された"
+        ],
+        "answer": 1,
+        "explanation_ja": "not in a state from which it can be started は「開始できる状態ではない」。すでに開始済み、削除済み、とは書かれていない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "You can only start an instance that is in the ____ state.",
+        "choices_en": [
+          "terminated",
+          "stopped",
+          "running",
+          "pending"
+        ],
+        "answer": 1,
+        "explanation_ja": "EC2 で開始(start)できるのは stopped のインスタンス。terminated は終了済み、pending は起動処理中、running はすでに実行中のため、開始できない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "IncorrectInstanceState",
+        "choices_ja": [
+          "料金が未払いである",
+          "現在の状態ではその操作ができない",
+          "認証に失敗した"
+        ],
+        "answer": 1,
+        "explanation_ja": "IncorrectInstanceState は、インスタンスの現在の状態ではその操作を受け付けられないというエラー。認証や支払いの問題ではない。"
+      }
+    ],
+    "level": 3
+  },
+  {
+    "id": "saas-type-to-confirm",
+    "category": "saas-ui",
+    "source": "GitHub",
+    "pattern": "Please type X to confirm",
+    "meaning_ja": "確認のため、Xを入力してください",
+    "example_en": "Please type owner/repo-name to confirm.",
+    "example_ja": "確認のため owner/repo-name と入力してください。",
+    "note_ja": "誤操作を防ぐため、削除対象の名前を手入力させる仕組み。コピー&ペーストでもよいが、対象が正しいか必ず確認してから入力する。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Type the name of the repository to confirm.",
+        "choices_ja": [
+          "リポジトリ名を確認し、自動で入力されます",
+          "リポジトリ名を変更するには入力してください",
+          "確認のため、リポジトリ名を入力してください"
+        ],
+        "answer": 2,
+        "explanation_ja": "type ~ to confirm は「確認のために~を入力する」。名前の変更や自動入力のことではない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "To ____ deletion, type the project name.",
+        "choices_en": [
+          "hide",
+          "delay",
+          "confirm",
+          "ignore"
+        ],
+        "answer": 2,
+        "explanation_ja": "「confirm deletion」で「削除を確定する」。ignore(無視)・delay(延期)・hide(隠す)は、名前を入力する目的と合わない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "I understand the consequences, delete this repository.",
+        "choices_ja": [
+          "影響を理解したうえで、このリポジトリを削除する",
+          "影響を理解するまで、削除を延期する",
+          "影響を理解したので、このリポジトリを復元する"
+        ],
+        "answer": 0,
+        "explanation_ja": "I understand the consequences は「影響を理解した」という同意の表明で、そのうえで削除する。復元や延期のボタンではない。"
+      }
+    ],
+    "level": 3
+  },
+  {
+    "id": "saas-downgrade-loses-access",
+    "category": "saas-ui",
+    "source": "Generic SaaS UI",
+    "pattern": "Downgrading will remove access to X",
+    "meaning_ja": "ダウングレードすると、Xが使えなくなる",
+    "example_en": "Downgrading to the Free plan will remove access to SSO and audit logs at the end of your billing period.",
+    "example_ja": "Freeプランにダウングレードすると、請求期間の終了時にSSOと監査ログが使えなくなる。",
+    "note_ja": "プラン変更の確認画面の定型文。at the end of your billing period は「いま」ではなく「期間終了時」に適用される点に注意。データが消えるのか、閲覧のみ不可になるのかも読み分ける。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Downgrading will remove access to premium features.",
+        "choices_ja": [
+          "ダウングレードすると、プレミアム機能が無料になる",
+          "ダウングレードすると、プレミアム機能が追加される",
+          "ダウングレードすると、プレミアム機能が使えなくなる"
+        ],
+        "answer": 2,
+        "explanation_ja": "remove access to ~ は「~へのアクセスを失う」。追加や無料化ではない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "The change will take ____ at the end of your billing period.",
+        "choices_en": [
+          "affect",
+          "advantage",
+          "effect",
+          "charge"
+        ],
+        "answer": 2,
+        "explanation_ja": "「take effect」で「効力を持つ」。affect は動詞、advantage・charge は take と組み合わせても「変更が適用される」意味にならない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Upgrade to unlock this feature.",
+        "choices_ja": [
+          "アップグレードすると、この機能が削除される",
+          "アップグレードすると、この機能が使えるようになる",
+          "この機能はすでにロック解除されている"
+        ],
+        "answer": 1,
+        "explanation_ja": "unlock は「ロックを解除する」。upgrade が条件で、機能が削除されるのではない。"
+      }
+    ],
+    "level": 3
   }
 ]

@@ -17,18 +17,20 @@
           "問題なさそうです、素早い修正ありがとう!",
           "この修正は取り消してください。"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "LGTM は Looks Good To Me の略で、承認の意思表示。「修正が必要」「取り消して」とは逆。"
       },
       {
         "type": "cloze",
-        "sentence_en": "LGTM stands for \"Looks good to ____\".",
+        "sentence_en": "LGTM! Feel free to ____ once CI is green.",
         "choices_en": [
-          "my",
-          "me",
-          "mine",
-          "I"
+          "reopen",
+          "revert",
+          "merge",
+          "fork"
         ],
-        "answer": 1
+        "answer": 2,
+        "explanation_ja": "承認(LGTM)なので merge してよい。reopen・revert・fork は承認後の自然な次のアクションではない。"
       },
       {
         "type": "choice",
@@ -38,7 +40,8 @@
           "Needs work",
           "Please close this"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "Approved / Ship it が LGTM に近い表現。Needs work は差し戻し、Please close は却下の意味。"
       }
     ],
     "level": 1
@@ -61,7 +64,8 @@
           "細かい点: ファイル末尾に改行がない",
           "質問: ファイルはどこにありますか?"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "nit は些細な指摘で、missing newline は「改行がない」という細かい点。重大な問題でも質問でもない。"
       },
       {
         "type": "cloze",
@@ -72,7 +76,8 @@
           "maybe",
           "never"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "nit なので must や never のような強い語ではなく、maybe(~してもよい程度)が自然。already は文意に合わない。"
       },
       {
         "type": "choice",
@@ -82,7 +87,8 @@
           "マージ前に必ず対応しなければならない",
           "無視してはならず、PRを閉じる"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "nit は対応任意と判断してよい。マージ前に必須なのは blocking の指摘のほう。"
       }
     ],
     "level": 1
@@ -105,18 +111,20 @@
           "テストは失敗したままです。",
           "テストを削除しました。見ないでください。"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "PTAL は Please Take Another Look の略で「もう一度見てください」。見ないで、という意味ではない。"
       },
       {
         "type": "cloze",
-        "sentence_en": "I pushed a fix. @alice, ____ take another look?",
+        "sentence_en": "I've addressed all the comments. ____!",
         "choices_en": [
-          "could you",
-          "have you",
-          "were you",
-          "did you"
+          "WIP",
+          "FWIW",
+          "PTAL",
+          "LGTM"
         ],
-        "answer": 0
+        "answer": 2,
+        "explanation_ja": "指摘対応後の再レビュー依頼は PTAL。LGTM は承認、WIP は作業中、FWIW は「参考までに」で、依頼の文にならない。"
       },
       {
         "type": "choice",
@@ -126,7 +134,8 @@
           "PRを閉じるとき",
           "指摘に対応した後の再レビュー依頼"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "PTAL の another は「もう一度」の意味で、指摘対応後の再レビュー依頼に自然。初回の依頼は Please review と書く。"
       }
     ],
     "level": 2
@@ -149,18 +158,20 @@
           "デザインレビューが終わらず先に進めない",
           "デザインレビューが完了した"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "blocked on は「~が終わるまで進められない」。「担当している」「完了した」とは逆。"
       },
       {
         "type": "cloze",
         "sentence_en": "This PR is ____ on #123 being merged first.",
         "choices_en": [
-          "blocker",
-          "blocking up",
-          "blocks",
-          "blocked"
+          "blocked",
+          "reverted",
+          "merged",
+          "stale"
         ],
-        "answer": 3
+        "answer": 0,
+        "explanation_ja": "「PR is blocked on #123」で「#123を待っている」。stale・merged・reverted は、on #123 being merged と続く文意に合わない。"
       },
       {
         "type": "choice",
@@ -170,7 +181,8 @@
           "これは軽微な問題だ",
           "これが解消しないと先に進めない問題だ"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "blocker は「これが解消しないと先に進めない問題」。軽微でも、解決済みでもない。"
       }
     ],
     "level": 2
@@ -193,18 +205,20 @@
           "問題は報告しないでください",
           "問題を修正しておきました"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "steps to reproduce は「再現手順」。修正済みや報告禁止という意味ではない。"
       },
       {
         "type": "cloze",
-        "sentence_en": "I can't ____ this on my machine.",
+        "sentence_en": "I can't ____ the crash on my machine.",
         "choices_en": [
-          "reprint",
-          "reproduce",
-          "reproduction",
-          "reprove"
+          "reject",
+          "regress",
+          "revert",
+          "reproduce"
         ],
-        "answer": 1
+        "answer": 3,
+        "explanation_ja": "「reproduce the crash」で「クラッシュを再現する」。regress・reject・revert は、バグ報告の文脈に合わない。"
       },
       {
         "type": "choice",
@@ -214,7 +228,8 @@
           "期待する動作と実際の動作",
           "期待する費用と実際の費用"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Expected(期待)と Actual(実際)の behavior(動作)を比べる見出し。納期や費用の話ではない。"
       }
     ],
     "level": 1
@@ -237,7 +252,8 @@
           "期待は200 OKだが、実際は404 Not Foundだった",
           "200も404も出ていない"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Expected: 200 OK. Actual: 404 は「期待は200だが実際は404」。期待と実際を逆に読まないこと。"
       },
       {
         "type": "cloze",
@@ -248,7 +264,8 @@
           "actual",
           "active"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "「The actual behavior」は「実際の動作」。accurate は「正確な」、active は「活動中の」、acting は「代理の」で意味が違う。"
       },
       {
         "type": "choice",
@@ -258,7 +275,8 @@
           "契約: macOS 14、Node 20",
           "環境: macOS 14、Node 20"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "Environment は「環境」(OS・バージョンなど)。環境保護や契約の意味ではない。"
       }
     ],
     "level": 1
@@ -281,7 +299,8 @@
           "[作業中] ダークモードを追加",
           "[完了] ダークモードを追加"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "[WIP] は Work In Progress で「作業中」。完了や却下ではない。"
       },
       {
         "type": "cloze",
@@ -292,7 +311,8 @@
           "reviewed",
           "reading"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "ドラフトをレビュー可能にするので ready for review。regular・reviewed・reading は GitHub の操作名にならない。"
       },
       {
         "type": "choice",
@@ -302,7 +322,8 @@
           "削除する",
           "マージする"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "Convert to draft は「ドラフトに変更する」。マージや削除ではない。"
       }
     ],
     "level": 1
@@ -325,7 +346,8 @@
           "mainを無視して、そのままマージしてもらえますか?",
           "mainにリベースして、コンフリクトを解消してもらえますか?"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "rebase on main は main の最新に載せ直すこと。そのうえでコンフリクトを解消してほしい、という依頼。"
       },
       {
         "type": "cloze",
@@ -336,7 +358,8 @@
           "conflicts",
           "branches"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "「merge conflicts」で「マージコンフリクト」。commits・conditions・branches では決まった言い回しにならない。"
       },
       {
         "type": "choice",
@@ -346,7 +369,8 @@
           "このブランチはすでに削除された",
           "このブランチはベースブランチより新しい"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "out-of-date は「ベースより古い」。ブランチが新しい、削除された、という意味ではない。"
       }
     ],
     "level": 2
@@ -369,7 +393,8 @@
           "Issue #42 を無視する",
           "マージ時にIssue #42 を自動的にクローズする"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "Closes #42 はマージ時に Issue を自動クローズするキーワード。作成や無視ではない。"
       },
       {
         "type": "cloze",
@@ -380,7 +405,8 @@
           "fixes",
           "resolves"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "完全には解決しないので relates to。closes・fixes・resolves は自動クローズを起こすキーワード。"
       },
       {
         "type": "choice",
@@ -390,7 +416,8 @@
           "#42 の一部である(自動クローズはしない)",
           "#42 を完全に解決した"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Part of #42 は「#42 の一部」で、自動クローズしない。#42 を完全に解決したわけではない。"
       }
     ],
     "level": 2
@@ -413,7 +440,8 @@
           "PRはすでにマージされています。",
           "PRは却下されました。"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "I'll take a look は「あとで確認する」という意思表示で、まだ承認ではない。却下でも、マージ済みでもない。"
       },
       {
         "type": "cloze",
@@ -424,7 +452,8 @@
           "using",
           "doing"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "「take the time to ~」で「時間を割いて~する」。making・using・doing では決まった言い回しにならない。"
       },
       {
         "type": "choice",
@@ -434,7 +463,8 @@
           "すぐ承認する",
           "あとで確認する(まだ承認ではない)"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "「見ておく」は確認する意思表示で、承認や拒否ではない。「見ない」「すぐ承認する」は誤り。"
       }
     ],
     "level": 1
@@ -457,18 +487,20 @@
           "この分岐の名前を変更できますか?",
           "この分岐を削除できますか?"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "test coverage は「テストカバレッジ」。coverage の追加を依頼している。削除や名前変更ではない。"
       },
       {
         "type": "cloze",
         "sentence_en": "This change isn't ____ by any test.",
         "choices_en": [
-          "recovered",
-          "covering",
-          "discovered",
-          "covered"
+          "guarded",
+          "blocked",
+          "covered",
+          "assigned"
         ],
-        "answer": 3
+        "answer": 2,
+        "explanation_ja": "「isn't covered by any test」で「どのテストにも網羅されていない」。guarded・blocked・assigned はテストの網羅に使わない。"
       },
       {
         "type": "choice",
@@ -478,7 +510,8 @@
           "回帰テストを削除していただけませんか?",
           "回帰テストを追加していただけませんか?"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "Would you mind adding ~ は丁寧な依頼で「~を追加していただけませんか」。regression test は回帰テスト。"
       }
     ],
     "level": 2
@@ -501,18 +534,20 @@
           "#55 を重複して作成します。",
           "#55 を再オープンします。"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "Closing as a duplicate of #55 は「#55 の重複としてクローズ」。重複して作る、再オープンする、ではない。"
       },
       {
         "type": "cloze",
         "sentence_en": "Closing this as a ____ of #99.",
         "choices_en": [
-          "duplicates",
-          "duplicated",
-          "duplicating",
-          "duplicate"
+          "duplicate",
+          "regression",
+          "nit",
+          "blocker"
         ],
-        "answer": 3
+        "answer": 0,
+        "explanation_ja": "同じ内容の Issue なので duplicate。regression・blocker・nit は性質を表す語で、#99 の重複とは言えない。"
       },
       {
         "type": "choice",
@@ -522,7 +557,8 @@
           "議論は #210 で続けましょう",
           "#210 を削除しましょう"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Let's continue the discussion in #210 は「議論は #210 で続けよう」。議論の終了や削除ではない。"
       }
     ],
     "level": 2
@@ -545,18 +581,20 @@
           "これは仕様どおりの動作です。",
           "これは未知のバグです。"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "working as intended は「仕様どおり」。バグではなく、修正予定でもない。"
       },
       {
         "type": "cloze",
         "sentence_en": "Closing this as \"not ____\". We don't have the bandwidth right now.",
         "choices_en": [
-          "planned",
-          "plan for",
-          "planning",
-          "plans"
+          "reproduced",
+          "assigned",
+          "approved",
+          "planned"
         ],
-        "answer": 0
+        "answer": 3,
+        "explanation_ja": "GitHub のクローズ理由は「not planned」。bandwidth がない=対応しない、という文意。reproduced・assigned・approved は合わない。"
       },
       {
         "type": "choice",
@@ -566,7 +604,8 @@
           "今はこの対応に十分な余力がある",
           "今はこの対応に割ける余力がない"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "bandwidth は「対応できる余力」。回線の帯域という意味ではない。"
       }
     ],
     "level": 3
@@ -589,18 +628,20 @@
           "このチェックを消さないでください",
           "私の理解が正しければ、このチェックはもう不要だ"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "IIUC は If I Understand Correctly で「私の理解が正しければ」。断定を避ける言い方。"
       },
       {
         "type": "cloze",
-        "sentence_en": "AFAIK stands for \"As far as I ____\".",
+        "sentence_en": "IMO stands for \"In my ____\".",
         "choices_en": [
-          "knowing",
-          "knew",
-          "knowledge",
-          "know"
+          "option",
+          "order",
+          "opening",
+          "opinion"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation_ja": "IMO は In My Opinion の略。option・opening・order では略語が IMO にならない。"
       },
       {
         "type": "choice",
@@ -610,7 +651,8 @@
           "参考までに、私の環境では動く",
           "勝手ながら、私の環境では動かない"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "FWIW は For What It's Worth で「参考までに」。「勝手ながら」「お願いですから」の意味ではない。"
       }
     ],
     "level": 2
@@ -633,7 +675,8 @@
           "axiosを0.21.1から1.6.0に上げる",
           "axiosを新規にインストールする"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Bump A from X to Y は「AをXからYに上げる」。下げる、新規インストールではない。"
       },
       {
         "type": "cloze",
@@ -644,7 +687,8 @@
           "at",
           "by"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "「from A to B」で「AからB」。since・at・by では範囲を表せない。"
       },
       {
         "type": "choice",
@@ -654,7 +698,8 @@
           "コミットメッセージの文字数",
           "破壊的変更の有無(リリースノート)"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "major version の更新は破壊的変更を含むことがあるので、リリースノートで確認する。"
       }
     ],
     "level": 2
@@ -677,7 +722,8 @@
           "CIは不要である",
           "CIが通ったらマージしてよい"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "Good to merge once CI passes は「CIが通ればマージ可」。通るまでマージ不可、という意味ではない。"
       },
       {
         "type": "cloze",
@@ -688,7 +734,8 @@
           "comments",
           "communities"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "「Approved with minor comments」で「軽微なコメント付きで承認」。commits・commands・communities では意味が通らない。"
       },
       {
         "type": "choice",
@@ -698,7 +745,8 @@
           "配送を止めて!",
           "リリースしよう!"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "Ship it! は「出そう、リリースしよう」という承認。出荷を止める、後回しにする、ではない。"
       }
     ],
     "level": 1
@@ -721,18 +769,20 @@
           "このPRを自分では見ません",
           "このPRを閉じます"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "friendly ping は「念のための催促」。PR を閉じる、見ない、という意味ではない。"
       },
       {
         "type": "cloze",
         "sentence_en": "Any ____ on this?",
         "choices_en": [
-          "upgrades",
-          "updating",
           "updates",
-          "updated"
+          "uploads",
+          "unlocks",
+          "upgrades"
         ],
-        "answer": 2
+        "answer": 0,
+        "explanation_ja": "「Any updates on this?」で「進捗はありますか」。upgrades・uploads・unlocks は進捗確認の言い回しにならない。"
       },
       {
         "type": "choice",
@@ -742,7 +792,8 @@
           "このスレッドを削除する",
           "このスレッドを上に上げる(再注目させる)"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "Bumping this thread は「スレッドを上に上げる」=再び注目させること。削除や固定ではない。"
       }
     ],
     "level": 2
@@ -765,18 +816,20 @@
           "それはこのPRの最重要点です",
           "それはこのPRで修正済みです"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "out of scope は「範囲外」。最重要点でも、修正済みでもない。"
       },
       {
         "type": "cloze",
-        "sentence_en": "I'll open a ____ PR for the refactor.",
+        "sentence_en": "That's a good idea, but let's handle it in a ____ PR.",
         "choices_en": [
-          "follow-in",
           "follow-up",
-          "follow-by",
-          "follow-out"
+          "duplicate",
+          "stale",
+          "bump"
         ],
-        "answer": 1
+        "answer": 0,
+        "explanation_ja": "後で別の PR で対応するので follow-up PR。bump・duplicate・stale では「続きの対応」の意味にならない。"
       },
       {
         "type": "choice",
@@ -786,7 +839,8 @@
           "よく見つけたね!",
           "気をつけて!"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Good catch! は「よく見つけたね」。見つけてくれたことへの称賛で、注意や修正を求める言葉ではない。"
       }
     ],
     "level": 2
@@ -809,18 +863,20 @@
           "これはコミット 1a2b3c4 を取り込む",
           "これはコミット 1a2b3c4 を取り消す"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "This reverts commit は「そのコミットを取り消す」。取り込む、複製する、ではない。"
       },
       {
         "type": "cloze",
-        "sentence_en": "Revert \"Update config\" because it broke ____.",
+        "sentence_en": "Use `git ____` to undo a commit by adding a new commit that reverses it.",
         "choices_en": [
-          "produce",
-          "products",
-          "production",
-          "productive"
+          "rebase",
+          "reset",
+          "cherry-pick",
+          "revert"
         ],
-        "answer": 2
+        "answer": 3,
+        "explanation_ja": "新しいコミットで打ち消すのは revert。reset は履歴を移動、rebase は履歴を付け替え、cherry-pick は別のコミットを取り込む操作。"
       },
       {
         "type": "choice",
@@ -830,7 +886,8 @@
           "両者に違いはない",
           "revert は取り消しの新しいコミットを追加する"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "revert は取り消しのための新しいコミットを追加する。reset は履歴を巻き戻す点で異なる。"
       }
     ],
     "level": 3
@@ -853,7 +910,8 @@
           "これは仕様どおり。1.9でも動かない。",
           "これはリグレッション。1.9では動いていた。"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "regression は「以前動いていたものが壊れた」不具合。新機能の提案や、仕様どおりの動作ではない。"
       },
       {
         "type": "cloze",
@@ -864,7 +922,8 @@
           "init",
           "tag"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "git bisect は二分探索で原因のコミットを特定する。clone・init・tag は原因コミットを探す機能ではない。"
       },
       {
         "type": "choice",
@@ -874,7 +933,8 @@
           "v2.2では壊れていて、v2.3では動く",
           "v2.2では動くが、v2.3では壊れている"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "Works in v2.2, broken in v2.3 は「2.2では動くが2.3で壊れた」で、典型的なリグレッションの報告。"
       }
     ],
     "level": 2
@@ -897,7 +957,8 @@
           "質問: ステージング環境は何時に停止しますか?",
           "事前共有: ステージング環境は午後3時に停止します"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "Heads up は事前の注意喚起。復旧した、質問している、ではない。"
       },
       {
         "type": "cloze",
@@ -908,7 +969,8 @@
           "over",
           "out"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "「heads up」が事前共有を表す決まった言い回し。heads in・over・out では成立しない。"
       },
       {
         "type": "choice",
@@ -918,7 +980,8 @@
           "要承認",
           "ご参考まで(情報共有)"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "For your information は「ご参考まで」。返信や承認を求める表現ではない。"
       }
     ],
     "level": 1
@@ -941,7 +1004,8 @@
           "このIssueはすぐに削除される",
           "このIssueは自動的に再オープンされる"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "if no further activity occurs は「さらなる活動がなければ」クローズ。すぐ削除、自動で再オープン、ではない。"
       },
       {
         "type": "cloze",
@@ -952,7 +1016,8 @@
           "activation",
           "active"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "「no recent activity」で「最近の活動がない」。action・activation・active は決まった言い回しにならない。"
       },
       {
         "type": "choice",
@@ -962,7 +1027,8 @@
           "ラベルをすべて削除する",
           "何もしない"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "stale を避けるにはコメントして活動を作る。何もしなければクローズされる。"
       }
     ],
     "level": 2
@@ -985,7 +1051,8 @@
           "要約: v2にアップグレードすべきだ",
           "追記: v2が公開された"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "TL;DR は「要約すると」。v2 へのアップグレードを勧める内容で、不要とは言っていない。"
       },
       {
         "type": "cloze",
@@ -996,7 +1063,8 @@
           "release",
           "review"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "TL;DR は Too Long; Didn't Read の略。reply・release・review ではない。"
       },
       {
         "type": "choice",
@@ -1006,7 +1074,8 @@
           "要約:",
           "補足:"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Summary は「要約」。署名や補足ではない。"
       }
     ],
     "level": 1
@@ -1029,7 +1098,8 @@
           "ここでキューを使うのは禁止です。",
           "ここでキューを使ったのはなぜですか?(すでに使っている)"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "Have you considered ~? は「~は検討しましたか」。すでに使っている、禁止だ、という意味ではない。"
       },
       {
         "type": "cloze",
@@ -1040,7 +1110,8 @@
           "prefer",
           "preface"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation_ja": "I'd prefer ~ は「~の方がよい」。prevent(防ぐ)・present(提示する)・preface(前置きする)では代替案の提案にならない。"
       },
       {
         "type": "choice",
@@ -1050,7 +1121,8 @@
           "このやり方の根拠は何ですか?",
           "このやり方は完成しました。"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "What's the reasoning behind ~? は「その根拠は何か」。撤回や完成の宣言ではない。"
       }
     ],
     "level": 3
@@ -1073,18 +1145,20 @@
           "オフラインで話していないが、現行の挙動を維持する",
           "オフラインで話したが、現行の挙動は廃止する"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "As discussed offline は「オフラインで話したとおり」。話していない、廃止する、という意味ではない。"
       },
       {
         "type": "cloze",
         "sentence_en": "____ our discussion, I've updated the API spec.",
         "choices_en": [
-          "Pair",
-          "Pre",
-          "Pro",
-          "Per"
+          "Without",
+          "Per",
+          "Unlike",
+          "Despite"
         ],
-        "answer": 3
+        "answer": 1,
+        "explanation_ja": "Per our discussion は「話し合いに従って」。Despite は「にもかかわらず」で逆の意味になり、Unlike・Without では文が成り立たない。"
       },
       {
         "type": "choice",
@@ -1094,7 +1168,8 @@
           "この件は別の場(会議など)で話そう",
           "この件はインターネットに公開しよう"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "take this offline は「この件は別の場で話す」。なかったことにする、公開する、ではない。"
       }
     ],
     "level": 2
@@ -1117,18 +1192,20 @@
           "テストが通れば承認する",
           "テストが通っていても承認しない"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation_ja": "Happy to approve once ~ は「~すれば承認する」。通っていても承認しない、すでに承認した、ではない。"
       },
       {
         "type": "cloze",
-        "sentence_en": "Looks good ____, just a couple of nits.",
+        "sentence_en": "Looks good, ____ a couple of nits.",
         "choices_en": [
-          "overtly",
-          "overall",
-          "overly",
-          "overhead"
+          "instead of",
+          "thanks to",
+          "because of",
+          "apart from"
         ],
-        "answer": 1
+        "answer": 3,
+        "explanation_ja": "apart from は「~を除けば」で、nit 以外は問題ないという意味。because of・thanks to は nit を理由に評価することになり不自然、instead of は「~の代わりに」。"
       },
       {
         "type": "choice",
@@ -1138,9 +1215,151 @@
           "変更をマージする",
           "変更を承認する"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation_ja": "Request changes は「変更を依頼する」レビュー状態。承認でもマージでもない。"
       }
     ],
     "level": 2
+  },
+  {
+    "id": "dev-blocking-vs-non-blocking",
+    "category": "dev-comm",
+    "source": "GitHub PR",
+    "pattern": "Blocking: X / Non-blocking: X",
+    "meaning_ja": "必須の指摘(直すまでマージ不可): X / 任意の指摘(直さなくてもマージ可): X",
+    "example_en": "Non-blocking: consider extracting this into a helper. Blocking: this introduces a race condition.",
+    "example_ja": "任意: ヘルパーに切り出すことを検討してみて。必須: これは競合状態(レースコンディション)を生む。",
+    "note_ja": "レビューコメントの重要度のラベル。nit: と同様、受け手が優先順位を判断しやすくするためのもの。ラベルがない場合は、blocking かどうかを質問して確かめてよい。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Non-blocking: consider extracting this into a helper.",
+        "choices_ja": [
+          "必須: ヘルパーに切り出さないとマージできない",
+          "任意: ヘルパーへの切り出しを検討してみて",
+          "質問: ヘルパーはどこにありますか?"
+        ],
+        "answer": 1,
+        "explanation_ja": "Non-blocking は「マージを妨げない」指摘。consider ~ も提案であり、必須の修正ではない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "This is a ____ comment: we can't merge until it's fixed.",
+        "choices_en": [
+          "blocking",
+          "positive",
+          "trivial",
+          "anonymous"
+        ],
+        "answer": 0,
+        "explanation_ja": "「直すまでマージ不可」の指摘は blocking。trivial(些細な)・positive(肯定的な)・anonymous(匿名の)は、マージを止める重みを表さない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Blocking: this introduces a race condition.",
+        "choices_ja": [
+          "必須: これは競合状態を生むので、マージ前に直す必要がある",
+          "参考: 競合状態はこの変更で解消された",
+          "任意: 競合状態が起きても問題ない"
+        ],
+        "answer": 0,
+        "explanation_ja": "Blocking は直すまでマージできない指摘。race condition は不具合につながるため、任意ではなく必須。"
+      }
+    ],
+    "level": 3
+  },
+  {
+    "id": "dev-punt",
+    "category": "dev-comm",
+    "source": "GitHub PR",
+    "pattern": "Let's punt on X / punt this to a follow-up",
+    "meaning_ja": "Xは(今回は)先送りにしよう",
+    "example_en": "Let's punt on the caching question and revisit it after launch.",
+    "example_ja": "キャッシュの件は先送りにして、リリース後にまた考えよう。",
+    "note_ja": "punt は「(判断・対応を)後回しにする」という口語表現。放置ではなく「今は優先しない」という合意なので、後で見直すための Issue を残しておくのが望ましい。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "I'd suggest we punt on this for now.",
+        "choices_ja": [
+          "今回はこの件を先送りにすることを提案する",
+          "この件を削除することを提案する",
+          "今すぐこの件を最優先で対応することを提案する"
+        ],
+        "answer": 0,
+        "explanation_ja": "punt on ~ は「~を先送りにする」。最優先での対応や削除ではない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Let's ____ this to a follow-up PR.",
+        "choices_en": [
+          "merge",
+          "fix",
+          "punt",
+          "review"
+        ],
+        "answer": 2,
+        "explanation_ja": "「punt this to a follow-up PR」で「別のPRに先送りする」。merge・fix・review は to a follow-up PR と組み合わせても先送りの意味にならない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Not a blocker; let's revisit after launch.",
+        "choices_ja": [
+          "ブロッカーではない。リリース後にまた検討しよう",
+          "最重要のブロッカーなので、今すぐ直そう",
+          "リリース後には検討しない"
+        ],
+        "answer": 0,
+        "explanation_ja": "Not a blocker は「進行を止める問題ではない」。revisit after launch は「リリース後に再検討」で、検討しないという意味ではない。"
+      }
+    ],
+    "level": 3
+  },
+  {
+    "id": "dev-bikeshedding",
+    "category": "dev-comm",
+    "source": "Mailing list / GitHub",
+    "pattern": "We're bikeshedding / Let's not bikeshed",
+    "meaning_ja": "些細な点(命名・見た目など)で議論に時間を費やしている / そこで議論するのはやめよう",
+    "example_en": "We're bikeshedding here. Either name works; let's pick one and move on.",
+    "example_ja": "些細なことで議論している。どちらの名前でもよいので、一つ選んで先に進もう。",
+    "note_ja": "簡単に意見を言える小さな話題ほど議論が長引く現象を、自転車置き場の屋根の色の議論にたとえた俗語(bike shed)。相手の意見を否定するのではなく、議論の優先度が低いと伝える言葉。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "This thread is turning into bikeshedding.",
+        "choices_ja": [
+          "このスレッドは重要な設計の議論として成功している",
+          "このスレッドは自転車の話に限定されている",
+          "このスレッドは些細な点での議論になりつつある"
+        ],
+        "answer": 2,
+        "explanation_ja": "bikeshedding は些細な話題で議論が長引くこと。自転車の話や、重要な設計議論がうまくいっていることではない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Let's not ____ over the variable name; either is fine.",
+        "choices_en": [
+          "refactor",
+          "rebase",
+          "bikeshed",
+          "deploy"
+        ],
+        "answer": 2,
+        "explanation_ja": "「bikeshed over ~」で「~で議論を長引かせる」。deploy(デプロイ)・rebase(リベース)・refactor(リファクタ)は、変数名について議論する動作ではない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Either works. Let's pick one and move on.",
+        "choices_ja": [
+          "どちらも不適切だ。最初からやり直そう",
+          "どちらでもよい。一つ選んで先に進もう",
+          "どちらかを選ぶ前に、全員の承認を取ろう"
+        ],
+        "answer": 1,
+        "explanation_ja": "Either works は「どちらでもよい」。pick one and move on は「選んで先に進む」ことで、やり直しや全員承認を求めてはいない。"
+      }
+    ],
+    "level": 3
   }
 ]

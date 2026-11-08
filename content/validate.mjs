@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Validates content/patterns/*.json against the Pattern data contract.
 // Zero dependencies on purpose: runs in CI with plain Node (>=18) and no install step.
+// explanation_ja is optional in the app-facing contract but required here so shipped content is complete.
 // Each file may hold a single Pattern object or an array of Patterns.
 import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -57,6 +58,10 @@ function checkPattern(p, where) {
   p.drills.forEach((d, i) => {
     const derr = (m) => err(`drills[${i}]: ${m}`);
     if (typeof d !== "object" || d === null) return derr("must be an object");
+    if (!isStr(d.explanation_ja)) derr("explanation_ja is required (non-empty string)");
+    for (const k of Object.keys(d)) {
+      if (!["type", "prompt_en", "choices_ja", "sentence_en", "choices_en", "answer", "explanation_ja"].includes(k)) derr(`unknown field "${k}"`);
+    }
     if (d.type === "choice") {
       if (!isStr(d.prompt_en)) derr("prompt_en is required");
       checkChoices(derr, d.choices_ja, d.answer);
