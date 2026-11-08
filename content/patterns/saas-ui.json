@@ -1,0 +1,1058 @@
+[
+  {
+    "id": "saas-are-you-sure-you-want-to",
+    "category": "saas-ui",
+    "source": "GitHub",
+    "pattern": "Are you sure you want to X?",
+    "meaning_ja": "本当にXしてよいですか?(確認ダイアログ)",
+    "example_en": "Are you sure you want to delete this repository?",
+    "example_ja": "本当にこのリポジトリを削除しますか?",
+    "note_ja": "破壊的操作の直前に出る確認。続きに This action cannot be undone. が付いたら取り消せない。ボタンが Cancel / Delete のように動詞で書かれているかも確認する。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Are you sure you want to discard your changes?",
+        "choices_ja": [
+          "本当に変更を破棄しますか?",
+          "変更は自動的に保存されました。",
+          "変更を保存しますか?"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Are you sure you ____ to remove this member?",
+        "choices_en": [
+          "wanted",
+          "want",
+          "wanting",
+          "wants"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Are you sure you want to sign out of all devices?",
+        "choices_ja": [
+          "すべてのデバイスにサインインしました。",
+          "すべてのデバイスを削除しますか?",
+          "本当にすべてのデバイスからサインアウトしますか?"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "saas-permission-denied",
+    "category": "saas-ui",
+    "source": "AWS Console",
+    "pattern": "You are not authorized to perform this operation",
+    "meaning_ja": "この操作を実行する権限がありません",
+    "example_en": "User: arn:aws:iam::123456789012:user/dev is not authorized to perform: s3:PutObject on resource: arn:aws:s3:::my-bucket/*",
+    "example_ja": "ユーザー arn:aws:iam::123456789012:user/dev には、リソース arn:aws:s3:::my-bucket/* に対する s3:PutObject を実行する権限がない。",
+    "note_ja": "AWSのAccessDeniedは「ユーザー・実行する操作(アクション)・対象リソース」の3点が文中に出る。まず操作名(s3:PutObject)と対象リソースを読み、IAMポリシーのどこが足りないかを特定する。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "User is not authorized to perform: ec2:StartInstances",
+        "choices_ja": [
+          "ユーザーには ec2:StartInstances を実行する権限がない",
+          "ユーザーは ec2:StartInstances を実行中である",
+          "ec2:StartInstances は存在しない"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "You are not ____ to perform this action.",
+        "choices_en": [
+          "authorizing",
+          "authorized",
+          "author",
+          "authority"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "choice",
+        "prompt_en": "In the AWS error \"... is not authorized to perform: s3:GetObject on resource: ...\", what does `s3:GetObject` represent?",
+        "choices_ja": [
+          "実行しようとした操作(アクション)",
+          "ユーザー名",
+          "リージョン名"
+        ],
+        "answer": 0
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "saas-failed-to-because",
+    "category": "saas-ui",
+    "source": "AWS Console",
+    "pattern": "Failed to X because Y",
+    "meaning_ja": "Yが原因でXに失敗した",
+    "example_en": "Failed to create the bucket because the name is already in use.",
+    "example_ja": "名前がすでに使われているため、バケットの作成に失敗した。",
+    "note_ja": "because の後ろが原因なので、対処の手がかりはそこに書いてある。Unable to X / Could not X / X failed も同様のエラーの型。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Failed to save changes because the session has expired.",
+        "choices_ja": [
+          "変更が保存されるまでセッションが切れない",
+          "セッションの有効期限が切れたため、変更の保存に失敗した",
+          "セッションが延長されたため、変更を保存した"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Unable to delete the role ____ it is still attached to a function.",
+        "choices_en": [
+          "unless",
+          "although",
+          "because",
+          "so that"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Which part of \"Failed to deploy because the quota was exceeded\" tells you the cause?",
+        "choices_ja": [
+          "Failed to",
+          "deploy",
+          "because 以降(quota was exceeded)"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "saas-already-exists",
+    "category": "saas-ui",
+    "source": "AWS Console",
+    "pattern": "X already exists",
+    "meaning_ja": "Xはすでに存在する",
+    "example_en": "A bucket with this name already exists.",
+    "example_ja": "この名前のバケットはすでに存在する。",
+    "note_ja": "名前の重複エラー。S3のバケット名のようにグローバルで一意でなければならないリソースでは、他人のアカウントのものと重複していても同じメッセージになる。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "A repository with this name already exists.",
+        "choices_ja": [
+          "この名前のリポジトリは見つからない",
+          "この名前のリポジトリは作成中である",
+          "この名前のリポジトリはすでに存在する"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "The email address is already ____ use.",
+        "choices_en": [
+          "on",
+          "in",
+          "at",
+          "by"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "choice",
+        "prompt_en": "What is the most likely fix for \"The name is already taken\"?",
+        "choices_ja": [
+          "同じ名前で再試行し続ける",
+          "ブラウザを閉じる",
+          "別の名前を試す"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "saas-rate-limit-exceeded",
+    "category": "saas-ui",
+    "source": "GitHub API",
+    "pattern": "API rate limit exceeded for X",
+    "meaning_ja": "X(IPアドレスやユーザー)のAPIレート制限を超えた",
+    "example_en": "API rate limit exceeded for user ID 1234. Try again later.",
+    "example_ja": "ユーザーID 1234のAPIレート制限を超えた。後でもう一度試すこと。",
+    "note_ja": "429 Too Many Requests に対応。リセット時刻はレスポンスヘッダ(X-RateLimit-Reset)に入る。認証付きでリクエストするとレート制限が緩くなることが多い。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "API rate limit exceeded. Please try again later.",
+        "choices_ja": [
+          "APIキーが無効である。",
+          "APIは現在メンテナンス中である。",
+          "APIのレート制限を超えた。後でもう一度試してください。"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "You have exceeded the ____ limit for this endpoint.",
+        "choices_en": [
+          "rate",
+          "rates",
+          "rated",
+          "rating"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "choice",
+        "prompt_en": "HTTP 429 Too Many Requests",
+        "choices_ja": [
+          "リクエスト先が存在しない",
+          "サーバー内部でエラーが起きた",
+          "短時間にリクエストを送りすぎた"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "saas-this-action-cannot-be-undone",
+    "category": "saas-ui",
+    "source": "Generic SaaS UI",
+    "pattern": "This action is permanent and cannot be undone",
+    "meaning_ja": "この操作は恒久的で、元に戻せない",
+    "example_en": "Deleting this API key is permanent and cannot be undone. Any requests using this key will fail.",
+    "example_ja": "このAPIキーの削除は恒久的で、元に戻せない。このキーを使うリクエストはすべて失敗する。",
+    "note_ja": "後半に影響範囲(Any requests ... will fail)が書かれている。本番キーを消す前には、この影響範囲の文を必ず読む。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "This action is permanent. Deleted data cannot be recovered.",
+        "choices_ja": [
+          "この操作は恒久的で、削除したデータは復元できない",
+          "この操作は管理者のみ実行できる",
+          "この操作は一時的で、削除したデータは復元できる"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Any requests using this key will ____ after it is revoked.",
+        "choices_en": [
+          "queue",
+          "expire soon",
+          "succeed",
+          "fail"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Roll key",
+        "choices_ja": [
+          "キーを再発行(ローテーション)する",
+          "キーを共有する",
+          "キーを閲覧する"
+        ],
+        "answer": 0
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "saas-learn-more",
+    "category": "saas-ui",
+    "source": "Generic SaaS UI",
+    "pattern": "Learn more about X",
+    "meaning_ja": "Xについて詳しく見る(ヘルプへのリンク)",
+    "example_en": "Learn more about branch protection rules.",
+    "example_ja": "ブランチ保護ルールについて詳しく見る。",
+    "note_ja": "設定画面のヘルプリンク文言。設定項目の意味が分からないとき、このリンク先のドキュメントに挙動と注意点が書かれている。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Learn more about billing alerts.",
+        "choices_ja": [
+          "課金アラートを削除する",
+          "課金アラートについて詳しく見る",
+          "課金アラートを作成する"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "____ more about authentication methods.",
+        "choices_en": [
+          "Learn",
+          "Show",
+          "Tell",
+          "Teach"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "choice",
+        "prompt_en": "What is a \"Learn more\" link usually for?",
+        "choices_ja": [
+          "関連ドキュメントを開くため",
+          "ログアウトするため",
+          "設定を削除するため"
+        ],
+        "answer": 0
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "saas-invalid-x",
+    "category": "saas-ui",
+    "source": "Stripe Dashboard",
+    "pattern": "Invalid X / X is invalid",
+    "meaning_ja": "Xが無効(不正な形式・値)である",
+    "example_en": "Invalid API Key provided: sk_test_****1234",
+    "example_ja": "無効なAPIキーが指定された: sk_test_****1234",
+    "note_ja": "invalid は「形式や値が仕様に合っていない」。キーの前後に空白やコピペミスがないか、別環境(test/live)のキーでないかを疑う。Invalid の直後の名詞が原因の場所を示す。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Invalid email address.",
+        "choices_ja": [
+          "メールアドレスが登録済みである",
+          "メールアドレスの形式が正しくない",
+          "メールアドレスが確認された"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Invalid API Key ____: sk_test_****abcd",
+        "choices_en": [
+          "provider",
+          "provide",
+          "providing",
+          "provided"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "choice",
+        "prompt_en": "No such customer: 'cus_123'",
+        "choices_ja": [
+          "顧客 'cus_123' は削除された",
+          "そのような顧客は存在しない: 'cus_123'",
+          "顧客 'cus_123' の支払いが完了した"
+        ],
+        "answer": 1
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "saas-unsaved-changes",
+    "category": "saas-ui",
+    "source": "Generic SaaS UI",
+    "pattern": "You have unsaved changes. Leave without saving?",
+    "meaning_ja": "未保存の変更があります。保存せずに移動しますか?",
+    "example_en": "You have unsaved changes. Are you sure you want to leave this page?",
+    "example_ja": "未保存の変更があります。このページから移動してもよいですか?",
+    "note_ja": "Leave / Stay や Discard / Keep editing のように、どちらが破壊的かをボタンから判断する。Discard を押すと編集内容が失われる。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "You have unsaved changes.",
+        "choices_ja": [
+          "未保存の変更がある",
+          "変更が保存された",
+          "変更はない"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Your changes will be ____ if you leave this page.",
+        "choices_en": [
+          "shared",
+          "found",
+          "lost",
+          "merged"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Keep editing",
+        "choices_ja": [
+          "変更を破棄する",
+          "編集を続ける",
+          "ページを離れる"
+        ],
+        "answer": 1
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "saas-you-must-verify",
+    "category": "saas-ui",
+    "source": "AWS Console",
+    "pattern": "You must X to continue",
+    "meaning_ja": "続行するにはXする必要がある",
+    "example_en": "You must verify your email address to continue.",
+    "example_ja": "続行するにはメールアドレスを確認する必要がある。",
+    "note_ja": "to continue は「この後の操作の前提条件」。画面が先に進まないときは、ボタンが無効(disabled)になっていないか、必須チェックボックスがないかを見る。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "You must accept the terms to continue.",
+        "choices_ja": [
+          "続行するには利用規約に同意する必要がある",
+          "利用規約は表示されない",
+          "利用規約に同意すると続行できなくなる"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "You must enter a valid ____ code to continue.",
+        "choices_en": [
+          "verify",
+          "verification",
+          "verified to",
+          "verifying"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Required field",
+        "choices_ja": [
+          "必須項目",
+          "任意項目",
+          "読み取り専用項目"
+        ],
+        "answer": 0
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "saas-changes-may-take-effect",
+    "category": "saas-ui",
+    "source": "AWS Console",
+    "pattern": "Changes may take a few minutes to take effect",
+    "meaning_ja": "変更が反映されるまで数分かかる場合がある",
+    "example_en": "Changes to this distribution may take a few minutes to take effect.",
+    "example_ja": "このディストリビューションへの変更が反映されるまで数分かかる場合がある。",
+    "note_ja": "設定を変えてすぐ確認して「効かない」と焦る場面で重要。propagate(反映・伝播)、eventually consistent(結果整合)と併せて覚える。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Changes may take up to 24 hours to propagate.",
+        "choices_ja": [
+          "変更は24時間で自動的に元に戻る",
+          "変更の反映に最大24時間かかる場合がある",
+          "変更は24時間後に必ず削除される"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "The update will take ____ within a few minutes.",
+        "choices_en": [
+          "affect",
+          "effect",
+          "effort",
+          "efficient"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Which describes \"eventually consistent\"?",
+        "choices_ja": [
+          "変更はすべて拒否される",
+          "変更が全体に反映されるまで少し時間差がある",
+          "変更が即座にすべての場所で反映される"
+        ],
+        "answer": 1
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "saas-no-results-found",
+    "category": "saas-ui",
+    "source": "GitHub",
+    "pattern": "No X found / We couldn't find any X",
+    "meaning_ja": "Xが見つかりません",
+    "example_en": "We couldn't find any repositories matching 'lexigrep'.",
+    "example_ja": "'lexigrep' に一致するリポジトリは見つからなかった。",
+    "note_ja": "「存在しない」とは限らず、フィルターの条件・権限不足で見えていない場合もある。matching は「~に一致する」。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "No results found for 'invoice'.",
+        "choices_ja": [
+          "'invoice' に一致する結果は見つからない",
+          "'invoice' の結果がすべて削除された",
+          "'invoice' の検索が完了した"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "We couldn't find any issues ____ your filters.",
+        "choices_en": [
+          "matches",
+          "match",
+          "matching",
+          "matched with"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Why might you see \"No repositories found\" even though some exist?",
+        "choices_ja": [
+          "必ずネットワークが切れている",
+          "必ずリポジトリが削除されている",
+          "フィルターや権限の都合で見えていない場合がある"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "saas-something-went-wrong",
+    "category": "saas-ui",
+    "source": "Generic SaaS UI",
+    "pattern": "Something went wrong. Please try again.",
+    "meaning_ja": "問題が発生しました。もう一度お試しください。",
+    "example_en": "Something went wrong. Please try again or contact support.",
+    "example_ja": "問題が発生しました。もう一度試すか、サポートに連絡してください。",
+    "note_ja": "原因を伝えない汎用エラー。再現するならリクエスト/ブラウザのDevToolsのネットワークタブや request ID を控えてサポートに伝える。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Something went wrong. Please try again.",
+        "choices_ja": [
+          "処理が正常に完了しました。",
+          "問題が発生しました。もう一度お試しください。",
+          "アカウントが削除されました。"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "If the problem ____, contact support with the request ID.",
+        "choices_en": [
+          "persisted",
+          "persisting",
+          "persists",
+          "persist"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "choice",
+        "prompt_en": "If the problem persists, contact support.",
+        "choices_ja": [
+          "問題が解消しない場合は、サポートに連絡してください",
+          "問題を解消するにはサポートを閉じてください",
+          "サポートに連絡すると問題が発生します"
+        ],
+        "answer": 0
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "saas-is-required",
+    "category": "saas-ui",
+    "source": "Stripe Dashboard",
+    "pattern": "X is required",
+    "meaning_ja": "Xは必須である",
+    "example_en": "Business name is required.",
+    "example_ja": "事業者名は必須である。",
+    "note_ja": "フォームのバリデーション文言。X is required / Please enter X / This field is required はどれも同じ。X cannot be blank / must not be empty も同系統。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "This field is required.",
+        "choices_ja": [
+          "この項目は必須である",
+          "この項目は編集できない",
+          "この項目は任意である"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Password ____ be at least 8 characters.",
+        "choices_en": [
+          "may",
+          "might",
+          "could",
+          "must"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Name can't be blank.",
+        "choices_ja": [
+          "名前は変更できない",
+          "名前は空白を含められる",
+          "名前は空にできない"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "saas-resource-in-use",
+    "category": "saas-ui",
+    "source": "AWS Console",
+    "pattern": "Cannot delete X because it is in use / attached to Y",
+    "meaning_ja": "Xは使用中(Yに関連付けられている)ため削除できない",
+    "example_en": "Cannot delete security group because it is in use by network interface eni-0abc.",
+    "example_ja": "ネットワークインターフェース eni-0abc で使われているため、セキュリティグループを削除できない。",
+    "note_ja": "AWSでは依存関係が残っていると削除できない。エラー文の by / to の後に依存先のIDが書いてあるので、そこから先に外す。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "The policy cannot be deleted because it is attached to a role.",
+        "choices_ja": [
+          "ロールにアタッチされているため、ポリシーは削除できない",
+          "ロールが削除されたため、ポリシーも削除された",
+          "ロールにアタッチされていないため、ポリシーは削除できない"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Detach the policy from all roles, then ____ it.",
+        "choices_en": [
+          "depend",
+          "define",
+          "deliver",
+          "delete"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "choice",
+        "prompt_en": "The resource has dependencies.",
+        "choices_ja": [
+          "そのリソースには依存するものがある",
+          "そのリソースは複製された",
+          "そのリソースは存在しない"
+        ],
+        "answer": 0
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "saas-session-expired",
+    "category": "saas-ui",
+    "source": "Generic SaaS UI",
+    "pattern": "Your session has expired. Please sign in again.",
+    "meaning_ja": "セッションの有効期限が切れました。もう一度サインインしてください。",
+    "example_en": "Your session has expired. Please sign in again to continue.",
+    "example_ja": "セッションの有効期限が切れました。続行するにはもう一度サインインしてください。",
+    "note_ja": "has expired は「期限切れ(完了した状態)」。保存前に切れると入力が失われることがあるので、長文入力の前はコピーしておく。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Your token has expired.",
+        "choices_ja": [
+          "トークンの有効期限が切れた",
+          "トークンが発行された",
+          "トークンが共有された"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Your session has ____. Please sign in again.",
+        "choices_en": [
+          "expiring",
+          "expires",
+          "expire",
+          "expired"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Sign out of all other sessions",
+        "choices_ja": [
+          "セッションの有効期限を延ばす",
+          "他のすべてのセッションからサインアウトする",
+          "すべてのセッションを共有する"
+        ],
+        "answer": 1
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "saas-billing-card-declined",
+    "category": "saas-ui",
+    "source": "Stripe Dashboard",
+    "pattern": "Your card was declined",
+    "meaning_ja": "カードが拒否された(承認されなかった)",
+    "example_en": "Your card was declined. Please use a different payment method.",
+    "example_ja": "カードが拒否された。別の支払い方法を使ってください。",
+    "note_ja": "declined は決済会社/カード発行会社が承認しなかったこと。技術的エラー(error)とは違い、残高・利用制限・不正検知などが原因。decline code(insufficient_funds など)が詳細を示す。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Your card was declined.",
+        "choices_ja": [
+          "カードの有効期限が延長された",
+          "カードが登録された",
+          "カードが承認されなかった"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Please use a ____ payment method.",
+        "choices_en": [
+          "differently",
+          "different",
+          "differ",
+          "difference"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "choice",
+        "prompt_en": "insufficient_funds",
+        "choices_ja": [
+          "カードが盗難届済みである",
+          "資金が過剰である",
+          "残高(利用枠)が不足している"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "saas-youll-be-billed",
+    "category": "saas-ui",
+    "source": "Generic SaaS UI",
+    "pattern": "You will be charged X on Y",
+    "meaning_ja": "YにXが請求される",
+    "example_en": "You will be charged $20.00 on December 1 unless you cancel before then.",
+    "example_ja": "それより前にキャンセルしない限り、12月1日に20.00ドルが請求される。",
+    "note_ja": "unless you cancel before ... は自動課金(auto-renewal)の常套句。billing cycle(請求サイクル)・prorated(日割り)・trial ends も一緒に出ることが多い。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "You won't be charged until your trial ends.",
+        "choices_ja": [
+          "トライアルは請求後に始まる",
+          "トライアルが終わるまで請求されない",
+          "トライアル中に毎日請求される"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Your subscription will ____ automatically on March 1.",
+        "choices_en": [
+          "renew",
+          "remove",
+          "revise",
+          "reform"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Prorated charges",
+        "choices_ja": [
+          "日割り(期間按分)の請求",
+          "割増請求",
+          "全額返金"
+        ],
+        "answer": 0
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "saas-copy-clipboard",
+    "category": "saas-ui",
+    "source": "GitHub",
+    "pattern": "Copy X to clipboard / Copied!",
+    "meaning_ja": "Xをクリップボードにコピー / コピーしました",
+    "example_en": "Copy the SSH URL to clipboard",
+    "example_ja": "SSHのURLをクリップボードにコピー",
+    "note_ja": "ボタンのラベルや tooltip は動詞始まり(命令形)で書かれる。Copy / Paste / Select / Clone / Fork は画面操作の基本語彙。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Copy link to clipboard",
+        "choices_ja": [
+          "リンクを削除",
+          "リンクをクリップボードにコピー",
+          "リンクを新しいタブで開く"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Click the icon to ____ the URL to your clipboard.",
+        "choices_en": [
+          "paste",
+          "fork",
+          "copy",
+          "clone"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "choice",
+        "prompt_en": "You won't be able to see this token again.",
+        "choices_ja": [
+          "このトークンは自動で削除される",
+          "このトークンは二度と表示されない",
+          "このトークンは何度でも表示できる"
+        ],
+        "answer": 1
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "saas-make-sure-you-copy",
+    "category": "saas-ui",
+    "source": "GitHub",
+    "pattern": "Make sure to copy X now. You won't be able to see it again.",
+    "meaning_ja": "今すぐXをコピーしておくこと。二度と表示できない。",
+    "example_en": "Make sure to copy your personal access token now. You won't be able to see it again!",
+    "example_ja": "今すぐパーソナルアクセストークンをコピーすること。再び表示することはできない。",
+    "note_ja": "トークンやシークレットは作成時にしか表示されない。表示されないまま画面を閉じたら再発行(regenerate)するしかない。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Make sure to copy your new token now. You won't be able to see it again.",
+        "choices_ja": [
+          "新しいトークンは自動的にメール送信される",
+          "新しいトークンは後で何度でも表示できる",
+          "新しいトークンを今すぐコピーすること。再表示はできない"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Store this secret somewhere ____.",
+        "choices_en": [
+          "safe",
+          "save",
+          "safely",
+          "safety"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Regenerate token",
+        "choices_ja": [
+          "トークンを閲覧する",
+          "トークンを再生成する",
+          "トークンを共有する"
+        ],
+        "answer": 1
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "saas-skip-for-now",
+    "category": "saas-ui",
+    "source": "Generic SaaS UI",
+    "pattern": "Skip for now / Maybe later / Remind me later",
+    "meaning_ja": "今はスキップ / あとで / あとで通知",
+    "example_en": "Skip for now",
+    "example_ja": "今はスキップ",
+    "note_ja": "オンボーディング画面の「後回し」ボタン。後から設定画面で戻れることが多いが、セキュリティ設定(2FAなど)はスキップしても通知が繰り返される。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Remind me later",
+        "choices_ja": [
+          "今すぐ削除する",
+          "二度と表示しない",
+          "あとで通知する"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "You can change this ____ in Settings.",
+        "choices_en": [
+          "lately",
+          "later",
+          "latest",
+          "latter"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Don't show this again",
+        "choices_ja": [
+          "今後はこれを表示しない",
+          "この画面を共有する",
+          "もう一度表示する"
+        ],
+        "answer": 0
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "saas-permissions-required-contact-admin",
+    "category": "saas-ui",
+    "source": "Generic SaaS UI",
+    "pattern": "Contact your administrator to request access",
+    "meaning_ja": "アクセスを依頼するには管理者に連絡してください",
+    "example_en": "You don't have access to this resource. Contact your administrator to request access.",
+    "example_ja": "このリソースにアクセスする権限がありません。アクセスを依頼するには管理者に連絡してください。",
+    "note_ja": "自分では解決できない権限エラーの典型。管理者に連絡するときは、操作内容・対象リソース・エラーの全文を伝えると早い。org owner / admin / maintainer の役割の違いも確認する。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "You don't have permission to view this page.",
+        "choices_ja": [
+          "このページはまもなく削除される",
+          "このページを表示する権限がない",
+          "このページは作成中である"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Contact your ____ to request access.",
+        "choices_en": [
+          "administrator",
+          "administrate",
+          "administrative",
+          "administration"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Which role usually can change organization-wide settings?",
+        "choices_ja": [
+          "Guest",
+          "Read-only user",
+          "Owner"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "saas-we-sent-you-an-email",
+    "category": "saas-ui",
+    "source": "Generic SaaS UI",
+    "pattern": "We've sent X to Y. Check your inbox.",
+    "meaning_ja": "YにXを送信した。受信トレイを確認してください",
+    "example_en": "We've sent a verification link to your email. Check your inbox (and spam folder).",
+    "example_ja": "確認用リンクをメールで送信した。受信トレイ(と迷惑メールフォルダ)を確認すること。",
+    "note_ja": "届かないときは spam / junk フォルダ、メールアドレスの打ち間違い、組織のメールフィルタを疑う。Resend は「再送」。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "We've sent a verification link to your email.",
+        "choices_ja": [
+          "確認リンクが受信された",
+          "確認リンクをあなたのメールに送信した",
+          "確認リンクを削除した"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Didn't get the email? ____ the code.",
+        "choices_en": [
+          "Restore",
+          "Retry",
+          "Resend",
+          "Resume"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Check your spam folder.",
+        "choices_ja": [
+          "メールを転送しないでください",
+          "迷惑メールフォルダを確認してください",
+          "迷惑メールを送信してください"
+        ],
+        "answer": 1
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "saas-resource-limit-reached",
+    "category": "saas-ui",
+    "source": "AWS Console",
+    "pattern": "You have reached the maximum number of X allowed",
+    "meaning_ja": "許可されているXの最大数に達した",
+    "example_en": "You have reached the maximum number of VPCs allowed in this Region.",
+    "example_ja": "このリージョンで許可されているVPCの最大数に達した。",
+    "note_ja": "クォータ(Service Quotas / limits)エラー。不要リソースを削除するか、クォータの引き上げをリクエストする。AWSではリージョン単位のクォータが多い。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "You have reached your quota limit.",
+        "choices_ja": [
+          "クォータの上限に達した",
+          "クォータが無制限になった",
+          "クォータを使い切っていない"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "To increase the limit, ____ a quota increase.",
+        "choices_en": [
+          "require",
+          "revoke",
+          "request",
+          "reject"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Which is a typical way to fix this error?",
+        "choices_ja": [
+          "不要なリソースを削除するか、上限の引き上げを申請する",
+          "ブラウザのキャッシュだけを削除する",
+          "同じ操作を何度も繰り返す"
+        ],
+        "answer": 0
+      }
+    ],
+    "level": 2
+  }
+]

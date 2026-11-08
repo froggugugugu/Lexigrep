@@ -1,0 +1,8 @@
+{
+  "name": "lexigrep-content",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node validate.mjs"
+  }
+}

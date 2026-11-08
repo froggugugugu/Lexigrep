@@ -1,0 +1,1146 @@
+[
+  {
+    "id": "dev-lgtm",
+    "category": "dev-comm",
+    "source": "GitHub PR",
+    "pattern": "LGTM",
+    "meaning_ja": "Looks good to me の略。確認した限り問題ない(承認する)",
+    "example_en": "LGTM! Just one nit below, but feel free to merge.",
+    "example_ja": "LGTM! 下に細かい指摘が1つあるだけで、マージして問題ない。",
+    "note_ja": "レビューで承認を伝える最も一般的な略語。「内容を確認した」という意味で、バグが無いことの保証ではない。LGTM + 指摘 は「軽微な指摘を直せばマージ可」の意味でよく使われる。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "LGTM, thanks for the quick fix!",
+        "choices_ja": [
+          "まだ修正が必要です。",
+          "問題なさそうです、素早い修正ありがとう!",
+          "この修正は取り消してください。"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "LGTM stands for \"Looks good to ____\".",
+        "choices_en": [
+          "my",
+          "me",
+          "mine",
+          "I"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Which is closest to LGTM?",
+        "choices_ja": [
+          "Approved / Ship it",
+          "Needs work",
+          "Please close this"
+        ],
+        "answer": 0
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "dev-nit",
+    "category": "dev-comm",
+    "source": "GitHub PR",
+    "pattern": "nit: X",
+    "meaning_ja": "細かい指摘(直さなくてもよい程度の些細な点): X",
+    "example_en": "nit: this variable name could be more descriptive.",
+    "example_ja": "nit: この変数名はもう少し分かりやすくできそう。",
+    "note_ja": "nit は nitpick(重箱の隅をつつく)の略。ブロッカーではなく「好みや軽微な改善」であることを示す。レビューを受ける側は、nit は対応任意と読んでよい。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "nit: missing newline at end of file.",
+        "choices_ja": [
+          "重大: ファイルが消えている",
+          "細かい点: ファイル末尾に改行がない",
+          "質問: ファイルはどこにありますか?"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "nit: ____ rename this to `userId` for consistency.",
+        "choices_en": [
+          "already",
+          "must",
+          "maybe",
+          "never"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "choice",
+        "prompt_en": "What should you do with a \"nit:\" comment?",
+        "choices_ja": [
+          "対応は任意と判断してよい",
+          "マージ前に必ず対応しなければならない",
+          "無視してはならず、PRを閉じる"
+        ],
+        "answer": 0
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "dev-ptal",
+    "category": "dev-comm",
+    "source": "GitHub PR",
+    "pattern": "PTAL",
+    "meaning_ja": "Please take another look の略。もう一度見てください",
+    "example_en": "I've addressed your comments. PTAL!",
+    "example_ja": "指摘に対応しました。もう一度見てください!",
+    "note_ja": "レビュー指摘に対応した後に、再レビューを依頼する定番の略語。another look(もう一度)と言うように、初回レビュー依頼には通常 Please review を使う。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Updated the tests. PTAL.",
+        "choices_ja": [
+          "テストを更新しました。もう一度見てください。",
+          "テストは失敗したままです。",
+          "テストを削除しました。見ないでください。"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "I pushed a fix. @alice, ____ take another look?",
+        "choices_en": [
+          "could you",
+          "have you",
+          "were you",
+          "did you"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "choice",
+        "prompt_en": "When is PTAL most natural?",
+        "choices_ja": [
+          "新しいリポジトリを作るとき",
+          "PRを閉じるとき",
+          "指摘に対応した後の再レビュー依頼"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "dev-blocked-on",
+    "category": "dev-comm",
+    "source": "GitHub Issue",
+    "pattern": "X is blocked on/by Y",
+    "meaning_ja": "Xは(Yが終わるまで)進められない",
+    "example_en": "This is blocked on the API change in #482.",
+    "example_ja": "これは #482 のAPI変更が終わるまで進められない。",
+    "note_ja": "blocked on は「待っている先」を示し、blocked by もほぼ同じ。Blocked 状態のタスクは自分では進められないので、原因となるIssueのリンクが書かれているか確認する。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "I'm blocked on the design review.",
+        "choices_ja": [
+          "デザインレビューを担当している",
+          "デザインレビューが終わらず先に進めない",
+          "デザインレビューが完了した"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "This PR is ____ on #123 being merged first.",
+        "choices_en": [
+          "blocker",
+          "blocking up",
+          "blocks",
+          "blocked"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "choice",
+        "prompt_en": "What does \"This is a blocker\" mean?",
+        "choices_ja": [
+          "これはすでに解決済みだ",
+          "これは軽微な問題だ",
+          "これが解消しないと先に進めない問題だ"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "dev-steps-to-reproduce",
+    "category": "dev-comm",
+    "source": "GitHub Issue",
+    "pattern": "Steps to reproduce",
+    "meaning_ja": "再現手順",
+    "example_en": "Steps to reproduce: 1. Click \"Export\". 2. Select CSV. 3. Observe the error.",
+    "example_ja": "再現手順: 1. 「Export」をクリック。2. CSVを選択。3. エラーを確認する。",
+    "note_ja": "Issueテンプレートの見出し。reproduce は「再現する」。Expected behavior(期待する動作)/ Actual behavior(実際の動作)とセットで書かれる。再現手順がないIssueは対応されにくい。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Please provide steps to reproduce the issue.",
+        "choices_ja": [
+          "問題の再現手順を教えてください",
+          "問題は報告しないでください",
+          "問題を修正しておきました"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "I can't ____ this on my machine.",
+        "choices_en": [
+          "reprint",
+          "reproduce",
+          "reproduction",
+          "reprove"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Expected behavior vs. Actual behavior",
+        "choices_ja": [
+          "期待する納期と実際の納期",
+          "期待する動作と実際の動作",
+          "期待する費用と実際の費用"
+        ],
+        "answer": 1
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "dev-expected-vs-actual",
+    "category": "dev-comm",
+    "source": "GitHub Issue",
+    "pattern": "Expected: X. Actual: Y.",
+    "meaning_ja": "期待する動作はX。実際の動作はY。",
+    "example_en": "Expected: the form submits. Actual: nothing happens and the console shows a 500 error.",
+    "example_ja": "期待: フォームが送信される。実際: 何も起きず、コンソールに500エラーが出る。",
+    "note_ja": "バグ報告の基本構造。差分が明確ならレビュアーも原因を絞り込みやすい。自分で書くときは、環境(OS・バージョン)も添えるとよい。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Expected: 200 OK. Actual: 404 Not Found.",
+        "choices_ja": [
+          "期待は404だが、実際は200だった",
+          "期待は200 OKだが、実際は404 Not Foundだった",
+          "200も404も出ていない"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "The ____ behavior differs from what the docs say.",
+        "choices_en": [
+          "acting",
+          "accurate",
+          "actual",
+          "active"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Environment: macOS 14, Node 20",
+        "choices_ja": [
+          "環境保護: macOS 14、Node 20",
+          "契約: macOS 14、Node 20",
+          "環境: macOS 14、Node 20"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "dev-wip-draft",
+    "category": "dev-comm",
+    "source": "GitHub PR",
+    "pattern": "WIP / Draft: not ready for review",
+    "meaning_ja": "作業中(ドラフト): レビューの準備ができていない",
+    "example_en": "Marking this as a draft. It's still a work in progress.",
+    "example_ja": "これはドラフトにする。まだ作業中。",
+    "note_ja": "WIP は work in progress の略。GitHubではDraft PRにすると、マージ不可かつレビュー依頼前であることが明確になる。レビュー準備ができたら Ready for review にする。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "[WIP] Add dark mode",
+        "choices_ja": [
+          "[却下] ダークモードを追加",
+          "[作業中] ダークモードを追加",
+          "[完了] ダークモードを追加"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "This PR is still a draft. I'll mark it ____ for review when CI is green.",
+        "choices_en": [
+          "regular",
+          "ready",
+          "reviewed",
+          "reading"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Convert to draft",
+        "choices_ja": [
+          "ドラフトに変更する",
+          "削除する",
+          "マージする"
+        ],
+        "answer": 0
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "dev-needs-rebase",
+    "category": "dev-comm",
+    "source": "GitHub PR",
+    "pattern": "This branch has conflicts that must be resolved",
+    "meaning_ja": "このブランチにはマージ前に解消すべきコンフリクトがある",
+    "example_en": "This branch has conflicts that must be resolved. Could you rebase onto main?",
+    "example_ja": "このブランチにはマージ前に解消すべきコンフリクトがある。mainにリベースしてもらえますか?",
+    "note_ja": "GitHubが自動で出す表示。rebase onto main は main の最新の上に自分の変更を載せ直すこと。merge main into your branch との違い(履歴の形)はプロジェクトの方針に従う。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Could you rebase on main and resolve the conflicts?",
+        "choices_ja": [
+          "mainを削除して、コンフリクトを作ってもらえますか?",
+          "mainを無視して、そのままマージしてもらえますか?",
+          "mainにリベースして、コンフリクトを解消してもらえますか?"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Please resolve the merge ____ before we can merge.",
+        "choices_en": [
+          "commits",
+          "conditions",
+          "conflicts",
+          "branches"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "choice",
+        "prompt_en": "This branch is out-of-date with the base branch.",
+        "choices_ja": [
+          "このブランチはベースブランチより古くなっている",
+          "このブランチはすでに削除された",
+          "このブランチはベースブランチより新しい"
+        ],
+        "answer": 0
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "dev-closes-issue",
+    "category": "dev-comm",
+    "source": "GitHub PR",
+    "pattern": "Closes/Fixes/Resolves #N",
+    "meaning_ja": "このPRがマージされたら、Issue #N を自動でクローズする",
+    "example_en": "Fixes #123: handle empty input in the parser.",
+    "example_ja": "Fixes #123: パーサーの空入力を処理する。",
+    "note_ja": "PR説明やコミットメッセージに書くとGitHubが関連付ける。Related to #N / Refs #N は「関連はあるが自動クローズしない」場合に使う。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Closes #42",
+        "choices_ja": [
+          "Issue #42 を新しく作成する",
+          "Issue #42 を無視する",
+          "マージ時にIssue #42 を自動的にクローズする"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "This PR ____ #42 but does not fully resolve it.",
+        "choices_en": [
+          "relates to",
+          "closes",
+          "fixes",
+          "resolves"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Part of #42",
+        "choices_ja": [
+          "#42 を取り消した",
+          "#42 の一部である(自動クローズはしない)",
+          "#42 を完全に解決した"
+        ],
+        "answer": 1
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "dev-thanks-for-contribution",
+    "category": "dev-comm",
+    "source": "GitHub PR",
+    "pattern": "Thanks for the PR / Thanks for your contribution",
+    "meaning_ja": "PR(貢献)ありがとう",
+    "example_en": "Thanks for the PR! I'll take a look this week.",
+    "example_ja": "PRありがとう!今週中に見るね。",
+    "note_ja": "メンテナの最初の返信の定型。I'll take a look = 見ておくという意思表示で、承認ではない。返信が遅くても気にしすぎず、数日後に friendly ping(丁寧な催促)を入れてよい。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Thanks for the PR! I'll take a look this week.",
+        "choices_ja": [
+          "PRありがとう!今週中に見ます。",
+          "PRはすでにマージされています。",
+          "PRは却下されました。"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Thanks for ____ the time to fix this.",
+        "choices_en": [
+          "taking",
+          "making",
+          "using",
+          "doing"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "choice",
+        "prompt_en": "\"I'll take a look\" means ...",
+        "choices_ja": [
+          "絶対に見ない",
+          "すぐ承認する",
+          "あとで確認する(まだ承認ではない)"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "dev-could-you-add-tests",
+    "category": "dev-comm",
+    "source": "GitHub PR",
+    "pattern": "Could you add a test for X?",
+    "meaning_ja": "Xのテストを追加してもらえますか?",
+    "example_en": "Could you add a test for the empty-input case?",
+    "example_ja": "空入力のケースのテストを追加してもらえますか?",
+    "note_ja": "Could you ... ? は丁寧な依頼の形で、実質的にはレビューの修正依頼。命令でなくても、通常は対応が必要な指摘として扱う。cover は「テストでカバーする」。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Can we add test coverage for this branch?",
+        "choices_ja": [
+          "この分岐のテストカバレッジを追加できますか?",
+          "この分岐の名前を変更できますか?",
+          "この分岐を削除できますか?"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "This change isn't ____ by any test.",
+        "choices_en": [
+          "recovered",
+          "covering",
+          "discovered",
+          "covered"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Would you mind adding a regression test?",
+        "choices_ja": [
+          "回帰テストの結果を非公開にしていただけませんか?",
+          "回帰テストを削除していただけませんか?",
+          "回帰テストを追加していただけませんか?"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "dev-duplicate-of",
+    "category": "dev-comm",
+    "source": "GitHub Issue",
+    "pattern": "Duplicate of #N",
+    "meaning_ja": "#N の重複である",
+    "example_en": "Closing as a duplicate of #210. Let's continue the discussion there.",
+    "example_ja": "#210 の重複としてクローズする。議論はそちらで続けよう。",
+    "note_ja": "同じ内容のIssueが既にある場合の対応。クローズされたIssueでも、リンク先の議論や回避策(workaround)に有用な情報があるので追いかける。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Closing as a duplicate of #55.",
+        "choices_ja": [
+          "#55 の重複としてクローズします。",
+          "#55 を重複して作成します。",
+          "#55 を再オープンします。"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Closing this as a ____ of #99.",
+        "choices_en": [
+          "duplicates",
+          "duplicated",
+          "duplicating",
+          "duplicate"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Let's continue the discussion in #210.",
+        "choices_ja": [
+          "#210 の議論はやめましょう",
+          "議論は #210 で続けましょう",
+          "#210 を削除しましょう"
+        ],
+        "answer": 1
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "dev-working-as-intended",
+    "category": "dev-comm",
+    "source": "GitHub Issue",
+    "pattern": "This is working as intended / Won't fix",
+    "meaning_ja": "これは仕様どおりの動作だ / 修正しない",
+    "example_en": "This is working as intended. The timeout is documented to be 30 seconds.",
+    "example_ja": "これは仕様どおりの動作だ。タイムアウトは30秒とドキュメントに記載されている。",
+    "note_ja": "バグではなく仕様だという返答。Not planned / Won't fix は「対応しない」というメンテナの判断。感情的にならず、使い方の工夫や設定で回避できないか返答に書かれていないか確認する。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "This is working as intended.",
+        "choices_ja": [
+          "これは近日中に修正されます。",
+          "これは仕様どおりの動作です。",
+          "これは未知のバグです。"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Closing this as \"not ____\". We don't have the bandwidth right now.",
+        "choices_en": [
+          "planned",
+          "plan for",
+          "planning",
+          "plans"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "choice",
+        "prompt_en": "We don't have the bandwidth for this right now.",
+        "choices_ja": [
+          "今はこの回線の帯域が足りない",
+          "今はこの対応に十分な余力がある",
+          "今はこの対応に割ける余力がない"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 3
+  },
+  {
+    "id": "dev-abbreviations-iiuc",
+    "category": "dev-comm",
+    "source": "GitHub Issue",
+    "pattern": "IIUC / AFAIK / IMO / FWIW",
+    "meaning_ja": "IIUC=私の理解が正しければ / AFAIK=私の知る限り / IMO=私の意見では / FWIW=参考までに",
+    "example_en": "IIUC, this function is only called from the CLI. FWIW, I think we can remove it.",
+    "example_ja": "私の理解が正しければ、この関数はCLIからしか呼ばれない。参考までに、消してよいと思う。",
+    "note_ja": "断定を避けて意見や推測であることを示す略語。AFAIK や IIUC は「確信は100%ではない」ことを伝える。相手の説明が間違っている可能性があっても、やわらかく指摘できる。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "IIUC, we don't need this check anymore.",
+        "choices_ja": [
+          "このチェックは絶対に必要だ",
+          "このチェックを消さないでください",
+          "私の理解が正しければ、このチェックはもう不要だ"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "AFAIK stands for \"As far as I ____\".",
+        "choices_en": [
+          "knowing",
+          "knew",
+          "knowledge",
+          "know"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "choice",
+        "prompt_en": "FWIW, this works on my machine.",
+        "choices_ja": [
+          "お願いですから、私の環境を使ってください",
+          "参考までに、私の環境では動く",
+          "勝手ながら、私の環境では動かない"
+        ],
+        "answer": 1
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "dev-bump-x-from-to",
+    "category": "dev-comm",
+    "source": "GitHub PR (Dependabot)",
+    "pattern": "Bump X from A to B",
+    "meaning_ja": "XのバージョンをAからBに上げる",
+    "example_en": "Bump lodash from 4.17.20 to 4.17.21",
+    "example_ja": "lodashを4.17.20から4.17.21に上げる",
+    "note_ja": "Dependabot や Renovate が自動生成する依存更新のPRタイトル。本文の Release notes / Changelog / Commits を見て、破壊的変更(breaking changes)がないか確認してからマージする。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Bump axios from 0.21.1 to 1.6.0",
+        "choices_ja": [
+          "axiosを1.6.0から0.21.1に下げる",
+          "axiosを0.21.1から1.6.0に上げる",
+          "axiosを新規にインストールする"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Bump react ____ 17.0.2 to 18.2.0",
+        "choices_en": [
+          "since",
+          "from",
+          "at",
+          "by"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "choice",
+        "prompt_en": "What should you check before merging a major version bump?",
+        "choices_ja": [
+          "PR作成者の誕生日",
+          "コミットメッセージの文字数",
+          "破壊的変更の有無(リリースノート)"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "dev-ship-it",
+    "category": "dev-comm",
+    "source": "GitHub PR",
+    "pattern": "Approved / Ship it / Good to merge",
+    "meaning_ja": "承認 / リリースしよう / マージして問題ない",
+    "example_en": "Looks great. Ship it! 🚀",
+    "example_ja": "すばらしい。出そう!",
+    "note_ja": "Ship it は砕けた承認表現。Approve with comments は「軽微なコメントは直せば再レビュー不要」という意味で使うことがある。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Good to merge once CI passes.",
+        "choices_ja": [
+          "CIが通るまでマージしてはならない(却下)",
+          "CIは不要である",
+          "CIが通ったらマージしてよい"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Approved with minor ____. No need to re-review.",
+        "choices_en": [
+          "commits",
+          "commands",
+          "comments",
+          "communities"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Ship it!",
+        "choices_ja": [
+          "出荷は後回しにして!",
+          "配送を止めて!",
+          "リリースしよう!"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "dev-friendly-ping",
+    "category": "dev-comm",
+    "source": "GitHub Issue",
+    "pattern": "Friendly ping / Any updates on this?",
+    "meaning_ja": "(丁寧な)催促です / 進捗はありますか?",
+    "example_en": "Friendly ping — any updates on this? We're hoping to ship next week.",
+    "example_ja": "念のための催促ですが、進捗はありますか?来週リリースしたいと考えています。",
+    "note_ja": "返信がないIssueやPRへの控えめな催促。ping は「連絡して注意を向けさせる」。+1 だけのコメントは通知が増えるだけなので、リアクション(👍)の方が好まれることが多い。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Just a friendly ping on this PR.",
+        "choices_ja": [
+          "このPRについて、念のため催促します",
+          "このPRを自分では見ません",
+          "このPRを閉じます"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Any ____ on this?",
+        "choices_en": [
+          "upgrades",
+          "updating",
+          "updates",
+          "updated"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Bumping this thread.",
+        "choices_ja": [
+          "このスレッドを固定する",
+          "このスレッドを削除する",
+          "このスレッドを上に上げる(再注目させる)"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "dev-out-of-scope-follow-up",
+    "category": "dev-comm",
+    "source": "GitHub PR",
+    "pattern": "Out of scope for this PR; let's address it in a follow-up",
+    "meaning_ja": "このPRの範囲外なので、フォローアップで対応しよう",
+    "example_en": "Good catch, but that's out of scope for this PR. Let's address it in a follow-up.",
+    "example_ja": "いい指摘だけど、このPRの範囲外。フォローアップで対応しよう。",
+    "note_ja": "PRを小さく保つための定番の返答。follow-up PR/Issue を実際に作らないと忘れられるので、「Filed #456 for this」のようにIssue番号を残すのが良い習慣。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "That's out of scope for this PR.",
+        "choices_ja": [
+          "それはこのPRの範囲外です",
+          "それはこのPRの最重要点です",
+          "それはこのPRで修正済みです"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "I'll open a ____ PR for the refactor.",
+        "choices_en": [
+          "follow-in",
+          "follow-up",
+          "follow-by",
+          "follow-out"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Good catch!",
+        "choices_ja": [
+          "よく修正したね!",
+          "よく見つけたね!",
+          "気をつけて!"
+        ],
+        "answer": 1
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "dev-revert",
+    "category": "dev-comm",
+    "source": "git commit",
+    "pattern": "Revert \"X\" / This reverts commit <hash>",
+    "meaning_ja": "コミットXを取り消す(逆の変更を新しいコミットとして追加する)",
+    "example_en": "Revert \"Add retry logic\"\n\nThis reverts commit 3f2a1b9.",
+    "example_ja": "Revert \"Add retry logic\"\n\nこれはコミット 3f2a1b9 を取り消す。",
+    "note_ja": "git revert が自動生成するメッセージ。履歴を消すのではなく、反対の変更を追加する点が reset との違い。本番障害時の応急処置として使われ、本文に理由(Reason: ...)を足すことが多い。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "This reverts commit 1a2b3c4.",
+        "choices_ja": [
+          "これはコミット 1a2b3c4 を複製する",
+          "これはコミット 1a2b3c4 を取り込む",
+          "これはコミット 1a2b3c4 を取り消す"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Revert \"Update config\" because it broke ____.",
+        "choices_en": [
+          "produce",
+          "products",
+          "production",
+          "productive"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "choice",
+        "prompt_en": "What is the key difference between revert and reset?",
+        "choices_ja": [
+          "revert は履歴を書き換えて消す",
+          "両者に違いはない",
+          "revert は取り消しの新しいコミットを追加する"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 3
+  },
+  {
+    "id": "dev-regression",
+    "category": "dev-comm",
+    "source": "GitHub Issue",
+    "pattern": "This is a regression introduced in vX",
+    "meaning_ja": "これはvXで入ったリグレッション(以前は動いていたものが壊れた不具合)である",
+    "example_en": "This is a regression introduced in v2.3. It works fine in v2.2.",
+    "example_ja": "これはv2.3で入ったリグレッションで、v2.2では問題なく動く。",
+    "note_ja": "regression は「後退」ではなく、以前動いていた機能が壊れたこと。git bisect で原因となったコミットを特定して報告すると、修正が早い。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "This is a regression. It worked in 1.9.",
+        "choices_ja": [
+          "これは新機能の提案。1.9で初めて動いた。",
+          "これは仕様どおり。1.9でも動かない。",
+          "これはリグレッション。1.9では動いていた。"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "I used `git ____` to find the commit that introduced the bug.",
+        "choices_en": [
+          "bisect",
+          "clone",
+          "init",
+          "tag"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Works in v2.2, broken in v2.3.",
+        "choices_ja": [
+          "どちらでも動く",
+          "v2.2では壊れていて、v2.3では動く",
+          "v2.2では動くが、v2.3では壊れている"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "dev-heads-up",
+    "category": "dev-comm",
+    "source": "Slack / GitHub",
+    "pattern": "Heads up: X",
+    "meaning_ja": "事前共有(注意喚起): X",
+    "example_en": "Heads up: I'm going to force-push to this branch in a few minutes.",
+    "example_ja": "事前共有: 数分後にこのブランチにforce-pushする。",
+    "note_ja": "相手に影響することを前もって知らせる表現。warning ほど強くなく、事前周知のニュアンス。これから起きること(メンテナンス・破壊的変更)の連絡に使う。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Heads up: the staging environment will be down at 3 PM.",
+        "choices_ja": [
+          "事前共有: ステージング環境は午後3時に復旧しました",
+          "質問: ステージング環境は何時に停止しますか?",
+          "事前共有: ステージング環境は午後3時に停止します"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Quick heads ____: we're changing the API response format.",
+        "choices_en": [
+          "in",
+          "up",
+          "over",
+          "out"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "choice",
+        "prompt_en": "For your information",
+        "choices_ja": [
+          "要返信",
+          "要承認",
+          "ご参考まで(情報共有)"
+        ],
+        "answer": 2
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "dev-stale-issue",
+    "category": "dev-comm",
+    "source": "GitHub Issue",
+    "pattern": "This issue has been automatically marked as stale",
+    "meaning_ja": "このIssueは(一定期間活動がないため)自動的にstale(放置状態)とマークされた",
+    "example_en": "This issue has been automatically marked as stale because it has not had recent activity. It will be closed if no further activity occurs.",
+    "example_ja": "このIssueは最近の活動がないため、自動的にstaleとマークされた。さらなる活動がなければクローズされる。",
+    "note_ja": "actions/stale などのbotが投稿する定型文。まだ必要なら、コメントを付ければクローズを避けられる。これは「間違っている」という意味ではなく、単に動きがないという意味。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "This issue will be closed if no further activity occurs.",
+        "choices_ja": [
+          "これ以上の活動がなければ、このIssueはクローズされる",
+          "このIssueはすぐに削除される",
+          "このIssueは自動的に再オープンされる"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "This PR has had no recent ____.",
+        "choices_en": [
+          "action",
+          "activity",
+          "activation",
+          "active"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "choice",
+        "prompt_en": "What can you do to keep a stale issue open?",
+        "choices_ja": [
+          "コメントして活動を作る",
+          "ラベルをすべて削除する",
+          "何もしない"
+        ],
+        "answer": 0
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "dev-tldr",
+    "category": "dev-comm",
+    "source": "GitHub Issue",
+    "pattern": "TL;DR: X",
+    "meaning_ja": "要約すると: X(Too Long; Didn't Read)",
+    "example_en": "TL;DR: the cache is never invalidated, so users see stale data.",
+    "example_ja": "要約: キャッシュが無効化されないので、ユーザーに古いデータが表示される。",
+    "note_ja": "長文の冒頭か末尾に付けて、結論だけを先に伝える。Summary と同じ役割。長文のIssueやPRでは、TL;DR を先に読むと文脈をつかみやすい。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "TL;DR: we should upgrade to v2.",
+        "choices_ja": [
+          "要約: v2へのアップグレードは不要だ",
+          "要約: v2にアップグレードすべきだ",
+          "追記: v2が公開された"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "TL;DR stands for \"Too long; didn't ____\".",
+        "choices_en": [
+          "read",
+          "reply",
+          "release",
+          "review"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Summary:",
+        "choices_ja": [
+          "署名:",
+          "要約:",
+          "補足:"
+        ],
+        "answer": 1
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "dev-i-would-prefer",
+    "category": "dev-comm",
+    "source": "GitHub PR",
+    "pattern": "I'd prefer X over Y / Have you considered X?",
+    "meaning_ja": "YよりXの方がよいと思う / Xは検討しましたか?",
+    "example_en": "Have you considered using a map here instead of a list? It would make the lookup O(1).",
+    "example_ja": "ここではリストの代わりにマップを使うことは検討しましたか?そうすると検索がO(1)になる。",
+    "note_ja": "断定を避けた代替案の提案。質問の形でも、実質は「そうしてほしい」というレビュー意見であることが多い。理由が添えられているかどうかが必須かの手がかり。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Have you considered using a queue here?",
+        "choices_ja": [
+          "ここでキューを使うことは検討しましたか?",
+          "ここでキューを使うのは禁止です。",
+          "ここでキューを使ったのはなぜですか?(すでに使っている)"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "I'd ____ a shorter name here.",
+        "choices_en": [
+          "prevent",
+          "present",
+          "prefer",
+          "preface"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "choice",
+        "prompt_en": "What's the reasoning behind this approach?",
+        "choices_ja": [
+          "このやり方を撤回します。",
+          "このやり方の根拠は何ですか?",
+          "このやり方は完成しました。"
+        ],
+        "answer": 1
+      }
+    ],
+    "level": 3
+  },
+  {
+    "id": "dev-as-discussed",
+    "category": "dev-comm",
+    "source": "GitHub PR / Slack",
+    "pattern": "As discussed (in X) / Per our discussion",
+    "meaning_ja": "(Xで)話し合ったとおり",
+    "example_en": "As discussed in the design doc, we'll keep the old endpoint for two releases.",
+    "example_ja": "設計ドキュメントで話し合ったとおり、旧エンドポイントは2リリース分残す。",
+    "note_ja": "過去の合意を参照する表現。議論の場所(design doc・Slackスレッド)へのリンクが一緒に貼られるので、背景を知りたいときはそこを読む。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "As discussed offline, we'll keep the current behavior.",
+        "choices_ja": [
+          "オフラインで話したとおり、現行の挙動を維持する",
+          "オフラインで話していないが、現行の挙動を維持する",
+          "オフラインで話したが、現行の挙動は廃止する"
+        ],
+        "answer": 0
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "____ our discussion, I've updated the API spec.",
+        "choices_en": [
+          "Pair",
+          "Pre",
+          "Pro",
+          "Per"
+        ],
+        "answer": 3
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Let's take this offline.",
+        "choices_ja": [
+          "この件はなかったことにしよう",
+          "この件は別の場(会議など)で話そう",
+          "この件はインターネットに公開しよう"
+        ],
+        "answer": 1
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "dev-looks-good-except",
+    "category": "dev-comm",
+    "source": "GitHub PR",
+    "pattern": "Looks good overall, just a few comments",
+    "meaning_ja": "全体的に問題ないが、いくつかコメントがある",
+    "example_en": "Looks good overall, just a few small comments. Happy to approve once they're addressed.",
+    "example_ja": "全体的に問題ないが、小さなコメントがいくつかある。対応されたら承認する。",
+    "note_ja": "just a few ... は「少しだけ」。ただし、承認(Approve)ではなく変更依頼(Request changes)の場合もあるので、PRのレビュー状態も確認する。Happy to ... は「~してもよい」の意。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Happy to approve once the tests pass.",
+        "choices_ja": [
+          "テストが通ったので承認した",
+          "テストが通れば承認する",
+          "テストが通っていても承認しない"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Looks good ____, just a couple of nits.",
+        "choices_en": [
+          "overtly",
+          "overall",
+          "overly",
+          "overhead"
+        ],
+        "answer": 1
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Request changes",
+        "choices_ja": [
+          "変更を依頼する",
+          "変更をマージする",
+          "変更を承認する"
+        ],
+        "answer": 0
+      }
+    ],
+    "level": 2
+  }
+]
