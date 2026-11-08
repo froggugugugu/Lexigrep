@@ -1,0 +1,1228 @@
+[
+  {
+    "id": "docs-is-deprecated-removed-in",
+    "category": "docs",
+    "source": "Node.js docs",
+    "pattern": "X is deprecated and will be removed in a future release",
+    "meaning_ja": "Xは非推奨で、将来のリリースで削除される予定である",
+    "example_en": "`fs.exists()` is deprecated. Use `fs.stat()` or `fs.access()` instead.",
+    "example_ja": "`fs.exists()` は非推奨である。代わりに `fs.stat()` か `fs.access()` を使うこと。",
+    "note_ja": "deprecated は「今は動くが使うな」という意味で、すぐ壊れるわけではない。ただし移行先(use Y instead)が同じ文に書かれていることが多いので、必ず読んで置き換え先を確認する。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "The `Buffer()` constructor is deprecated and will be removed in a future release.",
+        "choices_ja": [
+          "Buffer()コンストラクタは新しく追加され、今後強化される予定だ",
+          "Buffer()コンストラクタは今回のリリースで削除された",
+          "Buffer()コンストラクタは非推奨で、将来のリリースで削除される予定だ"
+        ],
+        "answer": 2,
+        "explanation_ja": "deprecated は「非推奨」で、まだ動くが将来削除される予定という意味。「今回削除された」は removed の過去形が必要で、「新しく追加」は deprecated と逆の意味。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "This option is ____ and will be removed in v5.0.",
+        "choices_en": [
+          "experimental",
+          "mandatory",
+          "deprecated",
+          "optional"
+        ],
+        "answer": 2,
+        "explanation_ja": "「will be removed」と続くので、削除予告を示す deprecated が入る。mandatory(必須)・optional(任意)・experimental(実験的)は削除予告の文脈に合わない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "The API is deprecated.",
+        "choices_ja": [
+          "すでに削除されていて使えない",
+          "まだ動くが、使用を避けて移行すべきである",
+          "このプラットフォームでは動作が保証されない",
+          "読み取り専用である"
+        ],
+        "answer": 1,
+        "explanation_ja": "deprecated は「まだ動くが、使用を避けて移行すべき」状態。「削除済み」は removed、「非対応」は unsupported、「読み取り専用」は read-only で、それぞれ別の概念。"
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "docs-note-that",
+    "category": "docs",
+    "source": "MDN",
+    "pattern": "Note that X",
+    "meaning_ja": "Xに注意してください(見落としやすい前提・制約の補足)",
+    "example_en": "Note that this method does not modify the original array.",
+    "example_ja": "このメソッドは元の配列を変更しないことに注意してください。",
+    "note_ja": "「注意せよ」ほど強い警告ではなく、「知っておくと間違えにくい補足」のニュアンス。Note: で始まる囲み枠でも同じ役割。本当に危険な場合は Warning / Caution が使われる。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Note that the callback is not invoked for empty slots.",
+        "choices_ja": [
+          "空のスロットは自動的に削除される",
+          "コールバックが空のスロットでは呼び出されない点に注意",
+          "コールバックは空のスロットに対して必ず呼び出される"
+        ],
+        "answer": 1,
+        "explanation_ja": "Note that ~ は「~に注意」。not invoked は「呼び出されない」なので、「必ず呼び出される」は not の見落とし。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "____ that this setting applies only to new connections.",
+        "choices_en": [
+          "Vote",
+          "Notify",
+          "Quote",
+          "Note"
+        ],
+        "answer": 3,
+        "explanation_ja": "「Note that ~」で「~に注意」。Notify は「通知する」、Quote は「引用する」、Vote は「投票する」で、that 節を取って注意を促す形にならない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Note: Changes may take a few minutes to apply.",
+        "choices_ja": [
+          "警告: 変更は適用されない",
+          "補足: 変更が反映されるまで数分かかることがある",
+          "補足: 変更は数分後に自動で取り消される"
+        ],
+        "answer": 1,
+        "explanation_ja": "Note: は補足の囲み。may take a few minutes は「数分かかることがある」という補足で、「変更は適用されない」という警告ではない。"
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "docs-warning-cannot-be-undone",
+    "category": "docs",
+    "source": "Kubernetes docs",
+    "pattern": "Warning: This action cannot be undone",
+    "meaning_ja": "警告: この操作は元に戻せない",
+    "example_en": "Warning: Deleting a namespace deletes all resources in it. This action cannot be undone.",
+    "example_ja": "警告: namespaceを削除すると、その中のすべてのリソースが削除される。この操作は元に戻せない。",
+    "note_ja": "cannot be undone / irreversible は破壊的操作(削除・上書き)の定番の注意書き。実行前にバックアップや dry-run の手順がないか周辺を確認する。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "This action cannot be undone.",
+        "choices_ja": [
+          "この操作は取り消し可能だ",
+          "この操作は元に戻せない",
+          "この操作は未完了のままだ"
+        ],
+        "answer": 1,
+        "explanation_ja": "cannot be undone は undo(元に戻す)の否定で「元に戻せない」。「取り消し可能」は逆の意味。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Deleting the volume is ____. Make sure you have a backup.",
+        "choices_en": [
+          "irreversible",
+          "reusable",
+          "redundant",
+          "optional"
+        ],
+        "answer": 0,
+        "explanation_ja": "backup を取るよう促しているので、元に戻せない irreversible が自然。reusable(再利用可能)・redundant(冗長)・optional(任意)は警告の理由にならない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "This operation permanently deletes all data.",
+        "choices_ja": [
+          "この操作はすべてのデータを完全に削除する",
+          "この操作はすべてのデータを一時的に隠す",
+          "この操作はすべてのデータを複製する"
+        ],
+        "answer": 0,
+        "explanation_ja": "permanently deletes は「完全に削除する」。「一時的に隠す」は temporarily hide、「複製する」は duplicate の意味で別物。"
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "docs-before-you-begin",
+    "category": "docs",
+    "source": "Docker docs",
+    "pattern": "Before you begin, make sure (that) you have X",
+    "meaning_ja": "始める前に、Xを用意してあることを確認してください",
+    "example_en": "Before you begin, make sure that you have installed Docker Desktop.",
+    "example_ja": "始める前に、Docker Desktopがインストールされていることを確認してください。",
+    "note_ja": "チュートリアル冒頭の前提条件(Prerequisites)の定型句。ここを飛ばして手順を進めると、後半で原因不明のエラーになりやすい。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Before you begin, make sure that you have admin access.",
+        "choices_ja": [
+          "始めた後で管理者権限を取得してください",
+          "始める前に管理者権限があることを確認してください",
+          "管理者権限は不要です"
+        ],
+        "answer": 1,
+        "explanation_ja": "Before you begin, make sure that ~ は「始める前に~を確認」。「始めた後で」は after、「不要」は make sure に反する。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Before you ____, make sure that Node.js 18 or later is installed.",
+        "choices_en": [
+          "begin",
+          "uninstall",
+          "logout",
+          "finish"
+        ],
+        "answer": 0,
+        "explanation_ja": "「Before you begin」で「始める前に」。finish(終える)や uninstall(アンインストール)は、Node.js がインストール済みか確認する理由と矛盾する。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Where does this sentence usually appear in a tutorial?",
+        "choices_ja": [
+          "トラブルシューティングの末尾",
+          "冒頭の前提条件",
+          "変更履歴"
+        ],
+        "answer": 1,
+        "explanation_ja": "Before you begin は前提条件(Prerequisites)を示す導入文で、手順の冒頭に置かれる。末尾の対処法や変更履歴では別の言い回しを使う。"
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "docs-you-must-have-before",
+    "category": "docs",
+    "source": "AWS documentation",
+    "pattern": "You must have X before you can Y",
+    "meaning_ja": "Yするには、事前にXが必要である",
+    "example_en": "You must have an IAM role with the required permissions before you can create the function.",
+    "example_ja": "関数を作成するには、事前に必要な権限を持つIAMロールが必要である。",
+    "note_ja": "must は「強く推奨」ではなく本当に必須。満たさないと操作自体が失敗する。ほぼ同じ意味で You need ... / requires ... も使われる。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "You must have a verified domain before you can send email.",
+        "choices_ja": [
+          "メールを送るには、事前に検証済みドメインが必要だ",
+          "検証済みドメインがあるとメールが送れなくなる",
+          "メールを送った後でドメインを検証すればよい"
+        ],
+        "answer": 0,
+        "explanation_ja": "must have ~ before you can ~ は「~するには先に~が必要」。「後で検証すればよい」は before の向きが逆。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "You must ____ a billing account before you can enable this API.",
+        "choices_en": [
+          "delete",
+          "forget",
+          "avoid",
+          "have"
+        ],
+        "answer": 3,
+        "explanation_ja": "must have で「~を持っていなければならない」。delete(削除)・avoid(避ける)・forget(忘れる)では「有効化の前提」にならない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "You must have a billing account ____ you can enable this API.",
+        "choices_en": [
+          "while",
+          "although",
+          "unless",
+          "before"
+        ],
+        "answer": 3,
+        "explanation_ja": "「A before you can B」は「Bの前にAが必要」。unless は「~でない限り」、although は「~だが」、while は「~の間」で意味が合わない。"
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "docs-defaults-to",
+    "category": "docs",
+    "source": "MDN",
+    "pattern": "If omitted, X defaults to Y",
+    "meaning_ja": "省略した場合、Xはデフォルトで Y になる",
+    "example_en": "If omitted, the timeout defaults to 30 seconds.",
+    "example_ja": "省略した場合、タイムアウトはデフォルトで30秒になる。",
+    "note_ja": "APIリファレンスの引数説明の定番。Optional. と併記されることが多い。「省略」と「null/undefined を明示的に渡す」で挙動が違う場合があるので注意。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "If omitted, the port defaults to 5432.",
+        "choices_ja": [
+          "ポートは常に5432以外にしなければならない",
+          "省略した場合、ポートは5432になる",
+          "省略するとエラーになる"
+        ],
+        "answer": 1,
+        "explanation_ja": "If omitted, defaults to ~ は「省略するとデフォルトで~になる」。「省略するとエラー」とは書かれていない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "This parameter is optional. If ____, it defaults to false.",
+        "choices_en": [
+          "omitted",
+          "deprecated",
+          "invalid",
+          "required"
+        ],
+        "answer": 0,
+        "explanation_ja": "optional(任意)の引数で「省略した場合」は omitted。required(必須)だと省略できず、deprecated や invalid は省略とは無関係。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Defaults to `\"utf8\"`.",
+        "choices_ja": [
+          "デフォルトは \"utf8\"",
+          "\"utf8\" に固定されて変更できない",
+          "\"utf8\" は使えない"
+        ],
+        "answer": 0,
+        "explanation_ja": "Defaults to は「デフォルトは~」。「使えない」「固定で変更できない」という意味ではない。"
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "docs-added-in-version",
+    "category": "docs",
+    "source": "Python docs",
+    "pattern": "Added in version X / New in version X",
+    "meaning_ja": "バージョンXで追加された機能である",
+    "example_en": "Added in version 3.9: The `removeprefix()` method.",
+    "example_ja": "バージョン3.9で追加: `removeprefix()` メソッド。",
+    "note_ja": "利用中のランタイムが古いとその機能は使えない。Changed in version X(挙動変更)や Deprecated since version X(Xから非推奨)とセットで読むと互換性が把握できる。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Added in version 3.8: The walrus operator `:=`.",
+        "choices_ja": [
+          "バージョン3.8で削除: ウォルラス演算子 `:=`",
+          "バージョン3.8以前でのみ使える: ウォルラス演算子 `:=`",
+          "バージョン3.8で追加: ウォルラス演算子 `:=`"
+        ],
+        "answer": 2,
+        "explanation_ja": "Added in は「~で追加された」。「削除」なら Removed、「以前のみ」なら up to のような別の表現になる。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Deprecated ____ version 3.12: Use `datetime.now(UTC)` instead.",
+        "choices_en": [
+          "between",
+          "until",
+          "since",
+          "during"
+        ],
+        "answer": 2,
+        "explanation_ja": "Deprecated since version X は「Xから非推奨」。until は「Xまで」で、非推奨が始まった時点を表す since とは意味が違う。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Changed in version 2.0: The default value is now true.",
+        "choices_ja": [
+          "バージョン2.0で追加: 新しい引数 true",
+          "バージョン2.0で変更: デフォルト値がtrueでなくなった",
+          "バージョン2.0で変更: デフォルト値がtrueになった"
+        ],
+        "answer": 2,
+        "explanation_ja": "Changed in version 2.0 は「2.0で挙動が変更された」。now true は「今はtrue」なので、「trueでなくなった」は逆。"
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "docs-beta-subject-to-change",
+    "category": "docs",
+    "source": "Google Cloud docs",
+    "pattern": "This feature is in preview/beta and is subject to change",
+    "meaning_ja": "この機能はプレビュー(ベータ)版であり、変更される可能性がある",
+    "example_en": "This feature is in preview and is subject to change without notice.",
+    "example_ja": "この機能はプレビュー版であり、予告なく変更される可能性がある。",
+    "note_ja": "本番利用はリスクがある合図。SLAの対象外であることも多い(not covered by the SLA)。subject to ~ は「~の対象である/~されうる」という頻出表現。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "This API is in beta and is subject to change.",
+        "choices_ja": [
+          "このAPIは安定版で、変更されない",
+          "このAPIはベータ版で、変更される可能性がある",
+          "このAPIはすでに廃止された"
+        ],
+        "answer": 1,
+        "explanation_ja": "in beta で subject to change は「変更される可能性がある」。「安定版で変更されない」は逆で、廃止の話もしていない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "The pricing is ____ to change.",
+        "choices_en": [
+          "subject",
+          "equal",
+          "opposed",
+          "related"
+        ],
+        "answer": 0,
+        "explanation_ja": "subject to ~ は「~されうる」。equal to は「等しい」、opposed to は「反対」、related to は「関連」で、変更の可能性を表さない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Which situation does \"in preview\" most strongly suggest?",
+        "choices_ja": [
+          "すでに削除予定",
+          "全ユーザーに永続的に保証される",
+          "本番利用には注意が必要"
+        ],
+        "answer": 2,
+        "explanation_ja": "preview/beta は正式版ではないため、本番利用に注意が必要。「永続的に保証」や「削除予定」を意味するわけではない。"
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "docs-see-for-more-information",
+    "category": "docs",
+    "source": "React docs",
+    "pattern": "See X for more information / Refer to X for details",
+    "meaning_ja": "詳しくはXを参照してください",
+    "example_en": "See the API reference for more information.",
+    "example_ja": "詳細についてはAPIリファレンスを参照してください。",
+    "note_ja": "for more information の後ろは簡略に for details / for more details とも。X に当たるリンク先に省略された重要な条件が書かれていることがあるので、設定値の制約などは辿って確認する。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Refer to the migration guide for details.",
+        "choices_ja": [
+          "詳細は移行ガイドを参照",
+          "移行ガイドを参照すると障害が起きる",
+          "移行ガイドの詳細は削除された"
+        ],
+        "answer": 0,
+        "explanation_ja": "Refer to ~ for details は「詳細は~を参照」。「詳細が削除された」「障害が起きる」とは書かれていない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "____ to the migration guide for details.",
+        "choices_en": [
+          "Retire",
+          "Refer",
+          "Reply",
+          "Revoke"
+        ],
+        "answer": 1,
+        "explanation_ja": "「Refer to ~ for details」で「詳細は~を参照」。Reply は返信、Retire は引退・廃止、Revoke は取り消しで、参照を促す表現にならない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "For more details, see the changelog.",
+        "choices_ja": [
+          "詳細は変更履歴を参照",
+          "変更履歴は別途購入が必要",
+          "変更履歴は詳細を含まない"
+        ],
+        "answer": 0,
+        "explanation_ja": "For more details, see ~ は「詳細は~を参照」。changelog が詳細を含まない、有償である、とは言っていない。"
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "docs-not-supported",
+    "category": "docs",
+    "source": "AWS documentation",
+    "pattern": "X is not supported when/for Y",
+    "meaning_ja": "Yの場合(Yでは)、Xはサポートされない",
+    "example_en": "Server-side encryption is not supported for this bucket type.",
+    "example_ja": "このバケットタイプではサーバー側暗号化はサポートされない。",
+    "note_ja": "「使えない」だけでなく「公式の動作保証がない」意味も含む。unsupported / not available / does not support も同系統。条件(when ...)が環境やプランを指すことが多い。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "This option is not supported when using FIFO queues.",
+        "choices_ja": [
+          "FIFOキューを使う場合、このオプションはサポートされない",
+          "FIFOキューではこのオプションが自動で有効になる",
+          "FIFOキューを使う場合のみ、このオプションが必須だ"
+        ],
+        "answer": 0,
+        "explanation_ja": "not supported when ~ は「~の場合はサポートされない」。「必須」や「自動で有効」という意味ではない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Multi-AZ deployment is not ____ for this instance class.",
+        "choices_en": [
+          "supported",
+          "audited",
+          "scheduled",
+          "archived"
+        ],
+        "answer": 0,
+        "explanation_ja": "「not supported for ~」で「~ではサポートされない」。scheduled(予定された)・audited(監査された)・archived(保管された)では、オプションが使えない理由にならない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Which is closest in meaning to \"is not supported\"?",
+        "choices_ja": [
+          "デフォルトで有効になっている",
+          "利用できない、または動作が保証されない",
+          "必須である"
+        ],
+        "answer": 1,
+        "explanation_ja": "not supported は「使えない、または動作が保証されない」。「デフォルトで有効」「必須」は逆の方向。"
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "docs-is-intended-for",
+    "category": "docs",
+    "source": "Node.js docs",
+    "pattern": "X is intended for Y / X is not intended for Y",
+    "meaning_ja": "Xは(Yのために)意図されたものである / Xは(Yを)想定していない",
+    "example_en": "This module is intended for internal use only.",
+    "example_ja": "このモジュールは内部利用のみを想定している。",
+    "note_ja": "for internal use only は「公開APIではないので互換性が保証されない」の合図。使えてしまっても依存しない方がよい。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "This API is intended for advanced use cases.",
+        "choices_ja": [
+          "このAPIは廃止予定である",
+          "このAPIは初心者のみが使える",
+          "このAPIは高度なユースケース向けである"
+        ],
+        "answer": 2,
+        "explanation_ja": "intended for ~ は「~向けである」。「初心者のみ」「廃止予定」とは書かれていない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "This function is not ____ for production use.",
+        "choices_en": [
+          "interested",
+          "intended",
+          "involved",
+          "inclined"
+        ],
+        "answer": 1,
+        "explanation_ja": "「not intended for ~」で「~を想定していない」。interested・inclined・involved は人の気持ちや関与を表す語で、関数の用途には使わない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "For internal use only.",
+        "choices_ja": [
+          "内部利用専用",
+          "内部利用は禁止",
+          "利用者は内部に限らない"
+        ],
+        "answer": 0,
+        "explanation_ja": "For internal use only は「内部利用専用」。外部の利用者に使われることを想定していない。"
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "docs-alternatively-you-can",
+    "category": "docs",
+    "source": "Docker docs",
+    "pattern": "Alternatively, you can X",
+    "meaning_ja": "別の方法として、Xすることもできる",
+    "example_en": "Alternatively, you can set the variable in a `.env` file.",
+    "example_ja": "別の方法として、その変数を `.env` ファイルに設定することもできる。",
+    "note_ja": "直前の手順の代替手段を示す。前の手順が失敗した場合の回避策としても読めるので、周辺の文脈(If that doesn't work など)を確認する。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Alternatively, you can use the CLI.",
+        "choices_ja": [
+          "CLIは使ってはならない",
+          "必ずCLIを使わなければならない",
+          "別の方法として、CLIを使うこともできる"
+        ],
+        "answer": 2,
+        "explanation_ja": "Alternatively, you can ~ は「別の方法として~できる」。禁止(must not)や必須(must)の意味ではない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "____, you can pass the token as an environment variable.",
+        "choices_en": [
+          "Previously",
+          "Accordingly",
+          "Eventually",
+          "Alternatively"
+        ],
+        "answer": 3,
+        "explanation_ja": "Alternatively は「別の方法として」。Previously(以前は)・Accordingly(したがって)・Eventually(最終的に)では代替手段を示せない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Run the installer. Alternatively, you can ____ the binary manually and add it to your PATH.",
+        "choices_en": [
+          "uninstall",
+          "deprecate",
+          "download",
+          "encrypt"
+        ],
+        "answer": 2,
+        "explanation_ja": "「download the binary manually」で手動ダウンロードという代替手段になる。uninstall(削除)・encrypt(暗号化)・deprecate(非推奨にする)は PATH に追加する流れに合わない。"
+      }
+    ],
+    "level": 1
+  },
+  {
+    "id": "docs-throws-an-error-if",
+    "category": "docs",
+    "source": "MDN",
+    "pattern": "Throws/Raises an error if X",
+    "meaning_ja": "Xの場合にエラー(例外)を投げる",
+    "example_en": "Throws a TypeError if the argument is not a function.",
+    "example_ja": "引数が関数でない場合、TypeErrorを投げる。",
+    "note_ja": "Python系ドキュメントでは Raises、JavaScript系では Throws が一般的。try/catch が必要なケースを把握するのに使う。Exceptions / Errors 節に条件が列挙される。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Raises ValueError if the input is empty.",
+        "choices_ja": [
+          "入力が空の場合、空文字を返す",
+          "入力が空でない場合、ValueErrorを送出する",
+          "入力が空の場合、ValueErrorを送出する"
+        ],
+        "answer": 2,
+        "explanation_ja": "Raises ValueError if ~ は「~の場合にValueErrorを送出する」。「空文字を返す」ではなく例外が出る。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "This method ____ an exception if the file does not exist.",
+        "choices_en": [
+          "inherits",
+          "throws",
+          "deprecates",
+          "declares"
+        ],
+        "answer": 1,
+        "explanation_ja": "「throws an exception if ~」で「~の場合に例外を投げる」。deprecates(非推奨にする)・inherits(継承する)・declares(宣言する)は、実行時の条件付き動作を表さない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Returns `null` if no match is found.",
+        "choices_ja": [
+          "一致するものがなければ null を返す",
+          "一致するものがなければ例外を投げる",
+          "一致するものがなければ空配列を返す"
+        ],
+        "answer": 0,
+        "explanation_ja": "Returns null if no match is found は「一致がなければ null を返す」。例外を投げるとは書かれていない。"
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "docs-unless-otherwise-specified",
+    "category": "docs",
+    "source": "Kubernetes docs",
+    "pattern": "Unless otherwise specified/noted, X",
+    "meaning_ja": "特に指定がない限り、X",
+    "example_en": "Unless otherwise specified, all timestamps are in UTC.",
+    "example_ja": "特に指定がない限り、すべてのタイムスタンプはUTCである。",
+    "note_ja": "一般則を先に述べ、例外は別の場所に書く構文。例外を見落とすと仕様を誤解する。unless otherwise stated / indicated も同義。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Unless otherwise noted, all sizes are in bytes.",
+        "choices_ja": [
+          "特記があるときだけ、サイズはバイトである",
+          "特記がない限り、すべてのサイズはバイト単位である",
+          "すべてのサイズはバイト単位ではない"
+        ],
+        "answer": 1,
+        "explanation_ja": "Unless otherwise noted は「特記がない限り」で、基本はバイト単位。「バイト単位ではない」は逆。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Unless otherwise ____, requests time out after 60 seconds.",
+        "choices_en": [
+          "retried",
+          "rendered",
+          "specified",
+          "revoked"
+        ],
+        "answer": 2,
+        "explanation_ja": "「Unless otherwise specified」で「特に指定がない限り」。revoked(取り消された)・rendered(描画された)・retried(再試行された)では、この決まった言い回しにならない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "What does the phrase \"unless otherwise specified\" imply?",
+        "choices_ja": [
+          "例外が別の場所で定められている可能性がある",
+          "常に例外が適用される",
+          "例外は存在しない"
+        ],
+        "answer": 0,
+        "explanation_ja": "otherwise specified は「別の指定がない限り」なので、例外が別の場所に書かれている可能性がある。例外が存在しないとは限らない。"
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "docs-must-be-a-valid",
+    "category": "docs",
+    "source": "AWS documentation",
+    "pattern": "X must be a valid Y / X must not exceed N",
+    "meaning_ja": "Xは有効なYでなければならない / XはNを超えてはならない",
+    "example_en": "The name must be a valid DNS label and must not exceed 63 characters.",
+    "example_ja": "名前は有効なDNSラベルでなければならず、63文字を超えてはならない。",
+    "note_ja": "入力制約を述べる定型文。エラーメッセージ(Invalid value, must be ...)と対応していることが多く、エラー文の意味を読み解く手がかりになる。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "The value must not exceed 255 characters.",
+        "choices_ja": [
+          "値は255文字以上でなければならない",
+          "値は255文字ちょうどでなければならない",
+          "値は255文字を超えてはならない"
+        ],
+        "answer": 2,
+        "explanation_ja": "must not exceed は「~を超えてはならない」。「以上」や「ちょうど」は別の条件。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "The name must be a ____ DNS label.",
+        "choices_en": [
+          "various",
+          "visible",
+          "valid",
+          "vacant"
+        ],
+        "answer": 2,
+        "explanation_ja": "「a valid DNS label」で「有効なDNSラベル」。vacant(空いている)・various(様々な)・visible(見える)は、ラベルの形式条件にならない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "The value must be between 1 and 100, inclusive.",
+        "choices_ja": [
+          "値は1以上100以下でなければならない",
+          "値は1か100のどちらかでなければならない",
+          "値は1より大きく100より小さくなければならない"
+        ],
+        "answer": 0,
+        "explanation_ja": "between 1 and 100, inclusive は「1と100を含めて1以上100以下」。「より大きく、より小さく」なら exclusive の意味。"
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "docs-keep-in-mind",
+    "category": "docs",
+    "source": "MDN",
+    "pattern": "Keep in mind that X",
+    "meaning_ja": "Xを念頭に置いておいてください",
+    "example_en": "Keep in mind that changes may take a few minutes to propagate.",
+    "example_ja": "変更が反映されるまで数分かかる場合があることを念頭に置いてください。",
+    "note_ja": "Note that と近いが、「運用上こうなりがち」という実務的な含意を持つことが多い。反映遅延・制限・コストなどの話題でよく出る。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Keep in mind that this action may incur additional charges.",
+        "choices_ja": [
+          "この操作は追加料金を自動的に返金します",
+          "この操作で追加料金が発生する可能性があることに留意してください",
+          "この操作は常に無料です"
+        ],
+        "answer": 1,
+        "explanation_ja": "Keep in mind that ~ は「~を念頭に置く」。追加料金が発生しうるという注意で、「常に無料」は逆。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Keep in ____ that DNS changes can take time.",
+        "choices_en": [
+          "mind",
+          "hand",
+          "head",
+          "eye"
+        ],
+        "answer": 0,
+        "explanation_ja": "「Keep in mind」は決まった言い回し。hand・head・eye では「念頭に置く」の意味にならない(eye は keep an eye on の形で別の意味)。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Keep in mind that the cache may serve ____ data for a short time.",
+        "choices_en": [
+          "static",
+          "stable",
+          "strict",
+          "stale"
+        ],
+        "answer": 3,
+        "explanation_ja": "cache が「古い」データを返すので stale。static(静的)・stable(安定した)・strict(厳格な)は、キャッシュ遅延の説明にならない。"
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "docs-starting-with-version",
+    "category": "docs",
+    "source": "Python docs",
+    "pattern": "Starting with/As of version X, Y no longer Z",
+    "meaning_ja": "バージョンX以降、YはもうZしない",
+    "example_en": "Starting with version 2.0, the client no longer retries requests automatically.",
+    "example_ja": "バージョン2.0以降、クライアントはリクエストを自動的に再試行しなくなった。",
+    "note_ja": "no longer は「以前はしていたが今はしない」。アップグレード時の破壊的変更(breaking change)を見つける手がかりになる。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "As of v3, the library no longer supports Python 2.",
+        "choices_ja": [
+          "v3以降、このライブラリはPython 2をサポートしない",
+          "v3以降、このライブラリはPython 2のみをサポートする",
+          "v3では初めてPython 2をサポートした"
+        ],
+        "answer": 0,
+        "explanation_ja": "no longer supports は「もうサポートしない」。「のみサポート」「初めてサポート」は逆の方向。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Starting ____ version 4.0, this flag is enabled by default.",
+        "choices_en": [
+          "by",
+          "of",
+          "with",
+          "for"
+        ],
+        "answer": 2,
+        "explanation_ja": "「Starting with version X」で「バージョンX以降」。by・for・of ではこの言い回しにならない(Starting from も使える)。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "The command no longer accepts the `--force` flag.",
+        "choices_ja": [
+          "そのコマンドは `--force` フラグを今後追加する",
+          "そのコマンドは `--force` フラグを必須とする",
+          "そのコマンドはもう `--force` フラグを受け付けない"
+        ],
+        "answer": 2,
+        "explanation_ja": "no longer accepts は「もう受け付けない」。「必須とする」ではない。"
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "docs-for-backward-compatibility",
+    "category": "docs",
+    "source": "Python docs",
+    "pattern": "X is kept/retained for backward compatibility",
+    "meaning_ja": "Xは後方互換性のために残されている",
+    "example_en": "This alias is kept for backward compatibility and should not be used in new code.",
+    "example_ja": "このエイリアスは後方互換性のために残されており、新しいコードでは使うべきではない。",
+    "note_ja": "legacy / for compatibility only も同系統。新規コードでは別のAPIを使う、という意味が含まれるのが普通。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "This option exists for backward compatibility only.",
+        "choices_ja": [
+          "このオプションは最新機能のために追加された",
+          "このオプションは前方互換性のみを保証する",
+          "このオプションは後方互換性のためだけに存在する"
+        ],
+        "answer": 2,
+        "explanation_ja": "for backward compatibility only は「後方互換性のためだけに存在する」。最新機能のために追加された、とは逆。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "The old parameter name is retained for backward ____.",
+        "choices_en": [
+          "availability",
+          "stability",
+          "capability",
+          "compatibility"
+        ],
+        "answer": 3,
+        "explanation_ja": "「backward compatibility」で「後方互換性」。capability(能力)・availability(可用性)・stability(安定性)は、旧名称を残す理由を表す語ではない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "New code should avoid APIs that are \"kept for backward compatibility\".",
+        "choices_ja": [
+          "新規コードで必須である",
+          "新規コードで優先して使うべきである",
+          "新規コードでは避けるのが望ましい"
+        ],
+        "answer": 2,
+        "explanation_ja": "kept for backward compatibility は旧コード向けの残置で、新規コードでは別の API を使うのが普通。"
+      }
+    ],
+    "level": 3
+  },
+  {
+    "id": "docs-we-recommend",
+    "category": "docs",
+    "source": "AWS documentation",
+    "pattern": "We recommend that you X / It is recommended to X",
+    "meaning_ja": "Xすることを推奨する",
+    "example_en": "We recommend that you rotate access keys regularly.",
+    "example_ja": "アクセスキーは定期的にローテーションすることを推奨する。",
+    "note_ja": "recommend は強制ではない。ただし security best practice に関する推奨は、無視すると監査やインシデントで問題になる。recommend の後ろの動詞は原形(you rotate)になる点にも注意。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "We recommend that you enable MFA.",
+        "choices_ja": [
+          "MFAを無効にすることを推奨する",
+          "MFAは必須で、無効にできない",
+          "MFAを有効にすることを推奨する"
+        ],
+        "answer": 2,
+        "explanation_ja": "We recommend that you enable ~ は「~を有効にすることを推奨」。無効化の推奨でも、必須でもない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "We recommend that you ____ the default password immediately.",
+        "choices_en": [
+          "keep",
+          "share",
+          "reuse",
+          "change"
+        ],
+        "answer": 3,
+        "explanation_ja": "デフォルトのパスワードは安全上すぐに change(変更)する。keep・share・reuse は推奨とは逆の行動。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "We recommend using a customer managed key.",
+        "choices_ja": [
+          "カスタマー管理キーの使用が必須である",
+          "カスタマー管理キーの使用を推奨する",
+          "カスタマー管理キーの使用は禁止されている"
+        ],
+        "answer": 1,
+        "explanation_ja": "recommend は強制ではなく推奨。「必須」は must、「禁止」は must not で表す。"
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "docs-behavior-is-undefined",
+    "category": "docs",
+    "source": "C++ reference",
+    "pattern": "The behavior is undefined if X",
+    "meaning_ja": "Xの場合、動作は未定義である",
+    "example_en": "The behavior is undefined if the pointer is null.",
+    "example_ja": "ポインタがnullの場合、動作は未定義である。",
+    "note_ja": "「エラーになる」ではなく「何が起きても仕様上は保証されない」。クラッシュだけでなく、一見正常に動いて後で壊れる場合もある。unspecified(複数の結果から選ばれる)とは区別される。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "The behavior is undefined if the index is out of range.",
+        "choices_ja": [
+          "インデックスが範囲外の場合、0が返される",
+          "インデックスが範囲外の場合、必ず例外が投げられる",
+          "インデックスが範囲外の場合、動作は未定義である"
+        ],
+        "answer": 2,
+        "explanation_ja": "undefined は「定義されていない」ので、何が起きても保証されない。「必ず例外」「0が返る」は定義された動作。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Modifying a string literal results in ____ behavior.",
+        "choices_en": [
+          "optional",
+          "defined",
+          "deterministic",
+          "undefined"
+        ],
+        "answer": 3,
+        "explanation_ja": "string literal を変更すると undefined behavior になる(C/C++)。defined や deterministic は逆の意味で、optional は文意に合わない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "\"Results are unspecified\" differs from \"undefined behavior\" because ...",
+        "choices_ja": [
+          "unspecified は必ずクラッシュする",
+          "unspecified は必ず例外を投げる",
+          "unspecified は複数の妥当な結果のどれかになる、という意味合い"
+        ],
+        "answer": 2,
+        "explanation_ja": "unspecified は「複数の妥当な結果のどれかになるが、どれかは規定されない」。undefined behavior はクラッシュも含め何が起きてもよい点で異なる。"
+      }
+    ],
+    "level": 3
+  },
+  {
+    "id": "docs-only-available-in",
+    "category": "docs",
+    "source": "AWS documentation",
+    "pattern": "X is only available in Y / X is available on Z plans",
+    "meaning_ja": "XはY(リージョン・バージョン)でのみ利用できる / Zプランで利用できる",
+    "example_en": "This feature is only available in the US East (N. Virginia) Region.",
+    "example_ja": "この機能は米国東部(バージニア北部)リージョンでのみ利用できる。",
+    "note_ja": "リージョン・プラン・バージョンの制限を示す。画面にボタンが見当たらないときの原因確認に役立つ。available と supported は近いが、available は「提供されている」ことを指す。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "This feature is only available in select regions.",
+        "choices_ja": [
+          "この機能はすべてのリージョンで利用できる",
+          "この機能は選択したリージョンでは利用できない",
+          "この機能は一部のリージョンでのみ利用できる"
+        ],
+        "answer": 2,
+        "explanation_ja": "only available in select regions は「一部のリージョンでのみ」。「すべてのリージョンで」は only に反する。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "SSO is available ____ the Enterprise plan.",
+        "choices_en": [
+          "of",
+          "on",
+          "at",
+          "to"
+        ],
+        "answer": 1,
+        "explanation_ja": "「available on the Enterprise plan」で「Enterpriseプランで利用できる」。プランには on を使う。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Generally available (GA)",
+        "choices_ja": [
+          "一般提供されている(正式リリース済み)",
+          "限定公開のテスト段階",
+          "提供終了済み"
+        ],
+        "answer": 0,
+        "explanation_ja": "Generally available(GA)は「一般提供開始済み」。限定公開は preview、提供終了は end of life と書く。"
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "docs-takes-precedence-over",
+    "category": "docs",
+    "source": "Kubernetes docs",
+    "pattern": "X takes precedence over Y",
+    "meaning_ja": "XはYより優先される",
+    "example_en": "Values set on the command line take precedence over values in the configuration file.",
+    "example_ja": "コマンドラインで設定した値は、設定ファイルの値より優先される。",
+    "note_ja": "設定の優先順位(環境変数・フラグ・設定ファイル)の説明で頻出。overrides とほぼ同義。「どれが勝つか」を逆に読むと設定ミスにつながる。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Environment variables take precedence over the config file.",
+        "choices_ja": [
+          "環境変数は設定ファイルより優先される",
+          "設定ファイルは環境変数より優先される",
+          "環境変数と設定ファイルは無関係である"
+        ],
+        "answer": 0,
+        "explanation_ja": "A takes precedence over B は「AがBより優先」。設定ファイルが優先、というのは逆。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "A rule with a higher priority takes ____ over a rule with a lower priority.",
+        "choices_en": [
+          "presence",
+          "preference of",
+          "priority to",
+          "precedence"
+        ],
+        "answer": 3,
+        "explanation_ja": "「takes precedence over」は決まった言い回し。presence は「存在」、preference of や priority to は take の後で使えない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "The flag overrides the default value.",
+        "choices_ja": [
+          "フラグは無視される",
+          "デフォルト値がフラグを上書きする",
+          "フラグがデフォルト値を上書きする"
+        ],
+        "answer": 2,
+        "explanation_ja": "overrides は「上書きする」なので、フラグがデフォルト値を上書きする。逆ではない。"
+      }
+    ],
+    "level": 2
+  },
+  {
+    "id": "docs-this-is-a-no-op",
+    "category": "docs",
+    "source": "React docs",
+    "pattern": "X is a no-op if Y",
+    "meaning_ja": "Yの場合、Xは何もしない(無操作である)",
+    "example_en": "Calling `close()` on an already closed connection is a no-op.",
+    "example_ja": "すでに閉じた接続に対して `close()` を呼んでも何も起きない。",
+    "note_ja": "no-op は no operation の略。エラーにならず安全に再呼び出しできる(冪等)ことを示す場合が多いが、期待した処理が実行されていない可能性も意味する。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "If the key does not exist, delete() is a no-op.",
+        "choices_ja": [
+          "キーが存在しなければ、delete() は例外を投げる",
+          "キーが存在しなければ、delete() は何もしない",
+          "キーが存在しなければ、delete() はキーを作成する"
+        ],
+        "answer": 1,
+        "explanation_ja": "no-op は何もしない操作。キーが存在しなければ何も起きず、作成も例外も起きない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "Calling this method twice is safe; the second call is a ____.",
+        "choices_en": [
+          "timeout",
+          "no-op",
+          "rollback",
+          "retry"
+        ],
+        "answer": 1,
+        "explanation_ja": "二度目の呼び出しが安全=何も起きないので no-op。rollback(巻き戻し)・timeout・retry は何かが起きる処理。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "The operation is idempotent.",
+        "choices_ja": [
+          "一度しか実行できない",
+          "同じ操作を繰り返しても結果は変わらない",
+          "実行すると必ず失敗する"
+        ],
+        "answer": 1,
+        "explanation_ja": "idempotent は「何度繰り返しても結果が同じ」。no-op はその一例だが、「一度しか実行できない」「必ず失敗する」ではない。"
+      }
+    ],
+    "level": 3
+  },
+  {
+    "id": "docs-not-guaranteed",
+    "category": "docs",
+    "source": "Python docs",
+    "pattern": "X is not guaranteed (to Y)",
+    "meaning_ja": "Xは(Yであると)保証されていない",
+    "example_en": "The order of the results is not guaranteed and may change between releases.",
+    "example_ja": "結果の順序は保証されておらず、リリース間で変わることがある。",
+    "note_ja": "実装上たまたまそう動いているだけで、仕様ではないという意味。この挙動に依存したコードは、ライブラリの更新で突然壊れうる。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Iteration order is not guaranteed.",
+        "choices_ja": [
+          "反復の順序は保証されていない",
+          "反復の順序は固定で変更できない",
+          "反復は常に昇順で行われる"
+        ],
+        "answer": 0,
+        "explanation_ja": "not guaranteed は「仕様として保証していない」。「常に昇順」「固定で変更不可」と断定する文ではない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "This is an implementation detail and is not ____ to remain the same.",
+        "choices_en": [
+          "entitled",
+          "forced",
+          "permitted",
+          "guaranteed"
+        ],
+        "answer": 3,
+        "explanation_ja": "「not guaranteed to remain the same」で「同じままである保証はない」。entitled(資格がある)・forced(強制された)・permitted(許可された)は、挙動の保証を表す語ではない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Do not rely on undocumented behavior.",
+        "choices_ja": [
+          "文書化されていない挙動に依存してはならない",
+          "文書化されていない挙動を優先して使うべきだ",
+          "文書化されていない挙動は自動で文書化される"
+        ],
+        "answer": 0,
+        "explanation_ja": "rely on は「~に依存する」。undocumented は仕様として書かれていないので、将来変わっても文句は言えない。"
+      }
+    ],
+    "level": 3
+  },
+  {
+    "id": "docs-mutually-exclusive",
+    "category": "docs",
+    "source": "Docker docs",
+    "pattern": "A and B are mutually exclusive",
+    "meaning_ja": "AとBは同時には指定できない(どちらか一方のみ)",
+    "example_en": "The `--tag` and `--digest` options are mutually exclusive.",
+    "example_ja": "`--tag` と `--digest` オプションは同時に指定できない。",
+    "note_ja": "両方を指定するとエラーになるか、片方が無視されることが多い。mutually は「相互に」、exclusive は「排他的な」で、どちらか一方を選ぶ設計。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "These two flags are mutually exclusive.",
+        "choices_ja": [
+          "この2つのフラグはどちらも非推奨である",
+          "この2つのフラグは同時に指定できない",
+          "この2つのフラグは必ず一緒に指定する"
+        ],
+        "answer": 1,
+        "explanation_ja": "mutually exclusive は「排他的」で、同時には使えない。必ず一緒に指定する、という意味ではない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "You can specify either `--user` or `--token`, but they are mutually ____.",
+        "choices_en": [
+          "inclusive",
+          "dependent",
+          "exclusive",
+          "required"
+        ],
+        "answer": 2,
+        "explanation_ja": "「mutually exclusive」で「同時に指定できない」。inclusive(含む)・dependent(依存する)・required(必須)は、either A or B の関係と合わない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "Use either X or Y, but not both.",
+        "choices_ja": [
+          "XとYの両方を使う",
+          "XもYも使わない",
+          "XかYのどちらか一方だけを使う"
+        ],
+        "answer": 2,
+        "explanation_ja": "either X or Y, but not both は「どちらか一方のみ」。both を使う、どちらも使わない、は文意に反する。"
+      }
+    ],
+    "level": 3
+  },
+  {
+    "id": "docs-no-effect-unless",
+    "category": "docs",
+    "source": "Kubernetes docs",
+    "pattern": "X has no effect unless Y",
+    "meaning_ja": "Yでない限り、Xは効果がない(Yのときだけ効く)",
+    "example_en": "This flag has no effect unless `--watch` is also set.",
+    "example_ja": "このフラグは `--watch` も指定しない限り効果がない。",
+    "note_ja": "設定したのに変化がないときの原因になりやすい。unless 以下が前提条件で、これを満たさないとオプション自体が無視される。",
+    "drills": [
+      {
+        "type": "choice",
+        "prompt_en": "Setting this flag alone has no effect.",
+        "choices_ja": [
+          "このフラグを設定するとエラーになる",
+          "このフラグだけを設定すれば十分な効果がある",
+          "このフラグだけを設定しても効果はない"
+        ],
+        "answer": 2,
+        "explanation_ja": "has no effect は「効果がない」。alone(単独で)の場合に効かないという意味で、十分な効果がある、エラーになる、ではない。"
+      },
+      {
+        "type": "cloze",
+        "sentence_en": "The `cert` option has no effect ____ TLS is enabled.",
+        "choices_en": [
+          "although",
+          "unless",
+          "whereas",
+          "because"
+        ],
+        "answer": 1,
+        "explanation_ja": "「no effect unless ~」で「~でない限り効果がない」。whereas(一方で)・although(~だが)・because(~なので)では前提条件を表せない。"
+      },
+      {
+        "type": "choice",
+        "prompt_en": "This option is ignored unless the cache is enabled.",
+        "choices_ja": [
+          "このオプションは、キャッシュが有効なときだけ使われる",
+          "このオプションは、キャッシュが有効なときは無視される",
+          "このオプションは、キャッシュを有効にする"
+        ],
+        "answer": 0,
+        "explanation_ja": "ignored unless ~ は「~でない限り無視される」=~のときだけ使われる。unless を「~のときは」と読むと逆になる。"
+      }
+    ],
+    "level": 3
+  }
+]
