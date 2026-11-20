@@ -1,0 +1,6 @@
+# 公開リポジトリ: ローカルの絶対パス・セッション URL が混入したコミットを止める(このフック自身は対象外)
+if git diff --cached -U0 --diff-filter=AM -- . ':!.husky/pre-commit' | grep -nE '^\+.*(/Users/[^/ ]+/|/home/[^/ ]+/|[A-Z]:\\\\Users\\\\|claude\.ai/code/session)' ; then
+  echo "pre-commit: ローカルパスまたはセッション URL が含まれています。除去してから再コミットしてください" >&2
+  exit 1
+fi
+pnpm exec lint-staged

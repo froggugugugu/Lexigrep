@@ -1,0 +1,11 @@
+{
+  "id": "typescript",
+  "name": "TypeScript",
+  "category": "language_fw",
+  "description_ja": "E2E 用の最小フィクスチャ",
+  "official_urls": ["https://www.typescriptlang.org/docs/handbook/"],
+  "license_note": "",
+  "version": 1,
+  "crawled_at": null,
+  "is_published": true
+}

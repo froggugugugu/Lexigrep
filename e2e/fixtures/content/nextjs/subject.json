@@ -1,0 +1,11 @@
+{
+  "id": "nextjs",
+  "name": "Next.js",
+  "category": "language_fw",
+  "description_ja": "E2E 用の最小フィクスチャ",
+  "official_urls": ["https://nextjs.org/docs"],
+  "license_note": "",
+  "version": 1,
+  "crawled_at": null,
+  "is_published": true
+}

@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/*
+ * Lexigrep デザイントークン
+ * - ダークテーマ標準・ライトテーマ対応
+ * - エディタを想起させる配色。等幅フォントは実文だけに使う
+ * - 色は必ずセマンティックトークン経由で使う(ハードコード禁止)
+ */
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* 既定はダーク。system はインラインスクリプトが OS 設定で dark / light に解決する */
+[data-theme="light"] {
+  color-scheme: light;
+  --background: #f6f8fa;
+  --surface: #ffffff;
+  --surface-2: #eef2f6;
+  --border: #d0d7de;
+  --foreground: #1f2328;
+  --muted: #59636e;
+  --accent: #0969da;
+  --accent-foreground: #ffffff;
+  --success: #1a7f37;
+  --danger: #cf222e;
+  --warning: #9a6700;
+  --highlight: rgba(255, 213, 79, 0.45);
+  --code-bg: #f0f3f6;
+  --code-keyword: #cf222e;
+  --code-string: #0a3069;
+  --code-comment: #6e7781;
+}
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #0b0f14;
+  --surface: #121820;
+  --surface-2: #1a222c;
+  --border: #263241;
+  --foreground: #e6edf3;
+  --muted: #8b98a5;
+  --accent: #4cc2ff;
+  --accent-foreground: #06131c;
+  --success: #3fb950;
+  --danger: #f85149;
+  --warning: #d29922;
+  --highlight: rgba(242, 204, 96, 0.35);
+  --code-bg: #0d1117;
+  --code-keyword: #ff7b72;
+  --code-string: #a5d6ff;
+  --code-comment: #8b949e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-highlight: var(--highlight);
+  --color-code-bg: var(--code-bg);
+  --color-code-keyword: var(--code-keyword);
+  --color-code-string: var(--code-string);
+  --color-code-comment: var(--code-comment);
+  /* 本文は端末のシステムフォント(HIG)。等幅は実文の表示だけに使う */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, system-ui, "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  --font-mono:
+    var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* 親指操作の最小タップ領域(WCAG / HIG: 44px) */
+  --spacing-tap: 44px;
+  /* アイランド(高さ 62px + 下の余白)に内容が隠れないための下余白 */
+  --spacing-island: calc(
+    62px + max(0.75rem, env(safe-area-inset-bottom)) + 0.75rem
+  );
+}
+
+html {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100%;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overscroll-behavior-y: none;
+}
+
+/* 学習対象語句のハイライト(実文内) */
+mark.lg-target {
+  background: var(--highlight);
+  color: inherit;
+  border-radius: 0.25rem;
+  padding: 0 0.15em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* 正誤フィードバックと遷移に限定したアニメーション */
+@keyframes lg-pop {
+  0% {
+    transform: scale(0.98);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.lg-feedback-enter {
+  animation: lg-pop 160ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lg-feedback-enter {
+    animation: none;
+  }
+}

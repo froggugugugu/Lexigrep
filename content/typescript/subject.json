@@ -1,0 +1,11 @@
+{
+  "id": "typescript",
+  "name": "TypeScript",
+  "category": "language_fw",
+  "description_ja": "Handbook とコンパイラエラーで使われる型システムの語彙・定型構文",
+  "official_urls": ["https://www.typescriptlang.org/docs/handbook/"],
+  "license_note": "TypeScript ドキュメント(© Microsoft Corporation、CC BY 4.0。microsoft/TypeScript-Website)からの文単位の引用。原文は改変せず、各カードに出典 URL を付けている",
+  "version": 1,
+  "crawled_at": "2026-11-01T05:38:04.008Z",
+  "is_published": true
+}

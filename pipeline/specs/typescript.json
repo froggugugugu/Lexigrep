@@ -1,0 +1,1099 @@
+{
+  "subject_id": "typescript",
+  "generated_by": "claude-fable-5-1",
+  "specs": [
+    {
+      "layer": "pattern",
+      "target": "is not assignable to",
+      "meaning_ja": "〜に代入できない(型の互換性がない)",
+      "note_ja": "型エラーの定型文。前が実際の型、後ろが期待される型。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "〜に代入できない(型に互換性がない)",
+        "〜に割り当て済みである",
+        "〜と完全に同じ型である",
+        "〜から推論できない"
+      ],
+      "answer": 0,
+      "rank": 1,
+      "related": ["assignable", "narrowing"]
+    },
+    {
+      "layer": "vocab",
+      "target": "assignable",
+      "meaning_ja": "代入可能な(互換性がある)",
+      "note_ja": "A is assignable to B で「A の値を B 型の場所に置ける」。エラー文では not assignable の形で最頻出。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "代入できる(互換性がある)",
+        "割り当て済みの",
+        "変更できる",
+        "到達できる"
+      ],
+      "answer": 0,
+      "rank": 2,
+      "related": ["is not assignable to"]
+    },
+    {
+      "layer": "vocab",
+      "target": "inferred",
+      "meaning_ja": "(型が)推論された",
+      "note_ja": "infer の過去分詞。型注釈が無くても初期値などから型が決まること。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "(型が)推論された",
+        "明示的に宣言された",
+        "強制的に変換された",
+        "省略された"
+      ],
+      "answer": 0,
+      "rank": 3,
+      "related": ["type annotation", "explicitly"]
+    },
+    {
+      "layer": "vocab",
+      "target": "explicitly",
+      "meaning_ja": "明示的に",
+      "note_ja": "implicitly(暗黙に)と対で覚える。型を自分で書くか、推論に任せるかの対比で頻出。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["明示的に", "暗黙のうちに", "例外的に", "一時的に"],
+      "answer": 0,
+      "rank": 4,
+      "related": ["implicitly"]
+    },
+    {
+      "layer": "vocab",
+      "target": "implicitly",
+      "meaning_ja": "暗黙のうちに(明示せずに)",
+      "note_ja": "noImplicitAny の implicit。書いていないのに自動的にそうなる、というニュアンス。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["暗黙のうちに", "明示的に", "厳密に", "部分的に"],
+      "answer": 0,
+      "rank": 5,
+      "related": ["explicitly"]
+    },
+    {
+      "layer": "vocab",
+      "target": "optional",
+      "meaning_ja": "省略可能な",
+      "note_ja": "プロパティ名の後ろの ? が optional の印。required(必須)の対義語。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": ["optional", "required", "readonly", "abstract"],
+      "answer": 0,
+      "rank": 6,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "type annotation",
+      "meaning_ja": "型注釈(変数や引数に書き添える型)",
+      "note_ja": "let x: number の「: number」の部分。省略すると推論に任せる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "型注釈(値に書き添える型の指定)",
+        "コードに付けるコメント",
+        "実行時に型を検査する処理",
+        "型を強制的に変換する構文"
+      ],
+      "answer": 0,
+      "rank": 7,
+      "related": ["inferred"]
+    },
+    {
+      "layer": "system_term",
+      "target": "narrowing",
+      "meaning_ja": "型の絞り込み(条件分岐で取りうる型を狭めること)",
+      "note_ja": "typeof や in、等価比較による分岐で、union 型から特定の型に絞ること。",
+      "question_type": "next_action",
+      "prompt_ja": "この説明を読んだら、コードでは何をする?",
+      "options": [
+        "typeof や in などの分岐で型を絞ってから使う",
+        "any にキャストして型エラーを消す",
+        "tsconfig の strict を無効にする",
+        "型注釈をすべて削除する"
+      ],
+      "answer": 0,
+      "rank": 8,
+      "related": ["union type", "type predicate"]
+    },
+    {
+      "layer": "system_term",
+      "target": "union",
+      "match": "union type",
+      "meaning_ja": "合併型(A | B のように複数の型のいずれか)",
+      "note_ja": "string | number のように「どちらか」を表す。使う前に narrowing で絞る。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "複数の型のいずれかを表す型",
+        "複数の型をすべて満たす型",
+        "型の集合を順序付けたもの",
+        "型を結合して新しい名前を付けたもの"
+      ],
+      "answer": 0,
+      "rank": 9,
+      "related": ["narrowing", "intersection"]
+    },
+    {
+      "layer": "system_term",
+      "target": "intersection",
+      "match": "intersection type",
+      "meaning_ja": "交差型(A & B のように両方の型をすべて満たす)",
+      "note_ja": "複数の型のメンバーを合わせ持つ型。union(いずれか)との対比で覚える。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "複数の型をすべて満たす型",
+        "複数の型のいずれかを表す型",
+        "型同士の共通部分だけを残した型",
+        "型を交互に切り替える型"
+      ],
+      "answer": 0,
+      "rank": 10,
+      "related": ["union"]
+    },
+    {
+      "layer": "system_term",
+      "target": "generic",
+      "match": "generic",
+      "url_hint": "generics",
+      "meaning_ja": "ジェネリック(型をパラメータとして受け取る仕組み)",
+      "note_ja": "Array<T> の T のように、使う側が型を指定できる。関数・クラス・型に使える。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "型をパラメータとして受け取る仕組み",
+        "すべての型を受け入れる any の別名",
+        "汎用的なユーティリティ関数",
+        "実行時に型を生成する機能"
+      ],
+      "answer": 0,
+      "rank": 11,
+      "related": ["constraint"]
+    },
+    {
+      "layer": "vocab",
+      "target": "constraint",
+      "url_hint": "generics",
+      "meaning_ja": "制約(型引数が満たすべき条件)",
+      "note_ja": "T extends Lengthwise のように、ジェネリックの型引数に課す条件を指す。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["制約(満たすべき条件)", "定数", "コンストラクタ", "構成要素"],
+      "answer": 0,
+      "rank": 12,
+      "related": ["generic"]
+    },
+    {
+      "layer": "system_term",
+      "target": "type predicate",
+      "url_hint": "narrowing",
+      "meaning_ja": "型述語(戻り値の型を「x is T」と書く、ユーザー定義の型ガード)",
+      "note_ja": "function isFish(pet): pet is Fish の形。true を返すと呼び出し側で型が絞られる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "戻り値で引数の型を断定する関数の型(x is T)",
+        "型の前提条件を表すコメント",
+        "型が一致するか実行時に検査する演算子",
+        "条件付き型の分岐条件"
+      ],
+      "answer": 0,
+      "rank": 13,
+      "related": ["narrowing"]
+    },
+    {
+      "layer": "system_term",
+      "target": "discriminated union",
+      "meaning_ja": "判別可能な合併型(共通のリテラル型プロパティで分岐できる union)",
+      "note_ja": "kind: \"circle\" | \"square\" のようなタグで switch 分岐し、各分岐で型が絞られる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "共通のタグプロパティで種類を見分けられる union 型",
+        "差別化のために名前を変えた型",
+        "判定不能な型の集合",
+        "条件付き型で分岐した結果の型"
+      ],
+      "answer": 0,
+      "rank": 14,
+      "related": ["union", "narrowing"]
+    },
+    {
+      "layer": "system_term",
+      "target": "declaration file",
+      "meaning_ja": "宣言ファイル(.d.ts。実装を含まず型情報だけを持つ)",
+      "note_ja": "JavaScript のライブラリに型を与えるためのファイル。@types パッケージはこれの集まり。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "型情報だけを持つ .d.ts ファイル",
+        "変数宣言をまとめた設定ファイル",
+        "コンパイル結果の JavaScript ファイル",
+        "ライセンスの宣言文"
+      ],
+      "answer": 0,
+      "rank": 15,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "type assertion",
+      "meaning_ja": "型アサーション(as T で「この値は T だ」とコンパイラに伝える)",
+      "note_ja": "実行時の変換ではなく、コンパイラへの断言。間違っていてもエラーにならないので注意。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "as で型をコンパイラに断言する構文",
+        "実行時に型を検査して例外を投げる処理",
+        "テストで型を検証する関数",
+        "型が正しいことを保証する実行時チェック"
+      ],
+      "answer": 0,
+      "rank": 16,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "literal type",
+      "meaning_ja": "リテラル型(\"left\" や 42 など、特定の値そのものを表す型)",
+      "note_ja": "string より狭い型。union と組み合わせて取りうる値を列挙するのに使う。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "特定の値そのものを表す型",
+        "文字列を表す型の別名",
+        "文字どおりに解釈される正規表現の型",
+        "型の名前を文字列で持つ型"
+      ],
+      "answer": 0,
+      "rank": 17,
+      "related": ["union"]
+    },
+    {
+      "layer": "system_term",
+      "target": "structural",
+      "match": "structural",
+      "meaning_ja": "構造的な(名前ではなく形で型を比べる)",
+      "note_ja": "TypeScript は構造的型付け。同じプロパティを持てば別名の型でも互換とみなす。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "(型を)名前ではなく構造で比べる",
+        "(型を)クラス名で厳密に区別する",
+        "(型を)構造体として実行時に保持する",
+        "(型を)階層的に継承させる"
+      ],
+      "answer": 0,
+      "rank": 18,
+      "related": ["assignable"]
+    },
+    {
+      "layer": "system_term",
+      "target": "index signature",
+      "meaning_ja": "インデックスシグネチャ([key: string]: T。任意のキーに対する型の宣言)",
+      "note_ja": "プロパティ名が事前に分からないオブジェクトの型を表す。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "任意のキーに対する値の型を宣言する構文",
+        "配列の添字の範囲を検査する機能",
+        "関数の引数の並びを表す型",
+        "型にインデックス番号を付ける注釈"
+      ],
+      "answer": 0,
+      "rank": 19,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "mapped type",
+      "meaning_ja": "マップ型(既存の型のキーを走査して新しい型を作る)",
+      "note_ja": "{ [K in keyof T]: ... } の形。Partial や Readonly はこれで作られている。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "既存の型のキーを走査して作る型",
+        "Map オブジェクトの型",
+        "キーと値を対応付ける辞書の型",
+        "配列を変換する関数の型"
+      ],
+      "answer": 0,
+      "rank": 20,
+      "related": ["conditional type"]
+    },
+    {
+      "layer": "system_term",
+      "target": "conditional type",
+      "meaning_ja": "条件付き型(T extends U ? X : Y で型を分岐する)",
+      "note_ja": "三項演算子のように型レベルで分岐する。infer と組み合わせて型を取り出すことも多い。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "型レベルで分岐する T extends U ? X : Y",
+        "条件を満たすときだけ存在するプロパティ",
+        "if 文の中で使える型",
+        "実行時の条件で変わる型"
+      ],
+      "answer": 0,
+      "rank": 21,
+      "related": ["mapped type"]
+    },
+    {
+      "layer": "system_term",
+      "target": "tuple",
+      "meaning_ja": "タプル(要素ごとに型と個数が決まった配列)",
+      "note_ja": "[string, number] のように位置ごとに型が違う固定長の配列。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "位置ごとに型が決まった固定長の配列",
+        "重複を許さない集合",
+        "キーと値の組",
+        "二つの値を交換する操作"
+      ],
+      "answer": 0,
+      "rank": 22,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "enum",
+      "meaning_ja": "列挙型(名前付きの定数の集まり)",
+      "note_ja": "TypeScript 独自の実行時機能。文字列 union で代替されることも多い。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "名前付き定数の集まりを表す型",
+        "要素を順に数え上げる関数",
+        "数値だけを許す型",
+        "列挙可能なプロパティの一覧"
+      ],
+      "answer": 0,
+      "rank": 23,
+      "related": ["literal type"]
+    },
+    {
+      "layer": "system_term",
+      "target": "never",
+      "match": "never",
+      "url_hint": "functions",
+      "meaning_ja": "never 型(値が決して存在しないことを表す)",
+      "note_ja": "例外を投げて戻らない関数の戻り値や、絞り込みで残りが無くなった状態を表す。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "値が決して存在しないことを表す型",
+        "null と undefined をまとめた型",
+        "どんな値でも入る型",
+        "戻り値が無い関数の型"
+      ],
+      "answer": 0,
+      "rank": 24,
+      "related": ["unknown"]
+    },
+    {
+      "layer": "system_term",
+      "target": "unknown",
+      "match": "unknown",
+      "url_hint": "functions",
+      "meaning_ja": "unknown 型(何でも入るが、絞り込むまで使えない安全な any)",
+      "note_ja": "any と違い、プロパティ参照や呼び出しの前に型の確認を強制される。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "何でも入るが、型を確認するまで操作できない型",
+        "型が未定義でエラーになる状態",
+        "any と完全に同じ型",
+        "宣言されていない変数の型"
+      ],
+      "answer": 0,
+      "rank": 25,
+      "related": ["never"]
+    },
+    {
+      "layer": "system_term",
+      "target": "overload",
+      "match": "overload",
+      "url_hint": "functions",
+      "meaning_ja": "オーバーロード(同じ関数に複数のシグネチャを宣言する)",
+      "note_ja": "引数の型や個数ごとに戻り値の型を変えたいときに使う。実装は 1 つ。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "同じ関数に複数の呼び出しシグネチャを宣言すること",
+        "関数に引数を渡しすぎてエラーになること",
+        "処理が重くてメモリを超過すること",
+        "親クラスのメソッドを上書きすること"
+      ],
+      "answer": 0,
+      "rank": 26,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "excess property",
+      "meaning_ja": "余分なプロパティ(オブジェクトリテラルに型に無いプロパティがある状態)",
+      "note_ja": "excess property check。リテラルを直接渡したときだけ厳しく検査される。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "型に定義されていない余分なプロパティ",
+        "値が大きすぎるプロパティ",
+        "アクセス権が強すぎるプロパティ",
+        "重複して宣言されたプロパティ"
+      ],
+      "answer": 0,
+      "rank": 27,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "contextual typing",
+      "meaning_ja": "文脈的型付け(使われる場所から引数などの型が推論されること)",
+      "note_ja": "コールバックの引数に注釈が不要なのはこの仕組みのおかげ。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "使われる場所の文脈から型を推論すること",
+        "コンテキストオブジェクトに型を付けること",
+        "実行時の状況で型を切り替えること",
+        "型をファイル単位で共有すること"
+      ],
+      "answer": 0,
+      "rank": 28,
+      "related": ["inferred"]
+    },
+    {
+      "layer": "vocab",
+      "target": "deprecated",
+      "meaning_ja": "非推奨の(今後削除される予定)",
+      "note_ja": "まだ動くが使うべきではない、という警告。エディタでは取り消し線で表示される。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "非推奨の(今後削除される予定)",
+        "廃止済みで動かない",
+        "実験的で不安定な",
+        "既定で有効な"
+      ],
+      "answer": 0,
+      "rank": 29,
+      "related": ["legacy"]
+    },
+    {
+      "layer": "vocab",
+      "target": "legacy",
+      "meaning_ja": "従来の・古い方式の",
+      "note_ja": "互換性のために残されている古い仕組みを指す。悪い意味ではないが新規採用は避ける。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "従来の(古い方式の)",
+        "正式に推奨された",
+        "遺産として保護された",
+        "最新の"
+      ],
+      "answer": 0,
+      "rank": 30,
+      "related": ["deprecated"]
+    },
+    {
+      "layer": "vocab",
+      "target": "resolve",
+      "match": "resolve",
+      "url_hint": "modules",
+      "meaning_ja": "解決する(参照先を特定する)",
+      "note_ja": "module resolution のように、import の文字列からファイルを特定する意味で使う。Promise の resolve とは別。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "解決する(参照先を特定する)",
+        "削除する",
+        "再試行する",
+        "解放する"
+      ],
+      "answer": 0,
+      "rank": 31,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "emit",
+      "match": "emit",
+      "meaning_ja": "(コンパイル結果を)出力する",
+      "note_ja": "tsc が JavaScript や .d.ts を書き出すこと。noEmit は「出力しない(型検査だけ)」。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "(コンパイル結果を)出力する",
+        "(エラーを)送出する",
+        "(値を)返す",
+        "(イベントを)購読する"
+      ],
+      "answer": 0,
+      "rank": 32,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "invoked",
+      "match": "can also be invoked",
+      "meaning_ja": "呼び出す(関数を実行する)",
+      "note_ja": "call とほぼ同義だが、ドキュメントではやや硬い言い方として頻出。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": ["invoked", "declared", "resolved", "verified"],
+      "answer": 0,
+      "rank": 33,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "ensure",
+      "match": "ensure",
+      "meaning_ja": "確実にする・保証する",
+      "note_ja": "Ensure that … で「必ず〜になるようにする」。手順書の指示文に多い。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["確実にする・保証する", "試みる", "避ける", "仮定する"],
+      "answer": 0,
+      "rank": 34,
+      "related": ["make sure"]
+    },
+    {
+      "layer": "vocab",
+      "target": "cumbersome",
+      "meaning_ja": "扱いにくい・面倒な",
+      "note_ja": "手間がかかって煩わしい、という評価。API 設計の文脈で「毎回同じ判断を迫られて cumbersome」のように使う。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "扱いにくい(面倒で手間がかかる)",
+        "危険な",
+        "冗長で遅い",
+        "互換性のない"
+      ],
+      "answer": 0,
+      "rank": 35,
+      "related": [],
+      "match": "cumbersome"
+    },
+    {
+      "layer": "vocab",
+      "target": "arbitrary",
+      "meaning_ja": "任意の(どんな〜でも)",
+      "note_ja": "制限が無いことを表す。「恣意的な」という否定的な意味はドキュメントでは薄い。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "任意の(どんな〜でも)",
+        "厳密に定義された",
+        "既知の",
+        "限定された"
+      ],
+      "answer": 0,
+      "rank": 36,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "subsequently",
+      "meaning_ja": "その後に(続いて)",
+      "note_ja": "subsequent calls(以降の呼び出し)のように、時系列で後のものを指す。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["その後に", "その前に", "同時に", "最初に"],
+      "answer": 0,
+      "rank": 37,
+      "related": [],
+      "match": "and subsequently"
+    },
+    {
+      "layer": "vocab",
+      "target": "incompatible",
+      "meaning_ja": "互換性のない",
+      "note_ja": "backwards compatible(後方互換)の形で頻出。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["互換性のない", "同一の", "互換性のある", "非推奨の"],
+      "answer": 0,
+      "rank": 38,
+      "related": [],
+      "match": "considered incompatible"
+    },
+    {
+      "layer": "vocab",
+      "target": "unambiguously",
+      "meaning_ja": "曖昧さなく(一意に)",
+      "note_ja": "ambiguous(曖昧な)の否定の副詞。解釈が一つに決まることを表す。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["曖昧さなく(一意に)", "野心的に", "部分的に", "暗黙のうちに"],
+      "answer": 0,
+      "rank": 39,
+      "related": [],
+      "match": "unambiguously elide"
+    },
+    {
+      "layer": "vocab",
+      "target": "trailing",
+      "meaning_ja": "末尾の",
+      "note_ja": "trailing comma(末尾のカンマ)、trailing whitespace(末尾の空白)。leading(先頭の)と対。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["末尾の", "先頭の", "隠れた", "追跡用の"],
+      "answer": 0,
+      "rank": 40,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "verbose",
+      "meaning_ja": "冗長な(記述や出力が長い)",
+      "note_ja": "--verbose オプションは詳細ログ。文章に対して使うと「くどい」。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["冗長な(記述や出力が長い)", "動詞的な", "不正確な", "簡潔な"],
+      "answer": 0,
+      "rank": 41,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "immutable",
+      "meaning_ja": "変更できない(不変の)",
+      "note_ja": "mutable(変更可能)の否定。readonly はプロパティを不変にする修飾子。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["変更できない", "変更できる", "変換された", "一時的な"],
+      "answer": 0,
+      "rank": 42,
+      "related": [],
+      "match": "arrays are immutable"
+    },
+    {
+      "layer": "vocab",
+      "target": "Non-nullable",
+      "meaning_ja": "null になりえない",
+      "note_ja": "nullable(null になりうる)の否定。strictNullChecks 下では型に null を含めない限り null は入らない。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "null になりえない",
+        "null になりうる",
+        "無効化できる",
+        "空文字列になりうる"
+      ],
+      "answer": 0,
+      "rank": 43,
+      "related": [],
+      "match": "non-nullable types"
+    },
+    {
+      "layer": "vocab",
+      "target": "shorthand",
+      "meaning_ja": "省略記法",
+      "note_ja": "長い書き方と同じ意味になる短い書き方。「速記」の意味から。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "省略記法",
+        "手書きのメモ",
+        "短い変数名",
+        "片手で打てるキー操作"
+      ],
+      "answer": 0,
+      "rank": 44,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "tedious",
+      "meaning_ja": "退屈で手間のかかる",
+      "note_ja": "難しくはないが単調で面倒、というニュアンス。移行作業の説明で使われる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "単調で手間のかかる",
+        "技術的に難しい",
+        "危険を伴う",
+        "時間に余裕がある"
+      ],
+      "answer": 0,
+      "rank": 45,
+      "related": [],
+      "match": "tedious"
+    },
+    {
+      "layer": "pattern",
+      "target": "Note that",
+      "meaning_ja": "〜に注意(補足の導入)",
+      "note_ja": "本文の後に例外や注意点を添えるときの定型。読み飛ばすと落とし穴にはまる。",
+      "question_type": "recognize_pattern",
+      "prompt_ja": null,
+      "options": [
+        "Note that this only works with classes.",
+        "Take a note of the class name.",
+        "The note explains the class.",
+        "Notes are not allowed in classes."
+      ],
+      "answer": 0,
+      "rank": 46,
+      "related": ["Keep in mind that"]
+    },
+    {
+      "layer": "pattern",
+      "target": "Keep in mind that",
+      "meaning_ja": "〜を忘れないでほしい(前提の注意)",
+      "note_ja": "Note that より少し柔らかい注意喚起。前提条件や制限を述べるときに使う。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "〜を覚えておいてほしい",
+        "〜を記憶に保存する",
+        "〜を心配している",
+        "〜を頭の中で計算する"
+      ],
+      "answer": 0,
+      "rank": 47,
+      "related": ["Note that"]
+    },
+    {
+      "layer": "pattern",
+      "target": "In other words",
+      "meaning_ja": "言い換えると",
+      "note_ja": "直前の説明を平易に言い直す合図。ここだけ読んでも要点が分かることが多い。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "言い換えると",
+        "他の言語では",
+        "別の単語を使って",
+        "他方では"
+      ],
+      "answer": 0,
+      "rank": 48,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "such as",
+      "meaning_ja": "〜のような(例示)",
+      "note_ja": "直後に具体例が続く。for example と違い文中に埋め込まれる。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": ["such as", "as such", "so that", "as well"],
+      "answer": 0,
+      "rank": 49,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "as long as",
+      "meaning_ja": "〜である限り(条件)",
+      "note_ja": "条件を満たす間は成り立つ、という制約の表現。長さの話ではない。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "〜である限り",
+        "〜と同じ長さで",
+        "〜するまでの間",
+        "〜ほど長く"
+      ],
+      "answer": 0,
+      "rank": 50,
+      "related": ["unless"]
+    },
+    {
+      "layer": "pattern",
+      "target": "rather than",
+      "meaning_ja": "〜ではなく(対比して選ぶ)",
+      "note_ja": "A rather than B で「B ではなく A」。推奨する側が前に来る。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "〜ではなく",
+        "〜よりもむしろ少なく",
+        "〜に加えて",
+        "〜のあとで"
+      ],
+      "answer": 0,
+      "rank": 51,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "In order to",
+      "meaning_ja": "〜するために(目的)",
+      "note_ja": "to だけでも同じ意味だが、手順書では目的を強調してこの形がよく使われる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["〜するために", "〜の順番で", "〜に従って", "〜の代わりに"],
+      "answer": 0,
+      "rank": 52,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "as well as",
+      "meaning_ja": "〜だけでなく〜も",
+      "note_ja": "A as well as B で A と B の両方。and より A を強調する。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "〜だけでなく〜も",
+        "〜と同じくらい上手に",
+        "〜の代わりに",
+        "〜よりも良く"
+      ],
+      "answer": 0,
+      "rank": 53,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "regardless of",
+      "meaning_ja": "〜に関わらず",
+      "note_ja": "条件に影響されないことを表す。設定の有無に関係なく、という文で頻出。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "〜に関わらず",
+        "〜を考慮して",
+        "〜に基づいて",
+        "〜を無視した結果"
+      ],
+      "answer": 0,
+      "rank": 54,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "unless",
+      "meaning_ja": "〜でない限り",
+      "note_ja": "if not と同じ。例外条件を示す。否定が入っているので読み違えやすい。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "〜でない限り",
+        "〜である限り",
+        "〜にもかかわらず",
+        "〜するまで"
+      ],
+      "answer": 0,
+      "rank": 55,
+      "related": ["as long as"]
+    },
+    {
+      "layer": "pattern",
+      "target": "whereas",
+      "meaning_ja": "一方で(対比)",
+      "note_ja": "前半と後半を対比する接続詞。二つの振る舞いの違いを説明するときに使う。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["一方で(対比)", "どこであっても", "〜なので", "それゆえ"],
+      "answer": 0,
+      "rank": 56,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "otherwise",
+      "meaning_ja": "そうでなければ",
+      "note_ja": "直前の条件が成り立たない場合の結果を示す。if/else の else に相当。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["そうでなければ", "その他の方法で", "ほかに", "同様に"],
+      "answer": 0,
+      "rank": 57,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "This means that",
+      "meaning_ja": "つまり〜ということだ(帰結)",
+      "note_ja": "直前の事実から導かれる結果を述べる。ここが実務上の影響であることが多い。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "つまり〜ということだ",
+        "これは〜を意図している",
+        "これは〜という意味を持つ単語だ",
+        "これは〜のための手段だ"
+      ],
+      "answer": 0,
+      "rank": 58,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "can be used to",
+      "meaning_ja": "〜するために使える",
+      "note_ja": "機能の用途を説明する定型。主語がその機能、to の後ろが目的。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": [
+        "can be used to",
+        "is used by",
+        "has to be used",
+        "was used for"
+      ],
+      "answer": 0,
+      "rank": 59,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "is equivalent to",
+      "meaning_ja": "〜と同等である",
+      "note_ja": "別の書き方と意味が同じであることを示す。省略記法の説明で頻出。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "〜と同等である",
+        "〜と対立する",
+        "〜に変換される",
+        "〜の一部である"
+      ],
+      "answer": 0,
+      "rank": 60,
+      "related": ["shorthand"]
+    },
+    {
+      "layer": "pattern",
+      "target": "For example",
+      "meaning_ja": "例えば",
+      "note_ja": "直後に具体例が来る。抽象的な説明が分からなくても、この後のコードで理解できることが多い。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["例えば", "例のために", "手本として", "代表して"],
+      "answer": 0,
+      "rank": 61,
+      "related": ["such as"]
+    },
+    {
+      "layer": "idiom",
+      "target": "worth noting",
+      "meaning_ja": "注目に値する(覚えておく価値がある)",
+      "note_ja": "It is worth noting that … で「〜は覚えておく価値がある」。補足情報の前置き。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "覚えておく価値がある",
+        "メモする必要がある",
+        "価値を評価している",
+        "注意書きが必要だ"
+      ],
+      "answer": 0,
+      "rank": 62,
+      "related": ["by default"],
+      "match": "worth noting"
+    },
+    {
+      "layer": "idiom",
+      "target": "under the hood",
+      "meaning_ja": "内部では(仕組みの裏側で)",
+      "note_ja": "「ボンネットの下」が語源。利用者から見えない内部実装を指す。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "内部では(見えない仕組みの話)",
+        "フードをかぶって",
+        "低いレベルの API で",
+        "非公開の設定で"
+      ],
+      "answer": 0,
+      "rank": 63,
+      "related": []
+    },
+    {
+      "layer": "idiom",
+      "target": "opt out",
+      "match": "opt out of",
+      "meaning_ja": "(既定で有効な機能を)無効にする・外れる",
+      "note_ja": "opt in(自分で有効にする)と対。既定の挙動から抜ける操作。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "(既定で有効なものを)無効にする",
+        "(機能を)有効にする",
+        "最適化する",
+        "選択肢を増やす"
+      ],
+      "answer": 0,
+      "rank": 64,
+      "related": ["by default"]
+    },
+    {
+      "layer": "idiom",
+      "target": "by default",
+      "meaning_ja": "既定で(何も指定しないと)",
+      "note_ja": "設定しない場合の挙動。変えたいときは opt in / opt out する。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": ["by default", "by design", "by mistake", "by the way"],
+      "answer": 0,
+      "rank": 65,
+      "related": ["out of the box", "opt out"]
+    },
+    {
+      "layer": "idiom",
+      "target": "make sure",
+      "meaning_ja": "確実に〜する・〜を確認する",
+      "note_ja": "手順書の指示文で「必ず〜してください」。ensure とほぼ同義で口語的。",
+      "question_type": "next_action",
+      "prompt_ja": "この指示文を読んだら、何をする?",
+      "options": [
+        "指示された状態になっているか確認してから次へ進む",
+        "手順を飛ばして次へ進む",
+        "設定を初期化する",
+        "コマンドを 2 回実行する"
+      ],
+      "answer": 0,
+      "rank": 66,
+      "related": ["ensure"]
+    },
+    {
+      "layer": "idiom",
+      "target": "edge case",
+      "meaning_ja": "極端な条件(境界的な特殊ケース)",
+      "note_ja": "通常の入力では起きないが、境界や例外的な値で起きる問題。テストの話で頻出。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "境界的な特殊ケース",
+        "画面の端に表示されるケース",
+        "最新の事例",
+        "競合する機能"
+      ],
+      "answer": 0,
+      "rank": 67,
+      "related": []
+    },
+    {
+      "layer": "idiom",
+      "target": "boilerplate",
+      "meaning_ja": "定型コード(毎回書く決まり文句)",
+      "note_ja": "本質的でない繰り返しの記述。減らせるのが利点として語られる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "毎回同じように書く定型コード",
+        "ボイラーの板金",
+        "テンプレートエンジン",
+        "設定ファイルの雛形"
+      ],
+      "answer": 0,
+      "rank": 68,
+      "related": []
+    }
+  ]
+}

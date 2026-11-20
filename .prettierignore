@@ -1,0 +1,19 @@
+# 生成物・依存
+node_modules
+.next
+out
+build
+coverage
+testreport
+pnpm-lock.yaml
+pipeline/work
+content/**/*.jsonl
+
+# 人間管理・ハーネス(整形で差分を出さない)
+.claude
+.claude.bak
+.github
+CLAUDE.md
+AGENTS.md
+README.md
+LICENSE

@@ -1,0 +1,70 @@
+# ── Claude Code ローカル状態(AI生成の生データ・個人設定) ──
+testreport/
+.claude/settings.local.json
+.claude/worktrees/
+.claude/agent-memory-local/
+.claude/skills/*-workspace/
+.claude/hooks/ntfy-topic.txt
+.claude/hooks/ntfy-timeout-fallback.txt
+.claude.bak/
+
+# ── 開発の作業過程(手元だけに置く。ハーネスが読み書きする) ──
+# 要求メモ・AI の成果物(計画・進捗・レポート)・人間管理の設定・未使用テンプレート
+input/
+output/
+project-config.md
+constitution.md
+REVIEW.md
+.mcp.json.template
+.github/CLAUDE_REVIEW_SETUP.md
+.github/workflows/*.template
+
+# ── 秘密情報 ──
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+.mcp.json
+
+# ── Node / Next.js ──
+node_modules/
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+.pnpm-store/
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+
+# ── テスト・計測の生データ ──
+coverage/
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
+
+# ── コンテンツパイプラインの作業ディレクトリ(クロール生データ) ──
+pipeline/work/
+
+# ── Vercel / Supabase ローカル ──
+.vercel
+supabase/.branches
+supabase/.temp
+
+# ── OS / エディタ ──
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# ── Vitest のローカル成果物 ──
+.vitest/
+
+# ── local モードの学習データ(LEXIGREP_DATA_SOURCE=local) ──
+.lexigrep/

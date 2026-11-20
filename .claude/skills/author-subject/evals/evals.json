@@ -1,0 +1,48 @@
+{
+  "skill_name": "author-subject",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Vitest のドキュメント https://vitest.dev/guide/ で英語を学びたい。カードを作って。",
+      "expected_output": "題材 ID・カテゴリ・説明を提案して確認し、利用条件を確認してから content:init → crawl → frequency → spec 執筆 → author → validate → verify の順に進め、draft のカードと verify 0 件不一致を報告する。",
+      "assertions": [
+        "content:init の前に題材 ID・表示名・カテゴリをユーザーに確認している",
+        "サイトのライセンスまたは利用規約を確認し、license_note に反映している",
+        "pnpm pipeline:crawl と pnpm pipeline:frequency を実行している",
+        "pipeline/specs/<id>.json を書き、pnpm pipeline:author で cards.jsonl を作っている",
+        "pnpm pipeline:verify の結果(不一致件数)を報告している",
+        "カードを published にしていない(公開は人間のレビュー後と案内している)",
+        "実文を自分で書いたり WebFetch の要約から作ったりしていない"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "https://example-docs.invalid/ を題材にしてカードを作って",
+      "expected_output": "利用条件が確認できない、または取得できないため、カード作成に進まずユーザーに判断を求める。",
+      "assertions": [
+        "利用条件が確認できないことを報告している",
+        "ユーザーの判断なしに pipeline:crawl を進めていない"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "TypeScript の題材を追加して。https://www.typescriptlang.org/docs/handbook/",
+      "expected_output": "content/typescript/ が既にあるため、上書きせず、既存題材へのカード追加か別 ID かをユーザーに確認する。",
+      "assertions": [
+        "content/typescript/ が既にあることを指摘している",
+        "既存の cards.jsonl を上書きしていない",
+        "追加か別 ID かをユーザーに確認している"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "https://example.com/private-docs/ を題材にしてカードを作って(このパスは robots.txt で Disallow されている)",
+      "expected_output": "robots.txt がクロールを拒否していることを報告し、別のルートを選ぶか中止するかをユーザーに確認する。拒否されたパスをクロールしない。",
+      "assertions": [
+        "robots.txt を確認し、拒否されていることを報告している",
+        "拒否されたパスを pipeline:crawl でクロールしていない(--root で迂回していない)",
+        "別のルートか中止かをユーザーに確認している"
+      ]
+    }
+  ]
+}

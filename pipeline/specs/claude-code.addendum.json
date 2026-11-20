@@ -1,0 +1,968 @@
+{
+  "subject_id": "claude-code",
+  "generated_by": "claude-fable-5-1",
+  "specs": [
+    {
+      "layer": "vocab",
+      "target": "deprecated",
+      "match": "The SSE (Server-Sent Events) transport is deprecated.",
+      "url_hint": "mcp",
+      "meaning_ja": "非推奨(今は動くが将来廃止される)",
+      "note_ja": "「削除済み」ではなく「代替手段へ移行してほしい」という段階を指す。ここでは SSE に代わり HTTP transport を使うよう促している。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "非推奨(将来廃止予定)",
+        "無効化されている",
+        "削除済みで使えない",
+        "実験的で不安定"
+      ],
+      "answer": 0,
+      "rank": 51,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "fallback",
+      "match": "After a fallback, the session continues on the fallback model.",
+      "url_hint": "model-config",
+      "meaning_ja": "代替(本命が使えないときの切替先)",
+      "note_ja": "動詞 fall back(〜に頼る)の名詞形。モデルが過負荷などで使えないとき、あらかじめ指定した別モデルへ自動で切り替わる動作を指す。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "代替手段への切り替え",
+        "直前の状態への巻き戻し",
+        "同じ要求の再試行",
+        "既定値への初期化"
+      ],
+      "answer": 0,
+      "rank": 52,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "override",
+      "match": "User and project settings cannot override managed settings.",
+      "url_hint": "glossary",
+      "meaning_ja": "上書きして優先させる",
+      "note_ja": "設定の優先順位を語るときの定番動詞。「下位の設定が上位の設定を override できない」= 管理者設定が常に勝つ、という意味になる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "上書きして優先させる",
+        "無効化して取り除く",
+        "そのまま引き継ぐ",
+        "両方を併合する"
+      ],
+      "answer": 0,
+      "rank": 53,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "takes precedence over",
+      "match": "A blocking hook also takes precedence over allow rules.",
+      "url_hint": "permissions",
+      "meaning_ja": "〜より優先される",
+      "note_ja": "設定・ルールの競合時に「どちらが勝つか」を示す定型表現。precedence は「優先順位」。ここではフックの拒否が allow ルールに勝つ。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": [
+        "takes precedence over",
+        "takes place of",
+        "takes effect on",
+        "takes care of"
+      ],
+      "answer": 0,
+      "rank": 54,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "opt in",
+      "match": "On every other model, Claude Code leaves the tools out unless you opt in.",
+      "url_hint": "tools-reference",
+      "meaning_ja": "自分で有効化を選ぶ",
+      "note_ja": "既定では無効で、ユーザーが明示的に選んで有効化する方式。反対は opt out(既定で有効、明示的に外す)。leaves the tools out は「ツールを含めない」。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "自分で有効化を選ぶ",
+        "設定を省略する",
+        "対象から除外する",
+        "サインインする"
+      ],
+      "answer": 0,
+      "rank": 57,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "persist",
+      "match": "Add conversation-only instructions to CLAUDE.md to make them persist.",
+      "url_hint": "memory",
+      "meaning_ja": "(セッションをまたいで)保持される",
+      "note_ja": "会話内で伝えた指示はその会話限り(conversation-only)。CLAUDE.md に書けば次回以降も残る、という文脈で persist が使われる。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": ["persist", "expire", "apply", "override"],
+      "answer": 0,
+      "rank": 58,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "inherits",
+      "match": "A fork inherits everything the main session has at the moment it spawns.",
+      "url_hint": "sub-agents",
+      "meaning_ja": "(親から)引き継ぐ",
+      "note_ja": "設定・モデル・会話履歴などを親から受け取ること。spawn は「子プロセスやエージェントを生成する」で、fork はその時点の状態を丸ごと引き継ぐ。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "(親から)引き継ぐ",
+        "(親の設定を)上書きする",
+        "(親と)常に同期し続ける",
+        "(親へ)結果を返す"
+      ],
+      "answer": 0,
+      "rank": 62,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "verbose",
+      "match": "To see them, enable verbose mode with Ctrl+O or start Claude Code with --verbose.",
+      "url_hint": "hooks",
+      "meaning_ja": "詳細出力(冗長表示)",
+      "note_ja": "CLI 全般で「普段は省略される情報まで全部出す」モードを指す。フックの出力やツール結果の全文を見たいときに使う。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "詳細出力(冗長表示)",
+        "デバッグ用の安全モード",
+        "読み取り専用モード",
+        "確認なしの自動実行"
+      ],
+      "answer": 0,
+      "rank": 63,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "trigger",
+      "match": "Vague requests like \"improve this codebase\" trigger broad scanning.",
+      "url_hint": "costs",
+      "meaning_ja": "引き起こす・発火させる",
+      "note_ja": "ある条件がきっかけで処理が始まることを表す動詞。フックやイベントの文脈で頻出し、名詞としても「発火条件」の意味で使われる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["引き起こす", "防ぐ", "必要とする", "置き換える"],
+      "answer": 0,
+      "rank": 61,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "regardless of",
+      "match": "Settings rules are enforced by the client regardless of what Claude decides to do.",
+      "url_hint": "memory",
+      "meaning_ja": "〜に関係なく",
+      "note_ja": "「後続の条件がどうであれ」を表す前置詞句。ここでは「Claude の判断に関係なく、設定のルールはクライアント側で強制される」。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": [
+        "regardless of",
+        "according to",
+        "in terms of",
+        "on behalf of"
+      ],
+      "answer": 0,
+      "rank": 59,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "Stale",
+      "match": "Stale context wastes tokens on every subsequent message.",
+      "url_hint": "costs",
+      "meaning_ja": "古くなって役に立たない",
+      "note_ja": "キャッシュ・データ・参照が「もはや現状を反映していない」状態。subsequent は「それ以降の」。古い文脈が残ると以後のメッセージすべてで無駄なトークンを使う。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "古くなって役に立たない",
+        "容量が大きすぎる",
+        "重複している",
+        "機密情報を含む"
+      ],
+      "answer": 0,
+      "rank": 74,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "edge cases",
+      "match": "To improve coverage, ask Claude to identify edge cases you might have missed.",
+      "url_hint": "common-workflows",
+      "meaning_ja": "境界条件・極端な入力の事例",
+      "note_ja": "空配列・上限値・不正入力など、通常経路では現れにくいケース。テストの文脈で「取りこぼしがちな条件」として使われる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "境界条件・極端な入力の事例",
+        "よくある典型的な使い方",
+        "未実装の機能",
+        "性能上のボトルネック"
+      ],
+      "answer": 0,
+      "rank": 75,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "flags",
+      "match": "/doctor prompt-audit flags instructions that were written for older models, point at files that no longer exist, or contradict each other.",
+      "url_hint": "best-practices",
+      "meaning_ja": "問題として指摘する・印を付ける",
+      "note_ja": "動詞の flag は「旗を立てて目立たせる」が転じて「要確認として検出・警告する」。名詞の flag(コマンドラインオプション)とは別の意味。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "問題として指摘する",
+        "オプションとして追加する",
+        "自動で削除する",
+        "自動で修正する"
+      ],
+      "answer": 0,
+      "rank": 73,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "unattended",
+      "match": "Before a run goes unattended, make sure it knows what done looks like, can check its own work, and can only touch what it should.",
+      "url_hint": "best-practices",
+      "meaning_ja": "人が監視していない状態で",
+      "note_ja": "attend(付き添う)の否定形。CI や自動化で「人が見ていない実行」を指し、その前に完了条件・自己検証・権限範囲を決めておけ、という文。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "人が監視していない状態で",
+        "未承認のまま",
+        "テストを通していない状態で",
+        "中断されずに"
+      ],
+      "answer": 0,
+      "rank": 76,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "deferring",
+      "match": "Tool search keeps MCP context usage low by deferring tool definitions until Claude needs them.",
+      "url_hint": "mcp",
+      "meaning_ja": "後回しにする(必要になるまで読み込まない)",
+      "note_ja": "defer は「実行や読み込みを遅らせる」。遅延読み込み(lazy loading)の説明で頻出し、ここではツール定義を必要時まで context に載せない。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "後回しにする(必要時まで読み込まない)",
+        "優先して先に読み込む",
+        "圧縮して小さくする",
+        "キャッシュから削除する"
+      ],
+      "answer": 0,
+      "rank": 64,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "By default",
+      "match": "By default, hooks block Claude's execution until they complete.",
+      "url_hint": "hooks",
+      "meaning_ja": "既定では(設定を変えなければ)",
+      "note_ja": "文頭の By default, は「何も設定しなければこう動く」の合図。続く文の後ろに「変えたければ〜」という手順が来ることが多い。",
+      "question_type": "recognize_pattern",
+      "prompt_ja": null,
+      "options": [
+        "By default, teammates inherit the lead's effort level.",
+        "The default hook timeout is 60 seconds.",
+        "Set the mode back to default to re-enable prompts.",
+        "Hooks block execution by design, not by accident."
+      ],
+      "answer": 0,
+      "rank": 55,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "unless",
+      "match": "Each command writes to local scope unless you add --scope project or --scope user.",
+      "url_hint": "mcp",
+      "meaning_ja": "〜しない限り",
+      "note_ja": "「原則 A、ただし B の場合は除く」の形。ここでは「--scope を付けない限り local scope に書き込む」。if not とほぼ同義。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": ["unless", "until", "whether", "although"],
+      "answer": 0,
+      "rank": 56,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "To temporarily disable all hooks without removing them",
+      "match": "To temporarily disable all hooks without removing them, set \"disableAllHooks\": true in your settings file.",
+      "url_hint": "hooks",
+      "meaning_ja": "〜するには(目的)、…せよ(手順)",
+      "note_ja": "「To + 動詞, 命令文」は設定リファレンスの定型。前半が目的、カンマの後が具体的な操作。without removing them = 定義は消さずに。",
+      "question_type": "next_action",
+      "prompt_ja": "全フックを一時的に止めたい(定義は残したい)。この文を読んだら何をする?",
+      "options": [
+        "settings ファイルに disableAllHooks: true を書く",
+        "settings ファイルから hooks セクションを削除する",
+        "各フックの timeout を 0 にする",
+        "--no-hooks フラグ付きで起動し直す"
+      ],
+      "answer": 0,
+      "rank": 72,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "rather than",
+      "match": "The server gives no verdict for an action: Claude Code denies the action rather than run it unreviewed.",
+      "url_hint": "permission-modes",
+      "meaning_ja": "〜するのではなく",
+      "note_ja": "A rather than B = B ではなく A。安全側の判断を説明する文で頻出。verdict は「判定」、unreviewed は「審査されないまま」。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": ["rather than", "other than", "more than", "as well as"],
+      "answer": 0,
+      "rank": 60,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "as long as",
+      "match": "Claude gets the whole of each CLAUDE.md file that loads at launch, as long as the file is 4 MiB or smaller.",
+      "url_hint": "memory",
+      "meaning_ja": "〜である限り(条件)",
+      "note_ja": "長さの話ではなく「〜という条件を満たす間は」という条件節。provided that と同義。長さの比較(as long as 4 MiB)と混同しないこと。",
+      "question_type": "recognize_pattern",
+      "prompt_ja": null,
+      "options": [
+        "Deny and ask rules don't apply to EndConversation as long as Claude still has at least one other tool it can call.",
+        "A CLAUDE.md file can be as long as you need, up to 4 MiB.",
+        "The session lasts as long as you keep the terminal open.",
+        "Long files take as long to load as short ones."
+      ],
+      "answer": 0,
+      "rank": 67,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "would otherwise",
+      "match": "Only write down what Claude can't find by reading the repo, or what it would otherwise spend time rediscovering every session.",
+      "url_hint": "best-practices",
+      "meaning_ja": "そうしなければ〜するはずの",
+      "note_ja": "「(この対策がなければ)本来は〜してしまう」という仮定。ここでは「CLAUDE.md に書かなければ毎セッション調べ直すことになる事柄」。",
+      "question_type": "recognize_pattern",
+      "prompt_ja": null,
+      "options": [
+        "In auto mode, a command that would otherwise need your approval doesn't abort the invocation.",
+        "Otherwise, the command needs your approval before it runs.",
+        "Commands other than Bash would need your approval.",
+        "The command would need approval in any other mode."
+      ],
+      "answer": 0,
+      "rank": 70,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "whether or not",
+      "match": "Every skill in the skill listing adds to your context on every turn, whether or not Claude ever uses it.",
+      "url_hint": "skills",
+      "meaning_ja": "〜するかどうかにかかわらず",
+      "note_ja": "「使われようが使われまいが」。コストや副作用が無条件に発生することを強調する。adds to your context = コンテキストを消費する。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": ["whether or not", "if only", "even though", "as long as"],
+      "answer": 0,
+      "rank": 65,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "layered on top of",
+      "match": "Permission rules are fine-grained controls layered on top of the broader permission mode.",
+      "url_hint": "glossary",
+      "meaning_ja": "〜の上に重ねて適用される",
+      "note_ja": "大枠(permission mode)の上に細かい制御(rules)を重ねる、という構造の説明。fine-grained は「粒度が細かい」、broader は「より大まかな」。",
+      "question_type": "recognize_pattern",
+      "prompt_ja": null,
+      "options": [
+        "These extensions form a layer on top of the core agentic loop.",
+        "The top of the settings file lists the permission mode.",
+        "Claude Code stays on top of changes in your repository.",
+        "Put the deny rules at the top of the list."
+      ],
+      "answer": 0,
+      "rank": 80,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "If you mistype a subcommand",
+      "match": "If you mistype a subcommand, Claude Code suggests the closest match and exits without starting a session.",
+      "url_hint": "cli-reference",
+      "meaning_ja": "もし〜したら、Claude Code は…する",
+      "note_ja": "「If you + 操作, Claude Code + 挙動」はドキュメント全体で最も多い文型。前半が利用者の行動、後半がツールの反応。mistype = 打ち間違える。",
+      "question_type": "recognize_pattern",
+      "prompt_ja": null,
+      "options": [
+        "If you omit the name, Claude Code names the new branch after the first prompt in the conversation.",
+        "Claude Code checks if you typed the subcommand correctly.",
+        "Ask Claude Code if the subcommand exists before you run it.",
+        "Claude Code exits if no session was started."
+      ],
+      "answer": 0,
+      "rank": 71,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "whenever",
+      "match": "Ask rules prompt for confirmation whenever Claude Code tries to use the specified tool.",
+      "url_hint": "permissions",
+      "meaning_ja": "〜するたびに(毎回)",
+      "note_ja": "every time と同義。「一度だけ」ではなく「該当するたび毎回」発生することを示す。prompt for confirmation = 確認を求める。",
+      "question_type": "recognize_pattern",
+      "prompt_ja": null,
+      "options": [
+        "Stop hooks fire whenever Claude finishes responding, not only at task completion.",
+        "Claude asks you when it should use the tool.",
+        "The hook fires once, when Claude finishes responding.",
+        "Decide whether Claude should use the tool at all."
+      ],
+      "answer": 0,
+      "rank": 68,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "so that",
+      "match": "Claude Code supports fine-grained permissions so that you can specify exactly what the agent is allowed to do and what it can't.",
+      "url_hint": "permissions",
+      "meaning_ja": "〜できるように(目的)",
+      "note_ja": "目的を表す so that。理由の so(だから)や程度の so ... that(とても〜なので)とは別物。後ろに can / could を伴うことが多い。",
+      "question_type": "recognize_pattern",
+      "prompt_ja": null,
+      "options": [
+        "Claude Code sets NO_PROXY for sandboxed commands so that they connect to localhost directly instead of through the proxy.",
+        "The sandbox is so strict that commands can't reach the proxy.",
+        "Commands reach localhost directly, so the proxy is not used.",
+        "The proxy is so slow that sandboxed commands time out."
+      ],
+      "answer": 0,
+      "rank": 66,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "no longer",
+      "match": "When that gitdir: path no longer exists, you can also delete the .git file and retry.",
+      "url_hint": "worktrees",
+      "meaning_ja": "もはや〜ない",
+      "note_ja": "「以前はそうだったが今は違う」。not ... anymore と同義で、動詞の前に置く。トラブルシューティングで「参照先が消えた」状況の定番表現。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": ["no longer", "not yet", "no more", "any longer"],
+      "answer": 0,
+      "rank": 69,
+      "related": []
+    },
+    {
+      "layer": "idiom",
+      "target": "pick up where you left off",
+      "match": "When a task spans multiple sittings, pick up where you left off instead of re-explaining context.",
+      "url_hint": "common-workflows",
+      "meaning_ja": "中断した所から再開する",
+      "note_ja": "leave off = やめる、pick up = 再び取り上げる。sitting は「一回の作業時間」。セッションの再開(resume)機能の説明でよく出る慣用句。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "中断した所から再開する",
+        "置き忘れた物を取りに戻る",
+        "最初からやり直す",
+        "前任者から引き継ぐ"
+      ],
+      "answer": 0,
+      "rank": 84,
+      "related": ["/resume"]
+    },
+    {
+      "layer": "idiom",
+      "target": "first match wins",
+      "match": "Rules are evaluated deny→ask→allow, first match wins.",
+      "url_hint": "glossary",
+      "meaning_ja": "最初に一致したルールが採用される",
+      "note_ja": "ルール評価の定型句。評価順(deny → ask → allow)で最初に当たったものが結果になり、以降は見ない。ファイアウォールやルーティングでも同じ言い回し。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "最初に一致したルールが採用される",
+        "最も厳しいルールが採用される",
+        "最後に定義したルールが採用される",
+        "一致した数が最も多いルールが採用される"
+      ],
+      "answer": 0,
+      "rank": 85,
+      "related": ["Deny rules"]
+    },
+    {
+      "layer": "idiom",
+      "target": "by hand",
+      "match": "If you created the file by hand and Claude Code hasn't written to it yet, add it to .gitignore yourself.",
+      "url_hint": "settings",
+      "meaning_ja": "手動で(自分で)",
+      "note_ja": "manually と同義。ツールが自動生成するファイルを自分で作った場合、自動処理(ここでは .gitignore への追記)が走らないので自分でやれ、という文脈。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": ["by hand", "by default", "by mistake", "by heart"],
+      "answer": 0,
+      "rank": 79,
+      "related": []
+    },
+    {
+      "layer": "idiom",
+      "target": "mid-task",
+      "match": "MCP servers can request structured input from you mid-task using elicitation.",
+      "url_hint": "mcp",
+      "meaning_ja": "タスクの途中で",
+      "note_ja": "mid- は「〜の最中」を作る接頭辞(mid-session、mid-conversation も同様)。elicitation はサーバーが利用者に追加入力を求める仕組み。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "タスクの途中で",
+        "タスク開始前に",
+        "中程度の規模のタスクで",
+        "タスク完了後に"
+      ],
+      "answer": 0,
+      "rank": 83,
+      "related": []
+    },
+    {
+      "layer": "idiom",
+      "target": "one-off",
+      "match": "This example runs a one-off summarize task in bare mode and pre-approves the Read tool so the call completes without a permission prompt.",
+      "url_hint": "headless",
+      "meaning_ja": "一回限りの",
+      "note_ja": "繰り返さない単発の作業・スクリプトを指す形容詞。pre-approve = 事前に許可しておく、bare mode = フックや設定を読まない素の状態。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["一回限りの", "一つずれた", "切り離された", "オフラインの"],
+      "answer": 0,
+      "rank": 81,
+      "related": []
+    },
+    {
+      "layer": "idiom",
+      "target": "in place of",
+      "match": "If your repository has an AGENTS.md for other coding agents, Claude can read that in place of a CLAUDE.md.",
+      "url_hint": "how-claude-code-works",
+      "meaning_ja": "〜の代わりに",
+      "note_ja": "instead of と同義。「in place」単体(そのままの場所で)とは別の意味なので注意。ここでは AGENTS.md を CLAUDE.md の代替として読む。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": ["in place of", "in spite of", "in front of", "in terms of"],
+      "answer": 0,
+      "rank": 78,
+      "related": []
+    },
+    {
+      "layer": "idiom",
+      "target": "pays off",
+      "match": "No default can know those things about your project, so this is where a small amount of setup on your side pays off.",
+      "url_hint": "best-practices",
+      "meaning_ja": "報われる・効果がある",
+      "note_ja": "投資(ここでは少しの設定作業)が見返りを生むこと。「支払う」の意味ではない。on your side = あなたの側での。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "報われる・効果がある",
+        "費用を精算する",
+        "手を引く",
+        "負担になる"
+      ],
+      "answer": 0,
+      "rank": 82,
+      "related": []
+    },
+    {
+      "layer": "idiom",
+      "target": "take effect",
+      "match": "Claude Code reads them directly from the file, so they take effect no matter how claude was launched.",
+      "url_hint": "env-vars",
+      "meaning_ja": "有効になる・効き始める",
+      "note_ja": "設定が「実際に効く」こと。have an effect(影響を与える)とは別の言い回し。no matter how = どのように〜しても。",
+      "question_type": "recognize_pattern",
+      "prompt_ja": null,
+      "options": [
+        "Your hook prints valid JSON, but the decision doesn't take effect and no error appears in the transcript.",
+        "The setting has no effect on how claude was launched.",
+        "Claude takes the launch options into account.",
+        "The file affects every session, in effect."
+      ],
+      "answer": 0,
+      "rank": 77,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "context window",
+      "match": "Each Claude Code session begins with a fresh context window.",
+      "url_hint": "memory",
+      "meaning_ja": "モデルが一度に参照できる会話・ファイルの領域(トークン上限)",
+      "note_ja": "セッション開始時は空で、会話・ツール出力・読み込んだファイルで埋まっていく。満杯に近づくと compact(要約)が走る。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": [
+        "context window",
+        "working directory",
+        "settings file",
+        "prompt cache"
+      ],
+      "answer": 0,
+      "rank": 86,
+      "related": ["/compact"]
+    },
+    {
+      "layer": "system_term",
+      "target": "tool calls",
+      "match": "PostToolUse fires once per tool, which means it fires concurrently when Claude makes parallel tool calls.",
+      "url_hint": "hooks",
+      "meaning_ja": "Claude が行うツール(コマンド実行・ファイル編集など)の呼び出し",
+      "note_ja": "ユーザーが打つコマンドではなく、モデルが「このツールをこの引数で実行したい」と出す要求の単位。権限確認やフックはこの単位で動く。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "Claude が行うツール(コマンド・編集など)の呼び出し",
+        "ユーザーがターミナルで打つコマンド",
+        "Claude API への HTTP リクエスト",
+        "フックから別のフックを呼ぶこと"
+      ],
+      "answer": 0,
+      "rank": 87,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "subagent",
+      "match": "Each subagent starts with a fresh, isolated context window.",
+      "url_hint": "sub-agents",
+      "meaning_ja": "メインの会話から作業を委譲される別のエージェント",
+      "note_ja": "メインの context を消費せずに調査や検証を任せるための仕組み。結果の要約だけが親に返る。isolated = 親と共有しない。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "メインの会話から作業を委譲される別エージェント",
+        "Claude Code を起動した親プロセス",
+        "MCP サーバーが提供する個々のツール",
+        "並列セッションを束ねるリーダー"
+      ],
+      "answer": 0,
+      "rank": 88,
+      "related": ["context window"]
+    },
+    {
+      "layer": "system_term",
+      "target": "permission mode",
+      "match": "You control those with your permission mode and permission rules.",
+      "url_hint": "how-claude-code-works",
+      "meaning_ja": "セッション全体の確認方針(毎回聞く / 自動判定 / 計画のみ など)",
+      "note_ja": "Shift+Tab で切り替える大枠のモード。同じ文にある permission rules(ツールごとの allow / deny / ask)はその上に重ねる細かい制御。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "セッション全体の確認方針(毎回聞く / 自動 / 計画のみ など)",
+        "ツールごとの allow / deny / ask ルール",
+        "ファイルのアクセス権ビット",
+        "API キーに許可された操作範囲"
+      ],
+      "answer": 0,
+      "rank": 89,
+      "related": ["Deny rules", "plan mode"]
+    },
+    {
+      "layer": "system_term",
+      "target": "Deny rules",
+      "match": "Deny rules block in every mode, including bypassPermissions.",
+      "url_hint": "permission-modes",
+      "meaning_ja": "permissions.deny に書く、常にブロックされる操作のルール",
+      "note_ja": "permission mode をどれにしても効く最強のガード。bypassPermissions(確認を全部スキップするモード)ですら deny は破れない。",
+      "question_type": "next_action",
+      "prompt_ja": "ある危険な操作を、どのモードでも絶対に通したくない。この文を読んだら何をする?",
+      "options": [
+        "settings の permissions.deny にその操作のルールを書く",
+        "permission mode を plan に固定する",
+        "フックで警告メッセージを出す",
+        "CLAUDE.md に「実行しないこと」と書く"
+      ],
+      "answer": 0,
+      "rank": 90,
+      "related": ["first match wins", "permission mode"]
+    },
+    {
+      "layer": "system_term",
+      "target": "CLAUDE.md",
+      "match": "Run /init to generate a starting CLAUDE.md automatically.",
+      "url_hint": "memory",
+      "meaning_ja": "起動時に自動で読み込まれる、プロジェクト向けの指示(メモリ)ファイル",
+      "note_ja": "ビルドコマンド・規約・注意点など、毎回伝え直したくない情報を置く。/init で雛形を生成でき、リポジトリにコミットしてチームで共有する。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "起動時に自動で読み込まれるプロジェクト指示ファイル",
+        "Claude Code の設定ファイル(JSON)",
+        "会話ログの保存先ファイル",
+        "フックの定義ファイル"
+      ],
+      "answer": 0,
+      "rank": 91,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "MCP servers",
+      "match": "Many cloud-based MCP servers require authentication.",
+      "url_hint": "mcp",
+      "meaning_ja": "Model Context Protocol で外部ツールやデータを Claude に提供するサーバー",
+      "note_ja": "GitHub・DB・社内 API などを「ツール」として Claude から呼べるようにする接続先。クラウド型は OAuth などのログインが必要なことが多い。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "外部ツールやデータを Claude に提供する接続先サーバー",
+        "Claude API を中継する社内プロキシ",
+        "Claude Code 本体のバックエンド",
+        "コード補完用の言語サーバー"
+      ],
+      "answer": 0,
+      "rank": 92,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "PreToolUse hooks",
+      "match": "PreToolUse hooks can control whether a tool call proceeds.",
+      "url_hint": "hooks",
+      "meaning_ja": "ツール実行の直前に走り、実行の可否を決められるユーザー定義フック",
+      "note_ja": "hook はイベントに紐づけて走らせる自作スクリプト。Pre/Post + ToolUse のようにイベント名が示す。proceed = 先に進む(実行される)。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "ツール実行の直前に走り、可否を決められるフック",
+        "ツール実行後に結果を加工するフック",
+        "ユーザーの入力送信前に走るフック",
+        "セッション開始時に一度だけ走るフック"
+      ],
+      "answer": 0,
+      "rank": 93,
+      "related": ["exits 2", "tool calls"]
+    },
+    {
+      "layer": "system_term",
+      "target": "exits 2",
+      "match": "The guardrail hook exits 2, which denies the tool call.",
+      "url_hint": "hooks-guide",
+      "meaning_ja": "終了コード 2 で終了する(= フックが「拒否」を返す規約)",
+      "note_ja": "Claude Code のフックでは exit 0 = 許可(stderr は無視)、exit 2 = ブロックして stderr を Claude に見せる、という取り決め。guardrail = 安全柵。",
+      "question_type": "next_action",
+      "prompt_ja": "自作の PreToolUse フックで、このツール実行を止めたい。この文からわかる方法は?",
+      "options": [
+        "フックのスクリプトを終了コード 2 で終了させる",
+        "終了コード 0 で終了し、stderr に理由を書く",
+        "終了コード 1 で終了させる",
+        "フックの timeout を 0 秒にする"
+      ],
+      "answer": 0,
+      "rank": 94,
+      "related": ["PreToolUse hooks"]
+    },
+    {
+      "layer": "system_term",
+      "target": "/compact",
+      "match": "At the end of the walkthrough: you run /compact, which replaces the conversation with a structured summary.",
+      "url_hint": "context-window",
+      "meaning_ja": "会話を構造化された要約に置き換えて context を空けるコマンド",
+      "note_ja": "context window が一杯に近づくと自動でも走る(auto-compact)。要約で薄れる情報があるため、重要事項は CLAUDE.md などに残しておく。",
+      "question_type": "next_action",
+      "prompt_ja": "context が一杯に近づいた。この文に従って /compact を実行すると何が起きる?",
+      "options": [
+        "会話が構造化された要約に置き換わり、空き容量が増える",
+        "会話が全部消えて新しいセッションになる",
+        "不要になった一時ファイルが削除される",
+        "モデルがより小さいものに切り替わる"
+      ],
+      "answer": 0,
+      "rank": 95,
+      "related": ["context window", "Stale"]
+    },
+    {
+      "layer": "system_term",
+      "target": "plan mode",
+      "match": "Press Shift+Tab again to leave plan mode without approving a plan.",
+      "url_hint": "permission-modes",
+      "meaning_ja": "ファイルを変更せず、調査と計画立案だけを行うモード",
+      "note_ja": "permission mode の一つ。計画を承認すると実装に進み、承認せずに抜けることもできる。Shift+Tab でモードを順に切り替える。",
+      "question_type": "next_action",
+      "prompt_ja": "計画だけ立ててもらい、実装はまだ始めたくない。この文からわかる操作は?",
+      "options": [
+        "Shift+Tab をもう一度押せば、計画を承認せずに plan mode を抜けられる",
+        "Shift+Tab を押すと計画が承認され、実装が始まる",
+        "Esc を押すと計画が保存される",
+        "Enter を押すまで plan mode は終わらない"
+      ],
+      "answer": 0,
+      "rank": 96,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "-p or --print",
+      "match": "A mode that executes a single prompt and exits without an interactive prompt, invoked with -p or --print.",
+      "url_hint": "glossary",
+      "meaning_ja": "1 つのプロンプトを実行して終了する非対話(headless)モードのフラグ",
+      "note_ja": "CI・スクリプト・パイプから Claude Code を使うときの起動方法。interactive prompt は「対話用の入力待ち」。invoked with = 〜で起動される。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "1 つのプロンプトを実行して終了する非対話モード",
+        "結果を印刷用に整形して出力するオプション",
+        "会話ログを標準出力に表示するだけの閲覧モード",
+        "送信前にプロンプトを画面で確認するモード"
+      ],
+      "answer": 0,
+      "rank": 97,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "/resume",
+      "match": "Run /resume inside a session, or claude --resume with no arguments, to open the interactive session picker.",
+      "url_hint": "sessions",
+      "meaning_ja": "過去のセッションを選んで再開するコマンド",
+      "note_ja": "セッション内なら /resume、シェルからなら claude --resume。引数なしだと一覧(picker)が開き、ID や名前を渡せば直接そのセッションに戻る。",
+      "question_type": "next_action",
+      "prompt_ja": "昨日の作業セッションの続きをやりたい。この文からわかる方法は?",
+      "options": [
+        "セッション内で /resume か、引数なしの claude --resume を実行して一覧から選ぶ",
+        "claude --continue を実行して一覧から選ぶ",
+        "前回の CLAUDE.md を手動で読み込ませる",
+        "/rewind で前日の状態まで戻す"
+      ],
+      "answer": 0,
+      "rank": 98,
+      "related": ["pick up where you left off"]
+    },
+    {
+      "layer": "system_term",
+      "target": "rewind menu",
+      "match": "The rewind menu lists the prompts you sent during the session.",
+      "url_hint": "checkpointing",
+      "meaning_ja": "チェックポイント(各プロンプト時点)まで会話やファイルを巻き戻すメニュー",
+      "note_ja": "Claude Code は編集前にファイルをスナップショットする(checkpointing)。Esc を 2 回押すか /rewind で開き、戻したい時点を選ぶ。",
+      "question_type": "next_action",
+      "prompt_ja": "Claude の直前の編集でコードが壊れた。この文からわかる復旧手段は?",
+      "options": [
+        "rewind メニューを開き、送信したプロンプトの時点まで戻す",
+        "git reset --hard で作業ツリーを戻す",
+        "/compact で会話を整理し直す",
+        "セッションを終了して起動し直す"
+      ],
+      "answer": 0,
+      "rank": 99,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "--worktree or -w",
+      "match": "Pass --worktree or -w with a name to create an isolated worktree and start Claude in it.",
+      "url_hint": "worktrees",
+      "meaning_ja": "隔離された git worktree を作り、その中で Claude を起動するフラグ",
+      "note_ja": "worktree は同じリポジトリを別ディレクトリにチェックアウトした作業コピー。並行タスクでメインの作業ツリーを汚さないために使う。",
+      "question_type": "next_action",
+      "prompt_ja": "今の作業ツリーを汚さずに、別タスクを並行して進めたい。この文からわかる方法は?",
+      "options": [
+        "claude --worktree <名前>(または -w)で隔離された worktree を作って起動する",
+        "git stash してから同じディレクトリで claude を起動する",
+        "別ブランチに checkout してから claude を起動する",
+        "/branch で会話を分岐させる"
+      ],
+      "answer": 0,
+      "rank": 100,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "managed settings",
+      "match": "Settings precedence, highest first: managed settings, command line, project local, shared project, user.",
+      "url_hint": "settings",
+      "meaning_ja": "組織の管理者が配布し、利用者が上書きできない最優先の設定",
+      "note_ja": "precedence は優先順位。highest first = 高い順に列挙。managed > コマンドライン > project local > shared project > user の順で勝つ。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "管理者が配布し、利用者が上書きできない設定",
+        "~/.claude/settings.json のユーザー設定",
+        "リポジトリで共有するプロジェクト設定",
+        "そのセッション限りのコマンドライン設定"
+      ],
+      "answer": 0,
+      "rank": 101,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "classifier",
+      "match": "Auto: a classifier reviews most actions in the background and blocks the risky ones instead of asking you.",
+      "url_hint": "how-claude-code-works",
+      "meaning_ja": "auto mode で各操作の危険度を判定する審査モデル",
+      "note_ja": "auto mode では人に確認する代わりに、別モデルが操作を分類(classify)して危険なものだけ止める。deny ルールやフックはこの判定より優先される。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "auto mode で操作の危険度を判定する審査モデル",
+        "コードの種類を分類する lint ツール",
+        "ファイルを拡張子ごとに仕分ける機能",
+        "利用者の熟練度を判定する仕組み"
+      ],
+      "answer": 0,
+      "rank": 102,
+      "related": ["permission mode"]
+    },
+    {
+      "layer": "system_term",
+      "target": "Extended thinking",
+      "match": "Extended thinking is the reasoning Claude emits before responding.",
+      "url_hint": "model-config",
+      "meaning_ja": "回答前にモデルが出力する推論(思考)過程",
+      "note_ja": "emit は「出力する・発する」。思考はトークンを消費するため、効果レベル(effort)や設定でオン・オフや長さを調整できる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "回答前にモデルが出力する推論過程",
+        "長い会話を保持するための拡張 context",
+        "回答後に自動で行う自己レビュー",
+        "複数モデルによる合議"
+      ],
+      "answer": 0,
+      "rank": 103,
+      "related": []
+    }
+  ]
+}

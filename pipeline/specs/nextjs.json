@@ -1,0 +1,1036 @@
+{
+  "subject_id": "nextjs",
+  "generated_by": "claude-fable-5-1",
+  "specs": [
+    {
+      "layer": "system_term",
+      "target": "Server Components",
+      "meaning_ja": "サーバー側でレンダリングされる React コンポーネント",
+      "note_ja": "App Router の既定。データ取得をサーバーで直接行え、クライアントへ JS を送らない。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "サーバー側でレンダリングされる React コンポーネント",
+        "サーバーに配置した API エンドポイント",
+        "ビルド時に静的生成されたページ",
+        "サーバーに常駐するバックグラウンド処理"
+      ],
+      "answer": 0,
+      "rank": 1,
+      "related": ["Client Components"]
+    },
+    {
+      "layer": "system_term",
+      "target": "Client Components",
+      "meaning_ja": "ブラウザで動く(対話や状態を持つ)React コンポーネント",
+      "note_ja": "ファイル先頭の \"use client\" で宣言する。イベントハンドラや useState が必要な部分だけに絞る。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "ブラウザ側で動き、状態や対話を持つコンポーネント",
+        "クライアント企業向けに作るコンポーネント",
+        "API クライアントを生成するコンポーネント",
+        "サーバーから呼ばれる関数"
+      ],
+      "answer": 0,
+      "rank": 2,
+      "related": ["Server Components"]
+    },
+    {
+      "layer": "system_term",
+      "target": "hydration",
+      "meaning_ja": "ハイドレーション(サーバー生成の HTML に React を結び付けて動かすこと)",
+      "note_ja": "サーバーとクライアントの出力が食い違うと hydration mismatch の警告が出る。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "サーバー生成の HTML にイベントや状態を結び付けること",
+        "データをキャッシュに保存すること",
+        "画像を最適化して配信すること",
+        "CSS を HTML に埋め込むこと"
+      ],
+      "answer": 0,
+      "rank": 3,
+      "related": ["Server Components"]
+    },
+    {
+      "layer": "system_term",
+      "target": "prerendering",
+      "match": "opt out of prerendering",
+      "meaning_ja": "事前レンダリング(リクエスト前、ビルド時に HTML を生成すること)",
+      "note_ja": "静的レンダリングの別名として使われる。動的 API を使うとできなくなる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "ビルド時に前もって HTML を生成すること",
+        "レンダリングを前のバージョンに戻すこと",
+        "レンダリング前に認証すること",
+        "描画の前処理としてデータを削除すること"
+      ],
+      "answer": 0,
+      "rank": 4,
+      "related": ["static rendering", "dynamic rendering"]
+    },
+    {
+      "layer": "vocab",
+      "target": "workaround",
+      "meaning_ja": "回避策(根本解決ではない対処)",
+      "note_ja": "問題を一時的に避ける手段。ドキュメントでは「後で外せる対処」として書かれる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "根本解決ではない回避策",
+        "仕事の進め方",
+        "処理の迂回路",
+        "回り道の経路"
+      ],
+      "answer": 0,
+      "rank": 5,
+      "related": ["dynamic rendering", "prerender"],
+      "match": "workaround"
+    },
+    {
+      "layer": "system_term",
+      "target": "dynamic rendering",
+      "meaning_ja": "動的レンダリング(リクエストごとにサーバーで描画)",
+      "note_ja": "cookies() や headers() などリクエスト時の情報を使うと自動的にこちらになる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "リクエストごとにサーバーで描画する方式",
+        "アニメーション付きの描画",
+        "クライアントだけで描画する方式",
+        "描画先を動的に切り替える機能"
+      ],
+      "answer": 0,
+      "rank": 6,
+      "related": ["static rendering"]
+    },
+    {
+      "layer": "system_term",
+      "target": "streaming",
+      "match": "streaming",
+      "meaning_ja": "ストリーミング(準備できた部分から順に HTML を送ること)",
+      "note_ja": "Suspense 境界ごとに分割して送る。遅いデータを待たずに画面を出せる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "準備できた部分から順に HTML を送る仕組み",
+        "動画を配信する機能",
+        "ログを連続出力すること",
+        "ファイルを圧縮して転送すること"
+      ],
+      "answer": 0,
+      "rank": 7,
+      "related": ["Suspense"]
+    },
+    {
+      "layer": "system_term",
+      "target": "Suspense",
+      "match": "suspense",
+      "meaning_ja": "Suspense(読み込み中の UI を示し、準備できたら差し替える境界)",
+      "note_ja": "React の機能。Next.js では streaming の分割単位になる。loading.tsx は自動で境界になる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "読み込み中の代替 UI を示す境界",
+        "処理を一時停止するフック",
+        "例外を捕捉する境界",
+        "アニメーションを遅延させる機能"
+      ],
+      "answer": 0,
+      "rank": 8,
+      "related": ["streaming"]
+    },
+    {
+      "layer": "system_term",
+      "target": "Server Actions",
+      "match": "server action",
+      "meaning_ja": "Server Actions(クライアントから呼べるサーバー側の非同期関数)",
+      "note_ja": "\"use server\" で定義。フォームの action に渡すと送信処理をサーバーで実行できる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "クライアントから呼び出せるサーバー側の関数",
+        "サーバーの起動・停止操作",
+        "サーバーが自動実行するバッチ処理",
+        "サーバーログに記録される操作"
+      ],
+      "answer": 0,
+      "rank": 9,
+      "related": ["Server Components"]
+    },
+    {
+      "layer": "system_term",
+      "target": "revalidated",
+      "match": "should be revalidated",
+      "meaning_ja": "再検証する(キャッシュを無効化して作り直す)",
+      "note_ja": "revalidatePath / revalidateTag で明示的に、または時間経過で行う。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "キャッシュを無効化して作り直す",
+        "入力値をもう一度検証する",
+        "ユーザーを再認証する",
+        "ビルドをやり直す"
+      ],
+      "answer": 0,
+      "rank": 10,
+      "related": ["cache"]
+    },
+    {
+      "layer": "system_term",
+      "target": "segment",
+      "match": "route segment",
+      "meaning_ja": "セグメント(URL パスを / で区切った各部分。app/ のフォルダに対応)",
+      "note_ja": "app/blog/[slug] なら blog と [slug] がセグメント。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "URL パスの / 区切りの各部分",
+        "画面を分割した領域",
+        "データベースのパーティション",
+        "ユーザーの属性グループ"
+      ],
+      "answer": 0,
+      "rank": 11,
+      "related": ["dynamic route"]
+    },
+    {
+      "layer": "system_term",
+      "target": "layout",
+      "match": "layout",
+      "url_hint": "layouts-and-pages",
+      "meaning_ja": "レイアウト(複数のページで共有される UI。遷移時に状態を保つ)",
+      "note_ja": "layout.tsx。children を受け取り、ナビゲーションしても再マウントされない。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "複数ページで共有され、遷移時も保持される UI",
+        "ページの CSS グリッド設定",
+        "画面サイズごとの表示設定",
+        "ページの初期表示だけに使う UI"
+      ],
+      "answer": 0,
+      "rank": 12,
+      "related": ["segment"]
+    },
+    {
+      "layer": "system_term",
+      "target": "dynamic route",
+      "match": "dynamic route",
+      "meaning_ja": "動的ルート([slug] のように URL の一部を引数として受け取るルート)",
+      "note_ja": "フォルダ名を角括弧で囲む。値は params から取り出す(Promise なので await する)。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "URL の一部を引数として受け取るルート",
+        "実行時に追加されるルート",
+        "リダイレクト専用のルート",
+        "クライアント側だけのルート"
+      ],
+      "answer": 0,
+      "rank": 13,
+      "related": ["segment"]
+    },
+    {
+      "layer": "system_term",
+      "target": "Route Handlers",
+      "match": "route handler",
+      "meaning_ja": "Route Handlers(route.ts で定義する HTTP エンドポイント)",
+      "note_ja": "GET / POST などの関数を export する。Web 標準の Request / Response を使う。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "route.ts で定義する HTTP API のエンドポイント",
+        "ページ遷移を処理するフック",
+        "ルーティング設定ファイル",
+        "エラーページの処理関数"
+      ],
+      "answer": 0,
+      "rank": 14,
+      "related": ["Server Actions"]
+    },
+    {
+      "layer": "system_term",
+      "target": "Proxy",
+      "match": "proxy",
+      "url_hint": "proxy",
+      "meaning_ja": "Proxy(リクエスト完了前に実行され、書き換え・リダイレクト・ヘッダー変更を行う処理。旧 Middleware)",
+      "note_ja": "Next.js 16 で Middleware から改名。proxy.ts に置く。重いデータ取得には使わない。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "リクエスト完了前に書き換えやリダイレクトを行う処理",
+        "外部 API への中継サーバー",
+        "開発用の HTTPS 代理",
+        "キャッシュを代理で返す CDN"
+      ],
+      "answer": 0,
+      "rank": 15,
+      "related": []
+    },
+    {
+      "layer": "system_term",
+      "target": "App Router",
+      "meaning_ja": "App Router(app/ ディレクトリを使う新しいルーティング方式)",
+      "note_ja": "Pages Router(pages/)の後継。Server Components やレイアウトを前提にする。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "app/ ディレクトリを使うルーティング方式",
+        "アプリ内の画面遷移ライブラリ",
+        "モバイルアプリ用のルーター",
+        "API だけを扱うルーティング"
+      ],
+      "answer": 0,
+      "rank": 16,
+      "related": ["segment", "layout"]
+    },
+    {
+      "layer": "system_term",
+      "target": "colocate",
+      "match": "colocat",
+      "meaning_ja": "同じ場所に置く(関連ファイルをルートのフォルダ内に並べる)",
+      "note_ja": "app/ 内に component や test を置いても、page.tsx 以外は公開ルートにならない。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "関連するファイルを同じフォルダに置く",
+        "別のサーバーに配置する",
+        "位置情報を共有する",
+        "ファイルを複製する"
+      ],
+      "answer": 0,
+      "rank": 17,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "rendering",
+      "match": "fetch data while rendering",
+      "meaning_ja": "描画(コンポーネントから HTML や画面を生成すること)",
+      "note_ja": "rendering / rendered / re-render の形で頻出。「どこで」描画するかが Next.js の主題。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["描画(HTML や画面を生成すること)", "提出", "翻訳", "削除"],
+      "answer": 0,
+      "rank": 18,
+      "related": ["prerender"]
+    },
+    {
+      "layer": "vocab",
+      "target": "fetch",
+      "match": "fetch data",
+      "meaning_ja": "取得する(データを取りに行く)",
+      "note_ja": "Web API の fetch() と、一般動詞「取ってくる」の両方の意味で使われる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "(データを)取得する",
+        "(データを)削除する",
+        "(データを)検証する",
+        "(データを)保存する"
+      ],
+      "answer": 0,
+      "rank": 19,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "cache",
+      "match": "cache",
+      "meaning_ja": "キャッシュ(結果を保存して再利用する仕組み)",
+      "note_ja": "cached(キャッシュ済み)/ caching(キャッシュすること)。動詞としても使う。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "結果を保存して再利用する仕組み",
+        "現金",
+        "一時ファイルの削除",
+        "データの暗号化"
+      ],
+      "answer": 0,
+      "rank": 20,
+      "related": ["revalidate"]
+    },
+    {
+      "layer": "vocab",
+      "target": "nested",
+      "meaning_ja": "入れ子になった",
+      "note_ja": "nested layouts / nested routes のように、階層構造の中に含まれることを表す。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["入れ子になった", "並列に並んだ", "隠された", "固定された"],
+      "answer": 0,
+      "rank": 21,
+      "related": ["layout"]
+    },
+    {
+      "layer": "vocab",
+      "target": "navigate",
+      "match": "navigate",
+      "meaning_ja": "(ページ間を)移動する",
+      "note_ja": "navigation(ナビゲーション)。Link や router.push による遷移を指す。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "ページ間を移動する",
+        "地図を表示する",
+        "メニューを開く",
+        "データを探索する"
+      ],
+      "answer": 0,
+      "rank": 22,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "prefetched",
+      "match": "cached and prefetched",
+      "meaning_ja": "先読みされる(表示前に取得される)",
+      "note_ja": "Link がビューポートに入ると遷移先を先読みし、クリック後の表示を速くする。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "表示前に先読みされる",
+        "前回の結果が破棄される",
+        "優先度が下げられる",
+        "取得が中止される"
+      ],
+      "answer": 0,
+      "rank": 23,
+      "related": ["fetch"]
+    },
+    {
+      "layer": "vocab",
+      "target": "fallback",
+      "match": "fallback",
+      "meaning_ja": "代替(準備できるまで、または失敗時に表示するもの)",
+      "note_ja": "Suspense の fallback は読み込み中に出す UI。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "代替として表示・使用するもの",
+        "処理の後退",
+        "バージョンの巻き戻し",
+        "既定の失敗"
+      ],
+      "answer": 0,
+      "rank": 24,
+      "related": ["Suspense"]
+    },
+    {
+      "layer": "vocab",
+      "target": "mutation",
+      "match": "mutation",
+      "meaning_ja": "変更(データを書き換える操作)",
+      "note_ja": "読み取り(query / fetch)に対して、作成・更新・削除を指す。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "データを書き換える操作",
+        "突然変異のバグ",
+        "型の変換",
+        "画面の切り替え"
+      ],
+      "answer": 0,
+      "rank": 25,
+      "related": ["Server Actions"]
+    },
+    {
+      "layer": "vocab",
+      "target": "deduplicate",
+      "match": "dedup",
+      "meaning_ja": "重複を取り除く(同じ要求を 1 回にまとめる)",
+      "note_ja": "同じ fetch が複数箇所で呼ばれても 1 回の要求にまとめられる、という文脈で使う。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "重複を取り除く",
+        "二重に実行する",
+        "複製して保存する",
+        "分割して処理する"
+      ],
+      "answer": 0,
+      "rank": 26,
+      "related": ["cache"]
+    },
+    {
+      "layer": "vocab",
+      "target": "interactive",
+      "meaning_ja": "対話的な(ユーザー操作に反応する)",
+      "note_ja": "Client Components が必要になる理由として「interactivity」が挙げられる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "ユーザー操作に反応する",
+        "相互に接続された",
+        "国際化された",
+        "内部向けの"
+      ],
+      "answer": 0,
+      "rank": 27,
+      "related": ["Client Components"]
+    },
+    {
+      "layer": "vocab",
+      "target": "boundary",
+      "match": "boundary",
+      "meaning_ja": "境界(Suspense boundary / error boundary など、処理の区切り)",
+      "note_ja": "ここから内側はまとめて扱う、という単位。エラーや読み込みを閉じ込める。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "処理や影響の及ぶ範囲の区切り",
+        "画面の枠線",
+        "国境",
+        "配列の添字の上限"
+      ],
+      "answer": 0,
+      "rank": 28,
+      "related": ["Suspense"]
+    },
+    {
+      "layer": "vocab",
+      "target": "granular",
+      "meaning_ja": "細かい粒度の",
+      "note_ja": "キャッシュや再検証を細かい単位で制御できる、という説明で頻出。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["細かい粒度の", "粗い", "段階的な", "部分的に壊れた"],
+      "answer": 0,
+      "rank": 29,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "incrementally",
+      "meaning_ja": "段階的に(少しずつ)",
+      "note_ja": "Incremental Static Regeneration(ISR)の incremental。一度に全部ではなく少しずつ。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["段階的に(少しずつ)", "増加分だけ", "即時に", "一括で"],
+      "answer": 0,
+      "rank": 30,
+      "related": [],
+      "match": "incrementally migrate"
+    },
+    {
+      "layer": "vocab",
+      "target": "deprecated",
+      "meaning_ja": "非推奨の(今後削除される予定)",
+      "note_ja": "アップグレードガイドで最も重要な語。該当機能は移行が必要。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "非推奨の(今後削除される予定)",
+        "廃止されて動かない",
+        "実験的な",
+        "新しく追加された"
+      ],
+      "answer": 0,
+      "rank": 31,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "opt-in",
+      "match": "opt-in",
+      "meaning_ja": "自分で有効にする方式の(既定では無効)",
+      "note_ja": "opt into / opt in to の形も。opt out(既定で有効なものを外す)と対。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "明示的に有効にして使う方式の",
+        "既定で有効な",
+        "選択肢が無い",
+        "自動的に最適化される"
+      ],
+      "answer": 0,
+      "rank": 32,
+      "related": ["by default"]
+    },
+    {
+      "layer": "vocab",
+      "target": "tradeoff",
+      "match": "tradeoff",
+      "meaning_ja": "トレードオフ(一方を取ると他方を失う関係)",
+      "note_ja": "レンダリング方式の選択では必ず出てくる。利点と欠点の両方を読む。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "一方を得ると他方を失う関係",
+        "交換取引",
+        "販売停止",
+        "妥協案"
+      ],
+      "answer": 0,
+      "rank": 33,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "ensures",
+      "match": "this ensures correct responses",
+      "meaning_ja": "確実にする・保証する",
+      "note_ja": "Ensure that … で「必ず〜にする」。手順の指示で頻出。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": ["ensures", "assumes", "avoids", "attempts"],
+      "answer": 0,
+      "rank": 34,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "resolves",
+      "match": "resolves the cookie promise",
+      "meaning_ja": "解決する(Promise が値になる)",
+      "note_ja": "params や cookies() は Promise なので「resolves to」(〜に解決される)の形で説明される。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "解決する(Promise が値になる)",
+        "削除する",
+        "解像度を上げる",
+        "決心する"
+      ],
+      "answer": 0,
+      "rank": 35,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "leverage",
+      "match": "leverage",
+      "meaning_ja": "活用する",
+      "note_ja": "use のやや硬い言い方。「〜の力を借りる」ニュアンス。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["活用する", "てこで持ち上げる", "負債を抱える", "均等にする"],
+      "answer": 0,
+      "rank": 36,
+      "related": []
+    },
+    {
+      "layer": "vocab",
+      "target": "seamlessly",
+      "match": "integrates seamlessly",
+      "meaning_ja": "継ぎ目なく(滑らかに)",
+      "note_ja": "seamless navigation のように、ユーザーが切れ目を感じないことを指す。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "継ぎ目なく(滑らかに)",
+        "縫い目が見えるように",
+        "海を越えて",
+        "意味もなく"
+      ],
+      "answer": 0,
+      "rank": 37,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "By default",
+      "meaning_ja": "既定では(何も指定しないと)",
+      "note_ja": "文頭に来て既定の挙動を述べ、その後に変更方法が続くことが多い。",
+      "question_type": "recognize_pattern",
+      "prompt_ja": null,
+      "options": [
+        "By default, layouts and pages are Server Components.",
+        "The default export is a layout.",
+        "Set the default value to a page.",
+        "Defaults can be exported from pages."
+      ],
+      "answer": 0,
+      "rank": 38,
+      "related": ["opt-in"]
+    },
+    {
+      "layer": "pattern",
+      "target": "Good to know",
+      "meaning_ja": "補足(知っておくとよいこと)",
+      "note_ja": "Next.js ドキュメントの定型の注記。例外や細かい仕様が書かれている。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "補足として知っておくとよいこと",
+        "必ず守るべき警告",
+        "よく知られた事実",
+        "推奨される設定"
+      ],
+      "answer": 0,
+      "rank": 39,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "under the hood",
+      "meaning_ja": "内部では(見えない仕組みの話)",
+      "note_ja": "利用者が意識しない内部実装を説明する合図。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "内部では(見えない仕組みの話)",
+        "フードをかぶって",
+        "低い優先度で",
+        "非公開のベータで"
+      ],
+      "answer": 0,
+      "rank": 40,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "out of the box",
+      "meaning_ja": "追加設定なしで",
+      "note_ja": "設定やプラグインなしで動くこと。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": [
+        "out of the box",
+        "in the box",
+        "off the shelf",
+        "on the fly"
+      ],
+      "answer": 0,
+      "rank": 41,
+      "related": ["By default"]
+    },
+    {
+      "layer": "pattern",
+      "target": "This means",
+      "meaning_ja": "つまり(帰結)",
+      "note_ja": "直前の仕様がもたらす実務上の影響を述べる。読み飛ばさない。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "つまり〜ということだ",
+        "これは手段である",
+        "これは意地悪だ",
+        "これは平均値だ"
+      ],
+      "answer": 0,
+      "rank": 42,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "For example",
+      "meaning_ja": "例えば",
+      "note_ja": "直後の例で抽象的な説明を補う。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["例えば", "例のために", "手本として", "代表して"],
+      "answer": 0,
+      "rank": 43,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "such as",
+      "meaning_ja": "〜のような(例示)",
+      "note_ja": "直後に具体例が続く。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": ["such as", "as such", "so that", "as well"],
+      "answer": 0,
+      "rank": 44,
+      "related": ["For example"]
+    },
+    {
+      "layer": "pattern",
+      "target": "rather than",
+      "meaning_ja": "〜ではなく",
+      "note_ja": "A rather than B。推奨する A が前。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["〜ではなく", "〜よりも少なく", "〜に加えて", "〜のあとで"],
+      "answer": 0,
+      "rank": 45,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "as well as",
+      "meaning_ja": "〜だけでなく〜も",
+      "note_ja": "A as well as B で両方。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "〜だけでなく〜も",
+        "〜と同じくらい上手に",
+        "〜の代わりに",
+        "〜よりも良く"
+      ],
+      "answer": 0,
+      "rank": 46,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "instead of",
+      "meaning_ja": "〜の代わりに",
+      "note_ja": "移行ガイドで「X の代わりに Y を使う」の形で頻出。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["〜の代わりに", "〜の内側で", "〜に先立って", "〜のために"],
+      "answer": 0,
+      "rank": 47,
+      "related": ["rather than"]
+    },
+    {
+      "layer": "pattern",
+      "target": "allows you to",
+      "meaning_ja": "〜できるようにする(機能の説明)",
+      "note_ja": "主語の機能が何を可能にするかを述べる定型。lets you も同じ。",
+      "question_type": "fill_blank",
+      "prompt_ja": null,
+      "options": [
+        "allows you to",
+        "prevents you from",
+        "requires you to",
+        "asks you to"
+      ],
+      "answer": 0,
+      "rank": 48,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "you can",
+      "match": "you can",
+      "meaning_ja": "〜できる(選択肢の提示)",
+      "note_ja": "must(必須)や should(推奨)との強さの違いを読み分ける。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "(任意で)〜できる",
+        "〜しなければならない",
+        "〜すべきである",
+        "〜してはいけない"
+      ],
+      "answer": 0,
+      "rank": 49,
+      "related": ["allows you to"]
+    },
+    {
+      "layer": "pattern",
+      "target": "must",
+      "match": "must",
+      "meaning_ja": "〜しなければならない(必須)",
+      "note_ja": "守らないと動かない制約。can / should より強い。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "〜しなければならない(必須)",
+        "〜してもよい",
+        "〜したほうがよい",
+        "〜かもしれない"
+      ],
+      "answer": 0,
+      "rank": 50,
+      "related": ["you can"]
+    },
+    {
+      "layer": "pattern",
+      "target": "whether",
+      "match": "whether",
+      "meaning_ja": "〜かどうか",
+      "note_ja": "whether A or B で「A か B か」。条件分岐の説明で頻出。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["〜かどうか", "天気", "〜する間", "〜にもかかわらず"],
+      "answer": 0,
+      "rank": 51,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "as soon as",
+      "meaning_ja": "〜するとすぐに",
+      "note_ja": "streaming の説明で「準備できたらすぐ送る」の形で使われる。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "〜するとすぐに",
+        "〜と同じくらい早く",
+        "〜するまでは",
+        "〜のように素早く"
+      ],
+      "answer": 0,
+      "rank": 52,
+      "related": ["streaming"]
+    },
+    {
+      "layer": "pattern",
+      "target": "in parallel",
+      "meaning_ja": "並行して(同時に)",
+      "note_ja": "データ取得を直列(sequential)ではなく並行(parallel)にする、という最適化で頻出。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["並行して(同時に)", "順番に", "平行線のまま", "対等に"],
+      "answer": 0,
+      "rank": 53,
+      "related": []
+    },
+    {
+      "layer": "pattern",
+      "target": "at request time",
+      "meaning_ja": "リクエスト時に(ユーザーがアクセスしたとき)",
+      "note_ja": "at build time(ビルド時)との対比。どちらで実行されるかがレンダリング方式を決める。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "ユーザーがアクセスした時点で",
+        "ビルドした時点で",
+        "要求された回数だけ",
+        "時間を要求して"
+      ],
+      "answer": 0,
+      "rank": 54,
+      "related": ["dynamic rendering"]
+    },
+    {
+      "layer": "pattern",
+      "target": "at build time",
+      "meaning_ja": "ビルド時に",
+      "note_ja": "デプロイ前の next build の時点。静的レンダリングはこの時点で描画される。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "ビルドした時点で",
+        "ユーザーがアクセスした時点で",
+        "ビルドにかかる時間で",
+        "構築中の一時的に"
+      ],
+      "answer": 0,
+      "rank": 55,
+      "related": ["static rendering", "at request time"]
+    },
+    {
+      "layer": "idiom",
+      "target": "rule of thumb",
+      "match": "rule of thumb",
+      "pick": 0,
+      "meaning_ja": "経験則(おおよその目安)",
+      "note_ja": "厳密な規則ではないが実用上の判断基準。As a rule of thumb, … の形。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "経験則(おおよその目安)",
+        "親指で操作する規則",
+        "厳密な規定",
+        "多数決"
+      ],
+      "answer": 0,
+      "rank": 56,
+      "related": []
+    },
+    {
+      "layer": "idiom",
+      "target": "best practice",
+      "match": "best practice",
+      "meaning_ja": "推奨される方法(ベストプラクティス)",
+      "note_ja": "必須ではないが、公式が勧めるやり方。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "推奨される方法",
+        "最も練習した方法",
+        "最良の結果",
+        "最後の手段"
+      ],
+      "answer": 0,
+      "rank": 57,
+      "related": []
+    },
+    {
+      "layer": "idiom",
+      "target": "opt out",
+      "match": "opt out",
+      "meaning_ja": "(既定で有効なものを)無効にする",
+      "note_ja": "opt-in と対。キャッシュから外す、などの文脈で使う。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "(既定で有効なものを)無効にする",
+        "(機能を)有効にする",
+        "最適化する",
+        "選択肢を増やす"
+      ],
+      "answer": 0,
+      "rank": 58,
+      "related": ["opt-in"]
+    },
+    {
+      "layer": "idiom",
+      "target": "pitfall",
+      "match": "pitfall",
+      "meaning_ja": "落とし穴(はまりやすい失敗)",
+      "note_ja": "Avoid common pitfalls のように、よくある失敗パターンを指す。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "はまりやすい失敗(落とし穴)",
+        "穴の開いた画面",
+        "性能の低下",
+        "設定の漏れ"
+      ],
+      "answer": 0,
+      "rank": 59,
+      "related": []
+    },
+    {
+      "layer": "idiom",
+      "target": "caveat",
+      "match": "caveat",
+      "meaning_ja": "注意点(但し書き)",
+      "note_ja": "機能は使えるが条件や制限がある、という但し書き。Caveats の節に制限が列挙される。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": ["注意点・但し書き", "警告音", "免責事項の免除", "洞窟"],
+      "answer": 0,
+      "rank": 60,
+      "related": []
+    },
+    {
+      "layer": "idiom",
+      "target": "trade-off",
+      "match": "trade-off",
+      "meaning_ja": "トレードオフ",
+      "note_ja": "一方を取ると他方を失う関係。ハイフン有無の両方の綴りがある。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "一方を得ると他方を失う関係",
+        "交換取引",
+        "販売停止",
+        "妥協案"
+      ],
+      "answer": 0,
+      "rank": 61,
+      "related": ["tradeoff"]
+    },
+    {
+      "layer": "idiom",
+      "target": "keep in mind",
+      "match": "keep in mind",
+      "meaning_ja": "〜を覚えておく(注意)",
+      "note_ja": "制限や前提を伝える注意喚起。",
+      "question_type": "choose_meaning",
+      "prompt_ja": null,
+      "options": [
+        "〜を覚えておく",
+        "〜を心に閉じ込める",
+        "〜を暗記する",
+        "〜を気にしない"
+      ],
+      "answer": 0,
+      "rank": 62,
+      "related": []
+    }
+  ]
+}

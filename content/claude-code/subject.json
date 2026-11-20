@@ -1,0 +1,11 @@
+{
+  "id": "claude-code",
+  "name": "Claude Code",
+  "category": "genai",
+  "description_ja": "Claude Code のドキュメント・CLI・設定リファレンスで使われるエージェント用語と定型表現",
+  "official_urls": ["https://code.claude.com/docs/en/"],
+  "license_note": "Claude Code ドキュメント(© Anthropic, PBC。code.claude.com)からの、解説のための文単位の短い引用。原文は改変せず、各カードに出典 URL を付けている",
+  "version": 1,
+  "crawled_at": "2026-11-01T05:43:06.444Z",
+  "is_published": true
+}

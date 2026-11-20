@@ -1,0 +1,11 @@
+{
+  "id": "nextjs",
+  "name": "Next.js",
+  "category": "language_fw",
+  "description_ja": "App Router のドキュメントとビルド / ランタイムエラーで使われる用語・説明文",
+  "official_urls": ["https://nextjs.org/docs/app"],
+  "license_note": "Next.js ドキュメント(© Vercel, Inc.、MIT License。vercel/next.js の docs/)からの文単位の引用。原文は改変せず、各カードに出典 URL を付けている",
+  "version": 1,
+  "crawled_at": "2026-11-01T05:40:53.715Z",
+  "is_published": true
+}
