@@ -37,6 +37,10 @@ export default defineConfig({
     env: {
       // E2E は Supabase に接続せず、メモリ内リポジトリとデモユーザーで動かす
       LEXIGREP_DATA_SOURCE: "memory",
+      // CI は本番ビルドで起動する。本番では memory モードを既定で拒否するので明示的に許可する
+      LEXIGREP_ALLOW_MEMORY: "1",
+      // 本番ではログイン後の戻り先の origin を推定しないので、E2E のサーバー自身を指定する
+      NEXT_PUBLIC_SITE_URL: baseURL,
       // 固定のフィクスチャ(content/ の実コンテンツに依存しない)。LEXIGREP_CONTENT_DIR=content で実コンテンツを使える
       LEXIGREP_CONTENT_DIR:
         process.env.LEXIGREP_CONTENT_DIR ?? "e2e/fixtures/content",
