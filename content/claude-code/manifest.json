@@ -3,7 +3,7 @@
   "version": 1,
   "crawled_at": "2026-11-01T05:43:06.444Z",
   "card_count": 103,
-  "checksum": "c9da39f018a065baf984491c2cf4e8d883fe44667a7e3b66310e51de5713be6a",
-  "generated_at": "2026-11-01T09:27:11.360Z",
-  "generator": "validate-content@0.1.0"
+  "checksum": "7afad5233fe18c1502f5bcc04c1b22036d71b939cc1e7048606993c489b53d2c",
+  "generated_at": "2026-11-21T06:13:47.029Z",
+  "generator": "review@ai-review@claude-opus-5-5"
 }
